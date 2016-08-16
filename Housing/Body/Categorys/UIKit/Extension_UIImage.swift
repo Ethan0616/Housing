@@ -73,7 +73,7 @@ extension UIImage {
     }
     
     /// 将传入的图片，生成对应的模糊效果
-    func boxblurImageWithBlur(blur : CGFloat) -> UIImage{
+    func boxblurImageWithBlur(blur : Double) -> UIImage{
         let imageData : NSData = UIImageJPEGRepresentation(self, 1)!
         let destImage : UIImage = UIImage(data:imageData)!
         var blur = blur
@@ -86,7 +86,6 @@ extension UIImage {
         let img : CGImageRef = destImage.CGImage!
         var inBuffer , outBuffer , outBuffer2 : vImage_Buffer
         var pixelBuffer , pixelBuffer2 :  UnsafeMutablePointer<Void>
-        var error : vImage_Error?
         
         let imgHeight  = UInt(CGImageGetHeight(img))
         let imgWidth  = UInt(CGImageGetWidth(img))
@@ -112,22 +111,12 @@ extension UIImage {
         
         outBuffer2 = vImage_Buffer(data: pixelBuffer2, height: imgHeight, width: imgWidth, rowBytes: rowBytes)
         
-        error = vImageBoxConvolve_ARGB8888(&inBuffer, &outBuffer2, nil, 0, 0, UInt32(boxSize), UInt32(boxSize), nil, UInt32(kvImageEdgeExtend));
+        vImageBoxConvolve_ARGB8888(&inBuffer, &outBuffer2, nil, 0, 0, UInt32(boxSize), UInt32(boxSize), nil, UInt32(kvImageEdgeExtend));
 
+        vImageBoxConvolve_ARGB8888(&outBuffer2, &inBuffer, nil, 0, 0, UInt32(boxSize), UInt32(boxSize), nil, UInt32(kvImageEdgeExtend));
 
-        if let err = error {
-            print("error from convolution \(err)")
-        }
-        error = vImageBoxConvolve_ARGB8888(&outBuffer2, &inBuffer, nil, 0, 0, UInt32(boxSize), UInt32(boxSize), nil, UInt32(kvImageEdgeExtend));
+        vImageBoxConvolve_ARGB8888(&inBuffer, &outBuffer, nil, 0, 0, UInt32(boxSize), UInt32(boxSize), nil, UInt32(kvImageEdgeExtend));
 
-        if let err = error {
-            print("error from convolution \(err)")
-        }
-        error = vImageBoxConvolve_ARGB8888(&inBuffer, &outBuffer, nil, 0, 0, UInt32(boxSize), UInt32(boxSize), nil, UInt32(kvImageEdgeExtend));
-
-        if let err = error {
-            print("error from convolution \(err)")
-        }
         
         
         let  colorSpace  = CGColorSpaceCreateDeviceRGB()!
