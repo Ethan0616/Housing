@@ -68,6 +68,17 @@
 		AAD406F51D5C6EFA009D18D5 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AAD406F31D5C6EFA009D18D5 /* Main.storyboard */; };
 		AAD406F71D5C6EFA009D18D5 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AAD406F61D5C6EFA009D18D5 /* Assets.xcassets */; };
 		AAD406FA1D5C6EFA009D18D5 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AAD406F81D5C6EFA009D18D5 /* LaunchScreen.storyboard */; };
+		AADD70851D62B1350081D986 /* dataBase0.jpg in Resources */ = {isa = PBXBuildFile; fileRef = AADD70831D62B1350081D986 /* dataBase0.jpg */; };
+		AADD70861D62B1350081D986 /* dataBase1.jpg in Resources */ = {isa = PBXBuildFile; fileRef = AADD70841D62B1350081D986 /* dataBase1.jpg */; };
+		AADD709D1D62B6770081D986 /* FMDatabase.m in Sources */ = {isa = PBXBuildFile; fileRef = AADD70901D62B6770081D986 /* FMDatabase.m */; };
+		AADD709E1D62B6770081D986 /* FMDatabaseAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = AADD70921D62B6770081D986 /* FMDatabaseAdditions.m */; };
+		AADD709F1D62B6770081D986 /* FMDatabasePool.m in Sources */ = {isa = PBXBuildFile; fileRef = AADD70941D62B6770081D986 /* FMDatabasePool.m */; };
+		AADD70A01D62B6770081D986 /* FMDatabaseQueue.m in Sources */ = {isa = PBXBuildFile; fileRef = AADD70961D62B6770081D986 /* FMDatabaseQueue.m */; };
+		AADD70A11D62B6770081D986 /* FMResultSet.m in Sources */ = {isa = PBXBuildFile; fileRef = AADD70991D62B6770081D986 /* FMResultSet.m */; };
+		AADD70A21D62B6770081D986 /* MJNIndexView.m in Sources */ = {isa = PBXBuildFile; fileRef = AADD709C1D62B6770081D986 /* MJNIndexView.m */; settings = {COMPILER_FLAGS = "-w"; }; };
+		AADD70A41D62B7430081D986 /* libsqlite3.0.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = AADD70A31D62B7430081D986 /* libsqlite3.0.tbd */; };
+		AADD70AA1D62B8100081D986 /* DataBase.m in Sources */ = {isa = PBXBuildFile; fileRef = AADD70A71D62B8100081D986 /* DataBase.m */; };
+		AADD70AB1D62B8100081D986 /* DrugSearchModel.m in Sources */ = {isa = PBXBuildFile; fileRef = AADD70A91D62B8100081D986 /* DrugSearchModel.m */; };
 		C275F52C023BB74D1A4B3258 /* Pods_Housing.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 41E2D075F2FEC6E3C65E086F /* Pods_Housing.framework */; };
 /* End PBXBuildFile section */
 
@@ -138,6 +149,27 @@
 		AAD406F61D5C6EFA009D18D5 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		AAD406F91D5C6EFA009D18D5 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		AAD406FB1D5C6EFA009D18D5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		AADD70831D62B1350081D986 /* dataBase0.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = dataBase0.jpg; sourceTree = "<group>"; };
+		AADD70841D62B1350081D986 /* dataBase1.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = dataBase1.jpg; sourceTree = "<group>"; };
+		AADD708C1D62B1C10081D986 /* Housing-Bridging-Header.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Housing-Bridging-Header.h"; sourceTree = "<group>"; };
+		AADD708F1D62B6770081D986 /* FMDatabase.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FMDatabase.h; sourceTree = "<group>"; };
+		AADD70901D62B6770081D986 /* FMDatabase.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FMDatabase.m; sourceTree = "<group>"; };
+		AADD70911D62B6770081D986 /* FMDatabaseAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FMDatabaseAdditions.h; sourceTree = "<group>"; };
+		AADD70921D62B6770081D986 /* FMDatabaseAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FMDatabaseAdditions.m; sourceTree = "<group>"; };
+		AADD70931D62B6770081D986 /* FMDatabasePool.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FMDatabasePool.h; sourceTree = "<group>"; };
+		AADD70941D62B6770081D986 /* FMDatabasePool.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FMDatabasePool.m; sourceTree = "<group>"; };
+		AADD70951D62B6770081D986 /* FMDatabaseQueue.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FMDatabaseQueue.h; sourceTree = "<group>"; };
+		AADD70961D62B6770081D986 /* FMDatabaseQueue.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FMDatabaseQueue.m; sourceTree = "<group>"; };
+		AADD70971D62B6770081D986 /* FMDB.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FMDB.h; sourceTree = "<group>"; };
+		AADD70981D62B6770081D986 /* FMResultSet.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FMResultSet.h; sourceTree = "<group>"; };
+		AADD70991D62B6770081D986 /* FMResultSet.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FMResultSet.m; sourceTree = "<group>"; };
+		AADD709B1D62B6770081D986 /* MJNIndexView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MJNIndexView.h; sourceTree = "<group>"; };
+		AADD709C1D62B6770081D986 /* MJNIndexView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MJNIndexView.m; sourceTree = "<group>"; };
+		AADD70A31D62B7430081D986 /* libsqlite3.0.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libsqlite3.0.tbd; path = usr/lib/libsqlite3.0.tbd; sourceTree = SDKROOT; };
+		AADD70A61D62B8100081D986 /* DataBase.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DataBase.h; sourceTree = "<group>"; };
+		AADD70A71D62B8100081D986 /* DataBase.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DataBase.m; sourceTree = "<group>"; };
+		AADD70A81D62B8100081D986 /* DrugSearchModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DrugSearchModel.h; sourceTree = "<group>"; };
+		AADD70A91D62B8100081D986 /* DrugSearchModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DrugSearchModel.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -145,6 +177,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AADD70A41D62B7430081D986 /* libsqlite3.0.tbd in Frameworks */,
 				C275F52C023BB74D1A4B3258 /* Pods_Housing.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -173,6 +206,8 @@
 		AA6F32E91D5DBBA2002CDAB1 /* resource */ = {
 			isa = PBXGroup;
 			children = (
+				AADD70831D62B1350081D986 /* dataBase0.jpg */,
+				AADD70841D62B1350081D986 /* dataBase1.jpg */,
 				AA6F32EA1D5DBBA2002CDAB1 /* 00.jpg */,
 				AA6F32EB1D5DBBA2002CDAB1 /* 01.jpg */,
 				AA6F32EC1D5DBBA2002CDAB1 /* 02.jpg */,
@@ -297,6 +332,9 @@
 				AA6F32E91D5DBBA2002CDAB1 /* resource */,
 				AA6F33021D5DBBA2002CDAB1 /* ViewControllers */,
 				AA6F32E71D5DBBA2002CDAB1 /* CustomView */,
+				AADD70871D62B1690081D986 /* ThridPart */,
+				AADD70A51D62B8030081D986 /* Objective-C */,
+				AADD708C1D62B1C10081D986 /* Housing-Bridging-Header.h */,
 				AAD406EF1D5C6EFA009D18D5 /* AppDelegate.swift */,
 				AAD406F11D5C6EFA009D18D5 /* ViewController.swift */,
 				AAD3F48B1D61BD170053F641 /* BaseViewController.swift */,
@@ -308,9 +346,59 @@
 			path = Housing;
 			sourceTree = "<group>";
 		};
+		AADD70871D62B1690081D986 /* ThridPart */ = {
+			isa = PBXGroup;
+			children = (
+				AADD708E1D62B6770081D986 /* fmdb */,
+				AADD709A1D62B6770081D986 /* MJNIndexView */,
+			);
+			name = ThridPart;
+			path = Body/ThridPart;
+			sourceTree = "<group>";
+		};
+		AADD708E1D62B6770081D986 /* fmdb */ = {
+			isa = PBXGroup;
+			children = (
+				AADD708F1D62B6770081D986 /* FMDatabase.h */,
+				AADD70901D62B6770081D986 /* FMDatabase.m */,
+				AADD70911D62B6770081D986 /* FMDatabaseAdditions.h */,
+				AADD70921D62B6770081D986 /* FMDatabaseAdditions.m */,
+				AADD70931D62B6770081D986 /* FMDatabasePool.h */,
+				AADD70941D62B6770081D986 /* FMDatabasePool.m */,
+				AADD70951D62B6770081D986 /* FMDatabaseQueue.h */,
+				AADD70961D62B6770081D986 /* FMDatabaseQueue.m */,
+				AADD70971D62B6770081D986 /* FMDB.h */,
+				AADD70981D62B6770081D986 /* FMResultSet.h */,
+				AADD70991D62B6770081D986 /* FMResultSet.m */,
+			);
+			path = fmdb;
+			sourceTree = "<group>";
+		};
+		AADD709A1D62B6770081D986 /* MJNIndexView */ = {
+			isa = PBXGroup;
+			children = (
+				AADD709B1D62B6770081D986 /* MJNIndexView.h */,
+				AADD709C1D62B6770081D986 /* MJNIndexView.m */,
+			);
+			path = MJNIndexView;
+			sourceTree = "<group>";
+		};
+		AADD70A51D62B8030081D986 /* Objective-C */ = {
+			isa = PBXGroup;
+			children = (
+				AADD70A61D62B8100081D986 /* DataBase.h */,
+				AADD70A71D62B8100081D986 /* DataBase.m */,
+				AADD70A81D62B8100081D986 /* DrugSearchModel.h */,
+				AADD70A91D62B8100081D986 /* DrugSearchModel.m */,
+			);
+			name = "Objective-C";
+			path = "Body/Objective-C";
+			sourceTree = "<group>";
+		};
 		DD92FD6CE9C2C5A3AC2BD643 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				AADD70A31D62B7430081D986 /* libsqlite3.0.tbd */,
 				41E2D075F2FEC6E3C65E086F /* Pods_Housing.framework */,
 			);
 			name = Frameworks;
@@ -395,6 +483,7 @@
 				AA6F331B1D5DBBA2002CDAB1 /* 18.jpg in Resources */,
 				AA6F33151D5DBBA2002CDAB1 /* 12.jpg in Resources */,
 				AA6F33101D5DBBA2002CDAB1 /* 07.jpg in Resources */,
+				AADD70851D62B1350081D986 /* dataBase0.jpg in Resources */,
 				AA6F33131D5DBBA2002CDAB1 /* 10.jpg in Resources */,
 				AA6F331A1D5DBBA2002CDAB1 /* 17.jpg in Resources */,
 				AA6F330F1D5DBBA2002CDAB1 /* 06.jpg in Resources */,
@@ -404,6 +493,7 @@
 				AA6F33201D5DBBA2002CDAB1 /* 23.jpg in Resources */,
 				AAD406F71D5C6EFA009D18D5 /* Assets.xcassets in Resources */,
 				AAD406F51D5C6EFA009D18D5 /* Main.storyboard in Resources */,
+				AADD70861D62B1350081D986 /* dataBase1.jpg in Resources */,
 				AA6F331D1D5DBBA2002CDAB1 /* 20.jpg in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -466,13 +556,17 @@
 				AAD406F21D5C6EFA009D18D5 /* ViewController.swift in Sources */,
 				AA6F33241D5DBBA2002CDAB1 /* TabBarController.swift in Sources */,
 				AAD3F4F21D61C85B0053F641 /* Extension_UIFont.swift in Sources */,
+				AADD709D1D62B6770081D986 /* FMDatabase.m in Sources */,
 				AAD3F4F41D61C85B0053F641 /* Extension_UIScreen.swift in Sources */,
 				AAD3F4E51D61C85B0053F641 /* Extension_NSKeyedUnarchiver.swift in Sources */,
+				AADD70A11D62B6770081D986 /* FMResultSet.m in Sources */,
 				AAD3F4F01D61C85B0053F641 /* Extension_UIControl.swift in Sources */,
 				AAD3F4E81D61C85B0053F641 /* Extension_NSObject.swift in Sources */,
 				AAD3F4EA1D61C85B0053F641 /* Extension_NSTimer.swift in Sources */,
+				AADD70A01D62B6770081D986 /* FMDatabaseQueue.m in Sources */,
 				AAD3F4E11D61C85B0053F641 /* Extension_NSBundle.swift in Sources */,
 				AAD3F4E61D61C85B0053F641 /* Extension_NSNotificationCenter.swift in Sources */,
+				AADD70AA1D62B8100081D986 /* DataBase.m in Sources */,
 				AAD3F4E01D61C85B0053F641 /* Extension_NSArray.swift in Sources */,
 				AAD3F4EB1D61C85B0053F641 /* Extension_String.swift in Sources */,
 				AAD3F4E41D61C85B0053F641 /* Extension_NSDictionary.swift in Sources */,
@@ -480,11 +574,14 @@
 				AAD3F4ED1D61C85B0053F641 /* Extension_UIBarButtonItem.swift in Sources */,
 				AAD406F01D5C6EFA009D18D5 /* AppDelegate.swift in Sources */,
 				AAD3F4E71D61C85B0053F641 /* Extension_NSNumber.swift in Sources */,
+				AADD70AB1D62B8100081D986 /* DrugSearchModel.m in Sources */,
 				AAD3F4F51D61C85B0053F641 /* Extension_UIScrollView.swift in Sources */,
 				AA6F33221D5DBBA2002CDAB1 /* CustomTabBarController.swift in Sources */,
 				AAD3F4F61D61C85B0053F641 /* Extension_UITableView.swift in Sources */,
 				AAD3F4EE1D61C85B0053F641 /* Extension_UIBezierPath.swift in Sources */,
 				AA6F33081D5DBBA2002CDAB1 /* CustomViewController.swift in Sources */,
+				AADD70A21D62B6770081D986 /* MJNIndexView.m in Sources */,
+				AADD709E1D62B6770081D986 /* FMDatabaseAdditions.m in Sources */,
 				AAD3F4F91D61C9190053F641 /* Extension_UIImageView.swift in Sources */,
 				AAD3F4E91D61C85B0053F641 /* Extension_NSThread.swift in Sources */,
 				AAD3F4F31D61C85B0053F641 /* Extension_UIImage.swift in Sources */,
@@ -497,6 +594,7 @@
 				AAD3F4F11D61C85B0053F641 /* Extension_UIDevice.swift in Sources */,
 				AAD3F4EF1D61C85B0053F641 /* Extension_UIColor.swift in Sources */,
 				AA6F33211D5DBBA2002CDAB1 /* CollectionViewController.swift in Sources */,
+				AADD709F1D62B6770081D986 /* FMDatabasePool.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -610,10 +708,14 @@
 			baseConfigurationReference = 79E68A5429B31F61C8DF525B /* Pods-Housing.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES = NO;
+				CLANG_ENABLE_MODULES = YES;
 				INFOPLIST_FILE = Housing/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = Housing.Housing;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "Housing/Housing-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 			};
 			name = Debug;
 		};
@@ -622,10 +724,13 @@
 			baseConfigurationReference = 83141BFB173305AB063B4E7E /* Pods-Housing.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES = NO;
+				CLANG_ENABLE_MODULES = YES;
 				INFOPLIST_FILE = Housing/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = Housing.Housing;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "Housing/Housing-Bridging-Header.h";
 			};
 			name = Release;
 		};
