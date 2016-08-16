@@ -1,16 +1,16 @@
 //
-//  CollectionViewController.swift
+//  CollectionView1.swift
 //  Housing
 //
-//  Created by Ethan on 16/8/11.
+//  Created by Ethan on 16/8/16.
 //  Copyright © 2016年 Housing. All rights reserved.
 //
 
 import UIKit
 
-@objc (CollectionViewController)
-class CollectionViewController: BaseViewController {
-
+@objc (CollectionView1)
+class CollectionView1: BaseViewController {
+    
     private var     collectionView : UICollectionView!
     private var     collectionLayout : CollectionLayout!
     private let     cellColumn                = 3
@@ -27,27 +27,27 @@ class CollectionViewController: BaseViewController {
         initCollectionView()
         
     }
-
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
     
-
+    
     /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
+     // MARK: - Navigation
+     
+     // In a storyboard-based application, you will often want to do a little preparation before navigation
+     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+     // Get the new view controller using segue.destinationViewController.
+     // Pass the selected object to the new view controller.
+     }
+     */
 
 }
 
 
-private extension CollectionViewController{
+private extension CollectionView1{
     func initCollectionLayout(){
         collectionLayout = CollectionLayout()
         collectionLayout.layoutDelegate = self
@@ -61,19 +61,19 @@ private extension CollectionViewController{
         view.addSubview(collectionView)
         collectionView.registerClass(NSClassFromString("CollectionCell"), forCellWithReuseIdentifier: "collectionViewCellIdentifier")
         // 注册cell、sectionHeader、sectionFooter
-//        [_collectionView registerClass:[UICollectionViewCell class] forCellWithReuseIdentifier:cellId];
-//        [_collectionView registerClass:[UICollectionReusableView class] forSupplementaryViewOfKind:UICollectionElementKindSectionHeader withReuseIdentifier:headerId];
-//        [_collectionView registerClass:[UICollectionReusableView class] forSupplementaryViewOfKind:UICollectionElementKindSectionFooter withReuseIdentifier:footerId];
+        //        [_collectionView registerClass:[UICollectionViewCell class] forCellWithReuseIdentifier:cellId];
+        //        [_collectionView registerClass:[UICollectionReusableView class] forSupplementaryViewOfKind:UICollectionElementKindSectionHeader withReuseIdentifier:headerId];
+        //        [_collectionView registerClass:[UICollectionReusableView class] forSupplementaryViewOfKind:UICollectionElementKindSectionFooter withReuseIdentifier:footerId];
     }
 }
 
-extension CollectionViewController : UICollectionViewDataSource,UICollectionViewDelegate,CollectionLayoutDelegate{
+extension CollectionView1 : UICollectionViewDataSource,UICollectionViewDelegate,CollectionLayoutDelegate{
     
     // MARK: UICollectionViewDataSource
     func numberOfSectionsInCollectionView(collectionView: UICollectionView) -> Int{
         return section_count
     }
-
+    
     
     func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int{
         return cell_count
@@ -91,7 +91,7 @@ extension CollectionViewController : UICollectionViewDataSource,UICollectionView
         collectionCell.backgroundColor = UIColor.redColor()
         let imageIndex =  arc4random() % 23
         let imageName  = String(format: "%02ld.jpg", imageIndex)
-
+        
         collectionCell.imageView.image = UIImage(named: imageName)
         
         return collectionCell
@@ -174,7 +174,7 @@ final class CollectionLayout: UICollectionViewLayout {
     override func prepareLayout() {
         super.prepareLayout()
         initData()
-   }
+    }
     
     // 该方法返回每一个Cell的ContentSize
     override func collectionViewContentSize() -> CGSize {
@@ -303,7 +303,7 @@ final class CollectionLayout: UICollectionViewLayout {
     /*** 确定cell的Margin*/
     func marginOfCellWithCollectionView(collectionView:UICollectionView,collectionLayout:CollectionLayout) -> CGFloat
     
-
+    
     /*** 确定cell的最小高度*/
     func minHeightOfCellWithCollectionView(collectionView:UICollectionView,collectionLayout:CollectionLayout) -> CGFloat
     
@@ -333,7 +333,5 @@ final class CollectionCell : UICollectionViewCell{
         fatalError("init(coder:) has not been implemented")
     }
 }
-
-
 
 

@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		AA6F33081D5DBBA2002CDAB1 /* CustomViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA6F32E81D5DBBA2002CDAB1 /* CustomViewController.swift */; };
 		AA6F33091D5DBBA2002CDAB1 /* 00.jpg in Resources */ = {isa = PBXBuildFile; fileRef = AA6F32EA1D5DBBA2002CDAB1 /* 00.jpg */; };
 		AA6F330A1D5DBBA2002CDAB1 /* 01.jpg in Resources */ = {isa = PBXBuildFile; fileRef = AA6F32EB1D5DBBA2002CDAB1 /* 01.jpg */; };
 		AA6F330B1D5DBBA2002CDAB1 /* 02.jpg in Resources */ = {isa = PBXBuildFile; fileRef = AA6F32EC1D5DBBA2002CDAB1 /* 02.jpg */; };
@@ -32,11 +31,6 @@
 		AA6F331E1D5DBBA2002CDAB1 /* 21.jpg in Resources */ = {isa = PBXBuildFile; fileRef = AA6F32FF1D5DBBA2002CDAB1 /* 21.jpg */; };
 		AA6F331F1D5DBBA2002CDAB1 /* 22.jpg in Resources */ = {isa = PBXBuildFile; fileRef = AA6F33001D5DBBA2002CDAB1 /* 22.jpg */; };
 		AA6F33201D5DBBA2002CDAB1 /* 23.jpg in Resources */ = {isa = PBXBuildFile; fileRef = AA6F33011D5DBBA2002CDAB1 /* 23.jpg */; };
-		AA6F33211D5DBBA2002CDAB1 /* CollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA6F33031D5DBBA2002CDAB1 /* CollectionViewController.swift */; };
-		AA6F33221D5DBBA2002CDAB1 /* CustomTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA6F33041D5DBBA2002CDAB1 /* CustomTabBarController.swift */; };
-		AA6F33231D5DBBA2002CDAB1 /* NavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA6F33051D5DBBA2002CDAB1 /* NavigationController.swift */; };
-		AA6F33241D5DBBA2002CDAB1 /* TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA6F33061D5DBBA2002CDAB1 /* TabBarController.swift */; };
-		AA6F33251D5DBBA2002CDAB1 /* TableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA6F33071D5DBBA2002CDAB1 /* TableViewController.swift */; };
 		AAD3F48C1D61BD170053F641 /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAD3F48B1D61BD170053F641 /* BaseViewController.swift */; };
 		AAD3F4E01D61C85B0053F641 /* Extension_NSArray.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAD3F4C61D61C85B0053F641 /* Extension_NSArray.swift */; };
 		AAD3F4E11D61C85B0053F641 /* Extension_NSBundle.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAD3F4C71D61C85B0053F641 /* Extension_NSBundle.swift */; };
@@ -79,6 +73,14 @@
 		AADD70A41D62B7430081D986 /* libsqlite3.0.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = AADD70A31D62B7430081D986 /* libsqlite3.0.tbd */; };
 		AADD70AA1D62B8100081D986 /* DataBase.m in Sources */ = {isa = PBXBuildFile; fileRef = AADD70A71D62B8100081D986 /* DataBase.m */; };
 		AADD70AB1D62B8100081D986 /* DrugSearchModel.m in Sources */ = {isa = PBXBuildFile; fileRef = AADD70A91D62B8100081D986 /* DrugSearchModel.m */; };
+		AADD70BC1D62BC010081D986 /* CustomViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AADD70AF1D62BC010081D986 /* CustomViewController.swift */; };
+		AADD70BD1D62BC010081D986 /* CollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AADD70B31D62BC010081D986 /* CollectionViewController.swift */; };
+		AADD70BE1D62BC010081D986 /* CustomTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AADD70B51D62BC010081D986 /* CustomTabBarController.swift */; };
+		AADD70BF1D62BC010081D986 /* NavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AADD70B71D62BC010081D986 /* NavigationController.swift */; };
+		AADD70C01D62BC010081D986 /* TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AADD70B91D62BC010081D986 /* TabBarController.swift */; };
+		AADD70C11D62BC010081D986 /* TableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AADD70BB1D62BC010081D986 /* TableViewController.swift */; };
+		AADD70C31D62BC930081D986 /* CollectionView1.swift in Sources */ = {isa = PBXBuildFile; fileRef = AADD70C21D62BC930081D986 /* CollectionView1.swift */; };
+		AADD70C51D62BFF60081D986 /* TableViewController1.swift in Sources */ = {isa = PBXBuildFile; fileRef = AADD70C41D62BFF60081D986 /* TableViewController1.swift */; };
 		C275F52C023BB74D1A4B3258 /* Pods_Housing.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 41E2D075F2FEC6E3C65E086F /* Pods_Housing.framework */; };
 /* End PBXBuildFile section */
 
@@ -86,7 +88,6 @@
 		41E2D075F2FEC6E3C65E086F /* Pods_Housing.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Housing.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		79E68A5429B31F61C8DF525B /* Pods-Housing.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Housing.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Housing/Pods-Housing.debug.xcconfig"; sourceTree = "<group>"; };
 		83141BFB173305AB063B4E7E /* Pods-Housing.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Housing.release.xcconfig"; path = "Pods/Target Support Files/Pods-Housing/Pods-Housing.release.xcconfig"; sourceTree = "<group>"; };
-		AA6F32E81D5DBBA2002CDAB1 /* CustomViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomViewController.swift; sourceTree = "<group>"; };
 		AA6F32EA1D5DBBA2002CDAB1 /* 00.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = 00.jpg; sourceTree = "<group>"; };
 		AA6F32EB1D5DBBA2002CDAB1 /* 01.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = 01.jpg; sourceTree = "<group>"; };
 		AA6F32EC1D5DBBA2002CDAB1 /* 02.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = 02.jpg; sourceTree = "<group>"; };
@@ -111,11 +112,6 @@
 		AA6F32FF1D5DBBA2002CDAB1 /* 21.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = 21.jpg; sourceTree = "<group>"; };
 		AA6F33001D5DBBA2002CDAB1 /* 22.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = 22.jpg; sourceTree = "<group>"; };
 		AA6F33011D5DBBA2002CDAB1 /* 23.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = 23.jpg; sourceTree = "<group>"; };
-		AA6F33031D5DBBA2002CDAB1 /* CollectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CollectionViewController.swift; sourceTree = "<group>"; };
-		AA6F33041D5DBBA2002CDAB1 /* CustomTabBarController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomTabBarController.swift; sourceTree = "<group>"; };
-		AA6F33051D5DBBA2002CDAB1 /* NavigationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NavigationController.swift; sourceTree = "<group>"; };
-		AA6F33061D5DBBA2002CDAB1 /* TabBarController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TabBarController.swift; sourceTree = "<group>"; };
-		AA6F33071D5DBBA2002CDAB1 /* TableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TableViewController.swift; sourceTree = "<group>"; };
 		AAD3F48B1D61BD170053F641 /* BaseViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
 		AAD3F4C61D61C85B0053F641 /* Extension_NSArray.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Extension_NSArray.swift; sourceTree = "<group>"; };
 		AAD3F4C71D61C85B0053F641 /* Extension_NSBundle.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Extension_NSBundle.swift; sourceTree = "<group>"; };
@@ -170,6 +166,14 @@
 		AADD70A71D62B8100081D986 /* DataBase.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DataBase.m; sourceTree = "<group>"; };
 		AADD70A81D62B8100081D986 /* DrugSearchModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DrugSearchModel.h; sourceTree = "<group>"; };
 		AADD70A91D62B8100081D986 /* DrugSearchModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DrugSearchModel.m; sourceTree = "<group>"; };
+		AADD70AF1D62BC010081D986 /* CustomViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomViewController.swift; sourceTree = "<group>"; };
+		AADD70B31D62BC010081D986 /* CollectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CollectionViewController.swift; sourceTree = "<group>"; };
+		AADD70B51D62BC010081D986 /* CustomTabBarController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomTabBarController.swift; sourceTree = "<group>"; };
+		AADD70B71D62BC010081D986 /* NavigationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NavigationController.swift; sourceTree = "<group>"; };
+		AADD70B91D62BC010081D986 /* TabBarController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TabBarController.swift; sourceTree = "<group>"; };
+		AADD70BB1D62BC010081D986 /* TableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TableViewController.swift; sourceTree = "<group>"; };
+		AADD70C21D62BC930081D986 /* CollectionView1.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CollectionView1.swift; sourceTree = "<group>"; };
+		AADD70C41D62BFF60081D986 /* TableViewController1.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TableViewController1.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -192,15 +196,6 @@
 				83141BFB173305AB063B4E7E /* Pods-Housing.release.xcconfig */,
 			);
 			name = Pods;
-			sourceTree = "<group>";
-		};
-		AA6F32E71D5DBBA2002CDAB1 /* CustomView */ = {
-			isa = PBXGroup;
-			children = (
-				AA6F32E81D5DBBA2002CDAB1 /* CustomViewController.swift */,
-			);
-			name = CustomView;
-			path = Body/CustomView;
 			sourceTree = "<group>";
 		};
 		AA6F32E91D5DBBA2002CDAB1 /* resource */ = {
@@ -235,19 +230,6 @@
 			);
 			name = resource;
 			path = Body/resource;
-			sourceTree = "<group>";
-		};
-		AA6F33021D5DBBA2002CDAB1 /* ViewControllers */ = {
-			isa = PBXGroup;
-			children = (
-				AA6F33031D5DBBA2002CDAB1 /* CollectionViewController.swift */,
-				AA6F33041D5DBBA2002CDAB1 /* CustomTabBarController.swift */,
-				AA6F33051D5DBBA2002CDAB1 /* NavigationController.swift */,
-				AA6F33061D5DBBA2002CDAB1 /* TabBarController.swift */,
-				AA6F33071D5DBBA2002CDAB1 /* TableViewController.swift */,
-			);
-			name = ViewControllers;
-			path = Body/ViewControllers;
 			sourceTree = "<group>";
 		};
 		AAD3F4C41D61C85B0053F641 /* Categorys */ = {
@@ -330,10 +312,9 @@
 			children = (
 				AAD3F4C41D61C85B0053F641 /* Categorys */,
 				AA6F32E91D5DBBA2002CDAB1 /* resource */,
-				AA6F33021D5DBBA2002CDAB1 /* ViewControllers */,
-				AA6F32E71D5DBBA2002CDAB1 /* CustomView */,
 				AADD70871D62B1690081D986 /* ThridPart */,
 				AADD70A51D62B8030081D986 /* Objective-C */,
+				AADD70AC1D62BC010081D986 /* ViewControllers */,
 				AADD708C1D62B1C10081D986 /* Housing-Bridging-Header.h */,
 				AAD406EF1D5C6EFA009D18D5 /* AppDelegate.swift */,
 				AAD406F11D5C6EFA009D18D5 /* ViewController.swift */,
@@ -393,6 +374,94 @@
 			);
 			name = "Objective-C";
 			path = "Body/Objective-C";
+			sourceTree = "<group>";
+		};
+		AADD70AC1D62BC010081D986 /* ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				AADD70AD1D62BC010081D986 /* CoreAnimation */,
+				AADD70AE1D62BC010081D986 /* CustomView */,
+				AADD70B01D62BC010081D986 /* UIKit */,
+				AADD70B11D62BC010081D986 /* ViewControllers */,
+			);
+			name = ViewControllers;
+			path = Body/ViewControllers;
+			sourceTree = "<group>";
+		};
+		AADD70AD1D62BC010081D986 /* CoreAnimation */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = CoreAnimation;
+			sourceTree = "<group>";
+		};
+		AADD70AE1D62BC010081D986 /* CustomView */ = {
+			isa = PBXGroup;
+			children = (
+				AADD70AF1D62BC010081D986 /* CustomViewController.swift */,
+			);
+			path = CustomView;
+			sourceTree = "<group>";
+		};
+		AADD70B01D62BC010081D986 /* UIKit */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = UIKit;
+			sourceTree = "<group>";
+		};
+		AADD70B11D62BC010081D986 /* ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				AADD70B21D62BC010081D986 /* CollectionViewController */,
+				AADD70B41D62BC010081D986 /* CustomTabBarController */,
+				AADD70B61D62BC010081D986 /* NavigationController */,
+				AADD70B81D62BC010081D986 /* TabBarController */,
+				AADD70BA1D62BC010081D986 /* TableViewController */,
+			);
+			path = ViewControllers;
+			sourceTree = "<group>";
+		};
+		AADD70B21D62BC010081D986 /* CollectionViewController */ = {
+			isa = PBXGroup;
+			children = (
+				AADD70B31D62BC010081D986 /* CollectionViewController.swift */,
+				AADD70C21D62BC930081D986 /* CollectionView1.swift */,
+			);
+			path = CollectionViewController;
+			sourceTree = "<group>";
+		};
+		AADD70B41D62BC010081D986 /* CustomTabBarController */ = {
+			isa = PBXGroup;
+			children = (
+				AADD70B51D62BC010081D986 /* CustomTabBarController.swift */,
+			);
+			path = CustomTabBarController;
+			sourceTree = "<group>";
+		};
+		AADD70B61D62BC010081D986 /* NavigationController */ = {
+			isa = PBXGroup;
+			children = (
+				AADD70B71D62BC010081D986 /* NavigationController.swift */,
+			);
+			path = NavigationController;
+			sourceTree = "<group>";
+		};
+		AADD70B81D62BC010081D986 /* TabBarController */ = {
+			isa = PBXGroup;
+			children = (
+				AADD70B91D62BC010081D986 /* TabBarController.swift */,
+			);
+			path = TabBarController;
+			sourceTree = "<group>";
+		};
+		AADD70BA1D62BC010081D986 /* TableViewController */ = {
+			isa = PBXGroup;
+			children = (
+				AADD70BB1D62BC010081D986 /* TableViewController.swift */,
+				AADD70C41D62BFF60081D986 /* TableViewController1.swift */,
+			);
+			path = TableViewController;
 			sourceTree = "<group>";
 		};
 		DD92FD6CE9C2C5A3AC2BD643 /* Frameworks */ = {
@@ -554,7 +623,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				AAD406F21D5C6EFA009D18D5 /* ViewController.swift in Sources */,
-				AA6F33241D5DBBA2002CDAB1 /* TabBarController.swift in Sources */,
+				AADD70C11D62BC010081D986 /* TableViewController.swift in Sources */,
 				AAD3F4F21D61C85B0053F641 /* Extension_UIFont.swift in Sources */,
 				AADD709D1D62B6770081D986 /* FMDatabase.m in Sources */,
 				AAD3F4F41D61C85B0053F641 /* Extension_UIScreen.swift in Sources */,
@@ -566,34 +635,36 @@
 				AADD70A01D62B6770081D986 /* FMDatabaseQueue.m in Sources */,
 				AAD3F4E11D61C85B0053F641 /* Extension_NSBundle.swift in Sources */,
 				AAD3F4E61D61C85B0053F641 /* Extension_NSNotificationCenter.swift in Sources */,
+				AADD70BD1D62BC010081D986 /* CollectionViewController.swift in Sources */,
 				AADD70AA1D62B8100081D986 /* DataBase.m in Sources */,
 				AAD3F4E01D61C85B0053F641 /* Extension_NSArray.swift in Sources */,
 				AAD3F4EB1D61C85B0053F641 /* Extension_String.swift in Sources */,
 				AAD3F4E41D61C85B0053F641 /* Extension_NSDictionary.swift in Sources */,
+				AADD70BF1D62BC010081D986 /* NavigationController.swift in Sources */,
 				AAD3F4E21D61C85B0053F641 /* Extension_NSData.swift in Sources */,
 				AAD3F4ED1D61C85B0053F641 /* Extension_UIBarButtonItem.swift in Sources */,
 				AAD406F01D5C6EFA009D18D5 /* AppDelegate.swift in Sources */,
 				AAD3F4E71D61C85B0053F641 /* Extension_NSNumber.swift in Sources */,
 				AADD70AB1D62B8100081D986 /* DrugSearchModel.m in Sources */,
 				AAD3F4F51D61C85B0053F641 /* Extension_UIScrollView.swift in Sources */,
-				AA6F33221D5DBBA2002CDAB1 /* CustomTabBarController.swift in Sources */,
+				AADD70BE1D62BC010081D986 /* CustomTabBarController.swift in Sources */,
+				AADD70C01D62BC010081D986 /* TabBarController.swift in Sources */,
 				AAD3F4F61D61C85B0053F641 /* Extension_UITableView.swift in Sources */,
+				AADD70BC1D62BC010081D986 /* CustomViewController.swift in Sources */,
 				AAD3F4EE1D61C85B0053F641 /* Extension_UIBezierPath.swift in Sources */,
-				AA6F33081D5DBBA2002CDAB1 /* CustomViewController.swift in Sources */,
 				AADD70A21D62B6770081D986 /* MJNIndexView.m in Sources */,
+				AADD70C31D62BC930081D986 /* CollectionView1.swift in Sources */,
 				AADD709E1D62B6770081D986 /* FMDatabaseAdditions.m in Sources */,
 				AAD3F4F91D61C9190053F641 /* Extension_UIImageView.swift in Sources */,
 				AAD3F4E91D61C85B0053F641 /* Extension_NSThread.swift in Sources */,
 				AAD3F4F31D61C85B0053F641 /* Extension_UIImage.swift in Sources */,
 				AAD3F48C1D61BD170053F641 /* BaseViewController.swift in Sources */,
+				AADD70C51D62BFF60081D986 /* TableViewController1.swift in Sources */,
 				AAD3F4E31D61C85B0053F641 /* Extension_NSDate.swift in Sources */,
 				AAD3F4F71D61C85B0053F641 /* Extension_UIView.swift in Sources */,
-				AA6F33231D5DBBA2002CDAB1 /* NavigationController.swift in Sources */,
-				AA6F33251D5DBBA2002CDAB1 /* TableViewController.swift in Sources */,
 				AAD3F4EC1D61C85B0053F641 /* Extension_UIApplication.swift in Sources */,
 				AAD3F4F11D61C85B0053F641 /* Extension_UIDevice.swift in Sources */,
 				AAD3F4EF1D61C85B0053F641 /* Extension_UIColor.swift in Sources */,
-				AA6F33211D5DBBA2002CDAB1 /* CollectionViewController.swift in Sources */,
 				AADD709F1D62B6770081D986 /* FMDatabasePool.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

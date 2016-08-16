@@ -14,7 +14,9 @@ class TableViewController: BaseViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Do any additional setup after loading the view.
+        initTitles()
+        initClassNames()
+        initTableView()
     }
 
     override func didReceiveMemoryWarning() {
@@ -33,4 +35,17 @@ class TableViewController: BaseViewController {
     }
     */
 
+}
+extension TableViewController{
+    override func initTitles() {
+        let ViewControllers : NSArray = ["瀑布流"]
+        
+        titles = [ViewControllers]
+    }
+    
+    override func initClassNames() {
+        let ViewControllers : NSArray = ["TableViewController1"]
+        
+        classNames = [ViewControllers]
+    }
 }
