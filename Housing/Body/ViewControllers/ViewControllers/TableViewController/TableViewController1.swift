@@ -15,13 +15,14 @@ class TableViewController1: BaseViewController ,TwitterScrollDelegate {
         let  tableV = UITableView()
         tableV.backgroundColor = UIColor.clearColor()
         tableV.showsVerticalScrollIndicator = false
+        tableV.separatorStyle = .None
         return tableV
     }()
     
     lazy var scrollV : UIScrollView = {
         let  scrollV = UIScrollView()
         scrollV.backgroundColor = UIColor.clearColor()
-        scrollV.showsVerticalScrollIndicator = true
+        scrollV.showsVerticalScrollIndicator = false
         return scrollV
     }()
     var twitterScrollView : TwitterScroll!
@@ -30,12 +31,11 @@ class TableViewController1: BaseViewController ,TwitterScrollDelegate {
         super.viewDidLoad()
         self.navigationController?.navigationBarHidden = true
         tableV.frame = view.bounds
-        view.addSubview(tableV)
         twitterScrollView = TwitterScroll(backgroundImage: UIImage(named: "dataBase1.jpg")!, avatarImage: UIImage(named: "dataBase0.jpg")!, titleString: "Hello,Kitty", subtitleString: "subtitleStri", buttonTitle: "buttonTitle", scrollView: tableV)
 //        scrollV.frame = view.bounds
 //        scrollV.contentSize = CGSizeMake(scrollV.width, scrollV.height * 4)
-//        view.addSubview(scrollV)
 //        twitterScrollView = TwitterScroll(backgroundImage: UIImage(named: "dataBase1.jpg")!, avatarImage: UIImage(named: "dataBase0.jpg")!, titleString: "Hello,Kitty", subtitleString: "subtitleStri", buttonTitle: "buttonTitle", scrollView: scrollV)
+        view.addSubview(twitterScrollView)
         twitterScrollView.delegate = self
     }
 
@@ -126,80 +126,61 @@ class TwitterScroll: UIView {
         self.init()
         
         addSubview(header)
+        headerImageView = UIImageView()
+        headerImageView.image = backgroundImage
+        headerImageView.contentMode = .ScaleAspectFill
         headerLabel.text = titleString
-        addSubview(headerLabel)
+        header.addSubview(headerLabel)
+        header.clipsToBounds = true
+        header.insertSubview(self.headerImageView, aboveSubview: self.headerLabel)
 
-        if let tableView = self.scrollView as? UITableView {
+        if let tableView = scrollView as? UITableView {
             scrollViewType = .Table
             self.tableview = tableView
+            self.tableview.separatorStyle = .None
+            self.frame = self.tableview.bounds
+            self.tableview.tableHeaderView?.frame = CGRectMake(self.x, self.y, self.width, self.header.height + 100)
+            self.tableview.addSubview(self.avatarImage)
+            self.tableview.addSubview(self.titleLabel)
+            self.tableview.addSubview(self.subtitleLabel)
+            if buttonTitle.length > 0 {
+                self.tableview.addSubview(self.headerButton)
+            }
+            self.addSubview(self.tableview)
+            self.tableview.addObserver(self, forKeyPath: "contentOffset", options: .New, context: nil)
         }else{
             scrollViewType = .Scroll
             self.scrollView = scrollView
+            self.frame = self.scrollView.bounds
+            self.scrollView.addSubview(self.avatarImage)
+            self.scrollView.addSubview(self.titleLabel)
+            self.scrollView.addSubview(self.subtitleLabel)
+            if buttonTitle.length > 0 {
+                self.scrollView.addSubview(self.headerButton)
+            }
+            self.addSubview(self.scrollView)
+            self.scrollView.addObserver(self, forKeyPath: "contentOffset", options: .New, context: nil)
         }
+        
         self.avatarImage.image = avatarImage
         titleLabel.text = titleString
         subtitleLabel.text = subtitleString
         headerButton.setTitle(buttonTitle as String, forState: .Normal)
         headerButton.addTarget(self, action: #selector(self.delegate?.recievedMBTwitterScrollButtonClicked), forControlEvents: .TouchUpInside)
+
         
-        addSubview(self.avatarImage)
-        addSubview(self.titleLabel)
-        addSubview(self.subtitleLabel)
-        if buttonTitle.length > 0 {
-            addSubview(self.headerButton)
-        }
-        
-        if scrollViewType == .Table {
-//            self.tableview.addSubview(self.avatarImage)
-//            self.tableview.addSubview(self.titleLabel)
-//            self.tableview.addSubview(self.subtitleLabel)
-//            if buttonTitle.length > 0 {
-//                self.tableview.addSubview(self.headerButton)
-//            }
-//            self.tableview.addSubview(self)
-            self.tableview.addSubview(self)
-            self.tableview.addObserver(self, forKeyPath: "contentOffset", options: .New, context: nil)
-        }else{
-//            self.scrollView.addSubview(self.avatarImage)
-//            self.scrollView.addSubview(self.titleLabel)
-//            self.scrollView.addSubview(self.subtitleLabel)
-//            if buttonTitle.length > 0 {
-//                self.scrollView.addSubview(self.headerButton)
-//            }
-//            self.scrollView.addSubview(self)
-            self.scrollView.addSubview(self)
-            self.scrollView.addObserver(self, forKeyPath: "contentOffset", options: .New, context: nil)
-        }
-        
-        headerImageView = UIImageView()
-        headerImageView.image = backgroundImage
-        headerImageView.contentMode = .ScaleAspectFill
-        self.header.clipsToBounds = true
-        
-        prepareForBlurImages() //
-    }
-    
-    override func layoutSubviews() {
-        super.layoutSubviews()
-        if scrollViewType == .Table {
-            self.frame = self.tableview.bounds
-            if self.tableview.tableHeaderView == nil {
-                self.tableview.tableHeaderView = UIView(frame:CGRectMake(self.x, self.y, self.width, self.header.height + 100))
-            }
-            self.tableview.tableHeaderView?.frame = CGRectMake(self.x, self.y, self.width, self.header.height + 100)
-        }else{
-            self.frame = self.scrollView.bounds
-        }
         header.frame = CGRectMake(self.x, self.y, self.width, 107)
-        headerLabel.frame       = CGRectMake(self.x, self.height - 5, self.width, 25)
-        self.avatarImage.frame       = CGRectMake(10, 79, 69, 69)
+        headerLabel.frame       = CGRectMake(self.x, self.header.height - 5, self.width, 25)
+        self.avatarImage.frame  = CGRectMake(10, 79, 69, 69)
         titleLabel.frame        = CGRectMake(10, 156, 250, 25)
         subtitleLabel.frame     = CGRectMake(10, 177, 250, 25)
         headerButton.frame      = CGRectMake(self.width - 100, 120, 80, 35)
         headerImageView.frame   = header.frame
-        header.insertSubview(self.headerImageView, aboveSubview: self.headerLabel)
-
+        
+        
+        prepareForBlurImages() //
     }
+    
     
     override func observeValueForKeyPath(keyPath: String?, ofObject object: AnyObject?, change: [String : AnyObject]?, context: UnsafeMutablePointer<Void>) {
         var offset : CGFloat = 0
@@ -210,7 +191,7 @@ class TwitterScroll: UIView {
         }
         animationForScroll(offset)
         
-        print("header\(header.frame)  headerImageView\(headerImageView.frame) headerLabel\(headerLabel.frame)")
+//        print("header\(header.frame)  headerImageView\(headerImageView.frame) headerLabel\(headerLabel.frame)")
         
     }
     
@@ -253,10 +234,13 @@ class TwitterScroll: UIView {
                     self.delegate = nil
                 }
                 if scrollViewType == .Table {
+                    self.tableview.removeFromSuperview()
                     self.tableview.removeObserver(self, forKeyPath: "contentOffset")
                 }else{
+                    self.scrollView.removeFromSuperview()
                     self.scrollView.removeObserver(self, forKeyPath: "contentOffset")
                 }
+                
                 objc_sync_exit(self)
                 return
             }

@@ -38,7 +38,7 @@ class TableViewController: BaseViewController {
 }
 extension TableViewController{
     override func initTitles() {
-        let ViewControllers : NSArray = ["瀑布流"]
+        let ViewControllers : NSArray = ["模糊效果+动画"]
         
         titles = [ViewControllers]
     }
