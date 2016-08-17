@@ -31,7 +31,7 @@ class TableViewController1: BaseViewController ,TwitterScrollDelegate {
         super.viewDidLoad()
         self.navigationController?.navigationBarHidden = true
         tableV.frame = view.bounds
-        twitterScrollView = TwitterScroll(backgroundImage: UIImage(named: "dataBase1.jpg")!, avatarImage: UIImage(named: "dataBase0.jpg")!, titleString: "Hello,Kitty", subtitleString: "subtitleStri", buttonTitle: "buttonTitle", scrollView: tableV)
+        twitterScrollView = TwitterScroll(backgroundImage: UIImage(named: "dataBase1.jpg")!, avatarImage: UIImage(named: "dataBase0.jpg")!, titleString: "Hello,Kitty", subtitleString: "Back dropdown", buttonTitle: "下拉返回", scrollView: tableV)
 //        scrollV.frame = view.bounds
 //        scrollV.contentSize = CGSizeMake(scrollV.width, scrollV.height * 4)
 //        twitterScrollView = TwitterScroll(backgroundImage: UIImage(named: "dataBase1.jpg")!, avatarImage: UIImage(named: "dataBase0.jpg")!, titleString: "Hello,Kitty", subtitleString: "subtitleStri", buttonTitle: "buttonTitle", scrollView: scrollV)
@@ -44,9 +44,10 @@ class TableViewController1: BaseViewController ,TwitterScrollDelegate {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-
+    // back
     func recievedMBTwitterScrollEvent(){
-        
+        self.navigationController?.navigationBarHidden = false
+
         self.navigationController?.popViewControllerAnimated(true)
         
     }
@@ -166,7 +167,7 @@ class TwitterScroll: UIView {
         titleLabel.text = titleString
         subtitleLabel.text = subtitleString
         headerButton.setTitle(buttonTitle as String, forState: .Normal)
-        headerButton.addTarget(self, action: #selector(self.delegate?.recievedMBTwitterScrollButtonClicked), forControlEvents: .TouchUpInside)
+        headerButton.addTarget(self, action: #selector(touchUpHeaderButton), forControlEvents: .TouchUpInside)
 
         
         header.frame = CGRectMake(self.x, self.y, self.width, 107)
@@ -178,7 +179,9 @@ class TwitterScroll: UIView {
         headerImageView.frame   = header.frame
         
         
-        prepareForBlurImages() //
+        dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0)) { 
+            self.prepareForBlurImages()
+        }
     }
     
     
@@ -190,9 +193,6 @@ class TwitterScroll: UIView {
             offset = self.scrollView.contentOffset.y
         }
         animationForScroll(offset)
-        
-//        print("header\(header.frame)  headerImageView\(headerImageView.frame) headerLabel\(headerLabel.frame)")
-        
     }
     
     // MARK: Methods
@@ -286,6 +286,10 @@ class TwitterScroll: UIView {
     }
     
     func blurWithOffset(offset : CGFloat){
+        guard blurImages.count > 0 else{
+            return
+        }
+        
         var index   = NSInteger( offset) / 10
         if (index < 0) {
             index = 0
@@ -297,6 +301,10 @@ class TwitterScroll: UIView {
         if (self.headerImageView.image != image) {
             self.headerImageView.image = image
         }
+    }
+    
+    func touchUpHeaderButton(sender : UIButton){
+        self.delegate?.recievedMBTwitterScrollButtonClicked
     }
 }
 
