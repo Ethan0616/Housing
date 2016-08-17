@@ -38,13 +38,15 @@ class TableViewController: BaseViewController {
 }
 extension TableViewController{
     override func initTitles() {
-        let ViewControllers : NSArray = ["模糊效果+动画"]
+        let ViewControllers : NSArray = ["模糊效果+动画",
+                                         "侧边栏+SQL"]
         
         titles = [ViewControllers]
     }
     
     override func initClassNames() {
-        let ViewControllers : NSArray = ["TableViewController1"]
+        let ViewControllers : NSArray = ["TableViewController1",
+                                         "TableViewController2"]
         
         classNames = [ViewControllers]
     }

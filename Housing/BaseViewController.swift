@@ -12,6 +12,8 @@ class BaseViewController: UIViewController {
 
     var ViewControllerTitle = "ViewController"
     
+    var sectionTitles : NSArray = ["ViewControllers","CustomView","APIView","CoreAnimation","GCD","=== title ==="]
+    
     var titles : NSArray!
     var classNames : NSArray!
     var tableView : UITableView!
@@ -140,22 +142,9 @@ extension BaseViewController : UITableViewDelegate,UITableViewDataSource{
     
     
     func tableView(tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        var titleStr = ""
-        switch section {
-        case 0:
-            titleStr = "ViewControllers"
-        case 1:
-            titleStr = "CustomView"
-        case 2:
-            titleStr = "APIView"
-        case 3:
-            titleStr = "CoreAnimation"
-        case 4:
-            titleStr = "GCD"
-        default:
-            titleStr = "=== title ==="
-        }
-        return titleStr
+        
+        return sectionTitles.objectAtIndex(section) as? String
+
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {

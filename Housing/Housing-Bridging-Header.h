@@ -4,3 +4,5 @@
 
 #import "MJNIndexView.h"
 #import "FMDB.h"
+#import "DataBase.h"
+#import "DrugSearchModel.h"

@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		AA20C07B1D640307009D3A45 /* TableViewController2.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA20C07A1D640307009D3A45 /* TableViewController2.swift */; };
+		AA20C07E1D640C10009D3A45 /* T_DrugName.db in Resources */ = {isa = PBXBuildFile; fileRef = AA20C07D1D640C10009D3A45 /* T_DrugName.db */; };
 		AA6F33091D5DBBA2002CDAB1 /* 00.jpg in Resources */ = {isa = PBXBuildFile; fileRef = AA6F32EA1D5DBBA2002CDAB1 /* 00.jpg */; };
 		AA6F330A1D5DBBA2002CDAB1 /* 01.jpg in Resources */ = {isa = PBXBuildFile; fileRef = AA6F32EB1D5DBBA2002CDAB1 /* 01.jpg */; };
 		AA6F330B1D5DBBA2002CDAB1 /* 02.jpg in Resources */ = {isa = PBXBuildFile; fileRef = AA6F32EC1D5DBBA2002CDAB1 /* 02.jpg */; };
@@ -88,6 +90,8 @@
 		41E2D075F2FEC6E3C65E086F /* Pods_Housing.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Housing.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		79E68A5429B31F61C8DF525B /* Pods-Housing.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Housing.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Housing/Pods-Housing.debug.xcconfig"; sourceTree = "<group>"; };
 		83141BFB173305AB063B4E7E /* Pods-Housing.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Housing.release.xcconfig"; path = "Pods/Target Support Files/Pods-Housing/Pods-Housing.release.xcconfig"; sourceTree = "<group>"; };
+		AA20C07A1D640307009D3A45 /* TableViewController2.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TableViewController2.swift; sourceTree = "<group>"; };
+		AA20C07D1D640C10009D3A45 /* T_DrugName.db */ = {isa = PBXFileReference; lastKnownFileType = file; path = T_DrugName.db; sourceTree = "<group>"; };
 		AA6F32EA1D5DBBA2002CDAB1 /* 00.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = 00.jpg; sourceTree = "<group>"; };
 		AA6F32EB1D5DBBA2002CDAB1 /* 01.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = 01.jpg; sourceTree = "<group>"; };
 		AA6F32EC1D5DBBA2002CDAB1 /* 02.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = 02.jpg; sourceTree = "<group>"; };
@@ -196,6 +200,15 @@
 				83141BFB173305AB063B4E7E /* Pods-Housing.release.xcconfig */,
 			);
 			name = Pods;
+			sourceTree = "<group>";
+		};
+		AA20C07C1D640C10009D3A45 /* DataBase */ = {
+			isa = PBXGroup;
+			children = (
+				AA20C07D1D640C10009D3A45 /* T_DrugName.db */,
+			);
+			name = DataBase;
+			path = Body/DataBase;
 			sourceTree = "<group>";
 		};
 		AA6F32E91D5DBBA2002CDAB1 /* resource */ = {
@@ -311,6 +324,7 @@
 			isa = PBXGroup;
 			children = (
 				AAD3F4C41D61C85B0053F641 /* Categorys */,
+				AA20C07C1D640C10009D3A45 /* DataBase */,
 				AA6F32E91D5DBBA2002CDAB1 /* resource */,
 				AADD70871D62B1690081D986 /* ThridPart */,
 				AADD70A51D62B8030081D986 /* Objective-C */,
@@ -460,6 +474,7 @@
 			children = (
 				AADD70BB1D62BC010081D986 /* TableViewController.swift */,
 				AADD70C41D62BFF60081D986 /* TableViewController1.swift */,
+				AA20C07A1D640307009D3A45 /* TableViewController2.swift */,
 			);
 			path = TableViewController;
 			sourceTree = "<group>";
@@ -560,6 +575,7 @@
 				AA6F331E1D5DBBA2002CDAB1 /* 21.jpg in Resources */,
 				AA6F33091D5DBBA2002CDAB1 /* 00.jpg in Resources */,
 				AA6F33201D5DBBA2002CDAB1 /* 23.jpg in Resources */,
+				AA20C07E1D640C10009D3A45 /* T_DrugName.db in Resources */,
 				AAD406F71D5C6EFA009D18D5 /* Assets.xcassets in Resources */,
 				AAD406F51D5C6EFA009D18D5 /* Main.storyboard in Resources */,
 				AADD70861D62B1350081D986 /* dataBase1.jpg in Resources */,
@@ -657,6 +673,7 @@
 				AADD709E1D62B6770081D986 /* FMDatabaseAdditions.m in Sources */,
 				AAD3F4F91D61C9190053F641 /* Extension_UIImageView.swift in Sources */,
 				AAD3F4E91D61C85B0053F641 /* Extension_NSThread.swift in Sources */,
+				AA20C07B1D640307009D3A45 /* TableViewController2.swift in Sources */,
 				AAD3F4F31D61C85B0053F641 /* Extension_UIImage.swift in Sources */,
 				AAD3F48C1D61BD170053F641 /* BaseViewController.swift in Sources */,
 				AADD70C51D62BFF60081D986 /* TableViewController1.swift in Sources */,
