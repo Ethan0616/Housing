@@ -43,7 +43,7 @@ class TableViewController2: BaseViewController{
                 
                 let arr = DataBase.shareDataBase().getAllDataBase(name as! String) as! [DrugSearchModel]
                 guard arr.count > 0 else{
-                    return
+                    continue
                 }
                 
                 let nameArr = NSMutableArray()
@@ -62,14 +62,16 @@ class TableViewController2: BaseViewController{
                 dispatch_async(dispatch_get_main_queue(), {
 
                     self.tableView.reloadData()
+                    self.indexView.refreshIndexItems()
                 })   
             }
+            
         }
     }
     
     func firstAttributesForMJNIndexView(){
         indexView = MJNIndexView()
-        indexView.frame = self.tableView.frame
+        indexView.frame = CGRectMake(0, 0, view.width, view.height - 64)
         indexView.backgroundColor = UIColor.yellowColor()
         indexView.dataSource = self
         indexView.getSelectedItemsAfterPanGestureIsFinished = true;
@@ -92,6 +94,7 @@ class TableViewController2: BaseViewController{
         indexView.selectedItemFontColor = UIColor.RGBA(0.0, g: 0.0, b: 0.0, a: 1.0)
         indexView.darkening = false
         indexView.fading = true
+        view.addSubview(indexView)
     }
 
     /*
@@ -109,11 +112,11 @@ class TableViewController2: BaseViewController{
 extension TableViewController2 : MJNIndexViewDataSource{
     // you have to implement this method to provide this UIControl with NSArray of items you want to display in your index
     func sectionIndexTitlesForMJNIndexView(indexView: MJNIndexView!) -> [AnyObject]! {
-        return []
+        return self.sectionTitles as [AnyObject]
     }
     
     // you have to implement this method to get the selected index item
     func sectionForSectionMJNIndexTitle(title: String!, atIndex index: Int) {
-        
+        self.tableView .scrollToRowAtIndexPath(NSIndexPath(forItem: 0, inSection: index), atScrollPosition: .Top, animated: true)
     }
 }
