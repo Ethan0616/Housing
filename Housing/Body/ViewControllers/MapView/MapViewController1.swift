@@ -12,11 +12,16 @@ import UIKit
 class MapViewController1: BaseViewController {
 
     private var mapView : MAMapView!
-    
+    private var search: AMapSearchAPI?
+
     override func viewDidLoad() {
         super.viewDidLoad()
         self.navigationController?.navigationBarHidden = true
         initMapView()
+        search = AMapSearchAPI()
+        search?.delegate = self
+        initToolBar()
+        initGestureRecognizer()
     }
 
     override func didReceiveMemoryWarning() {
@@ -27,7 +32,7 @@ class MapViewController1: BaseViewController {
     
     func initMapView(){
         mapView = MAMapView(frame: self.view.bounds)
-//        mapView.delegate = self
+        mapView.delegate = self
         //        mapView.language = .En // 英文，没什么卵用
         mapView.showsUserLocation = true // 打开定位
         /*
@@ -52,7 +57,27 @@ class MapViewController1: BaseViewController {
          */
         mapView.mapType = .Standard
         view.addSubview(mapView)
-
+    }
+    
+    func initToolBar() {
+        let prompts: UILabel = UILabel()
+        prompts.frame = CGRectMake(0, self.view.bounds.height - 44, self.view.bounds.width, 44)
+        prompts.text = "Long press to add Annotation"
+        prompts.textAlignment = NSTextAlignment.Center
+        prompts.backgroundColor = UIColor.blackColor().colorWithAlphaComponent(0.6)
+        prompts.textColor = UIColor.whiteColor()
+        prompts.font = UIFont(name:"HelveticaNeue-Bold" , size: 20)
+        
+        prompts.autoresizingMask = [.FlexibleTopMargin,.FlexibleWidth]
+        
+        self.view.addSubview(prompts)
+    }
+    
+    func initGestureRecognizer() {
+        
+        let longPress: UILongPressGestureRecognizer = UILongPressGestureRecognizer(target: self, action: #selector(MapViewController1.handleLongPress(_:)))
+        longPress.delegate = self
+        self.view.addGestureRecognizer(longPress)
     }
 
     /*
@@ -65,13 +90,22 @@ class MapViewController1: BaseViewController {
     }
     */
 
+    
+    func searchReGeocodeWithCoordinate(coordinate: CLLocationCoordinate2D!) {
+        let regeo: AMapReGeocodeSearchRequest = AMapReGeocodeSearchRequest()
+        
+        regeo.location = AMapGeoPoint.locationWithLatitude(CGFloat(coordinate.latitude), longitude: CGFloat(coordinate.longitude))
+        print("regeo :\(regeo)")
+        
+        self.search!.AMapReGoecodeSearch(regeo)
+    }
 }
 
 
 
-//public let pointReuseIndentifier = "pointReuseIndentifier"
-//
-//extension MapViewController1 : MAMapViewDelegate{
+
+extension MapViewController1 : MAMapViewDelegate{
+//    let pointReuseIndentifier = "pointReuseIndentifier"
 //    
 //    func mapView(mapView: MAMapView!, didUpdateUserLocation userLocation: MAUserLocation!, updatingLocation: Bool) {
 //        if updatingLocation {
@@ -93,6 +127,94 @@ class MapViewController1: BaseViewController {
 //    //        }
 //    //        return nil
 //    //    }
-//}
+    
+    //- (void)mapView:(MAMapView *)mapView didUpdateUserLocation:(MAUserLocation *)userLocation
+    func mapView(mapView: MAMapView , didUpdateUserLocation userLocation: MAUserLocation ) {
+        print("location :\(userLocation.location)")
+    }
+    
+    func mapView(mapView: MAMapView, viewForAnnotation annotation: MAAnnotation) -> MAAnnotationView? {
+        
+        if annotation.isKindOfClass(MAPointAnnotation) {
+            let annotationIdentifier = "invertGeoIdentifier"
+            
+            var poiAnnotationView = mapView.dequeueReusableAnnotationViewWithIdentifier(annotationIdentifier) as? MAPinAnnotationView
+            
+            if poiAnnotationView == nil {
+                poiAnnotationView = MAPinAnnotationView(annotation: annotation, reuseIdentifier: annotationIdentifier)
+            }
+            
+            poiAnnotationView!.animatesDrop   = true
+            poiAnnotationView!.canShowCallout = true
+            
+            return poiAnnotationView;
+        }
+        return nil
+    }
+    
+    // - (MAOverlayRenderer *)mapView:(MAMapView *)mapView rendererForOverlay:(id <MAOverlay>)overlay;
+    func mapView(mapView: MAMapView, rendererForOverlay overlay: MAOverlay) -> MAOverlayRenderer? {
+        
+        if overlay.isKindOfClass(MACircle) {
+            let renderer: MACircleRenderer = MACircleRenderer(overlay: overlay)
+            renderer.fillColor = UIColor.greenColor().colorWithAlphaComponent(0.4)
+            renderer.strokeColor = UIColor.redColor()
+            renderer.lineWidth = 4.0
+            
+            return renderer
+        }
+        
+        return nil
+    }
+}
 
+extension MapViewController1 : AMapSearchDelegate{
+    // - (void)search:(id)searchRequest error:(NSString*)errInfo;
+    func search(searchRequest: AnyObject, error errInfo: String) {
+        print("request :\(searchRequest), error: \(errInfo)")
+        
+    }
+    
+    //    - (void)onReGeocodeSearchDone:(AMapReGeocodeSearchRequest *)request response:(AMapReGeocodeSearchResponse *)response
+    func onReGeocodeSearchDone(request: AMapReGeocodeSearchRequest, response: AMapReGeocodeSearchResponse) {
+        
+        print("request :\(request)")
+        print("response :\(response)")
+        
+        if (response.regeocode != nil) {
+            let coordinate = CLLocationCoordinate2DMake(Double(request.location.latitude), Double(request.location.longitude))
+            
+            let annotation = MAPointAnnotation()
+            annotation.coordinate = coordinate
+            annotation.title = response.regeocode.formattedAddress
+            annotation.subtitle = response.regeocode.addressComponent.province
+            mapView!.addAnnotation(annotation)
+            
+            let overlay = MACircle(centerCoordinate: coordinate, radius: 50.0)
+            mapView!.addOverlay(overlay)
+        }
+    }
+
+}
+
+
+extension MapViewController1 : UIGestureRecognizerDelegate{
+    /// Handle Gesture
+    
+    //    - (BOOL)gestureRecognizer:(UIGestureRecognizer *)gestureRecognizer shouldRecognizeSimultaneouslyWithGestureRecognizer:(UIGestureRecognizer *)otherGestureRecognizer
+    
+    func gestureRecognizer(gestureRecognizer: UIGestureRecognizer, shouldRecognizeSimultaneouslyWithGestureRecognizer otherGestureRecognizer: UIGestureRecognizer) -> Bool {
+        return true
+    }
+    
+    func handleLongPress(gesture: UILongPressGestureRecognizer) {
+        if gesture.state == UIGestureRecognizerState.Began {
+            let coordinate = mapView!.convertPoint(gesture.locationInView(self.view), toCoordinateFromView: mapView)
+            
+            searchReGeocodeWithCoordinate(coordinate)
+            
+        }
+    }
+    
+}
 

@@ -13,8 +13,8 @@ class MapViewController: BaseViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        titles = [["常规地图显示"]]
-        classNames = [["MapViewController1"]]
+        titles = [["常规地图显示","轨迹地图显示"]]
+        classNames = [["MapViewController1","MainViewController"]]
         initTableView()
         // Do any additional setup after loading the view.
     }

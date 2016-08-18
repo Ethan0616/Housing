@@ -38,6 +38,19 @@
 		AA6F33201D5DBBA2002CDAB1 /* 23.jpg in Resources */ = {isa = PBXBuildFile; fileRef = AA6F33011D5DBBA2002CDAB1 /* 23.jpg */; };
 		AA6FFD771D6585B2009AD328 /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA6FFD761D6585B2009AD328 /* MapViewController.swift */; };
 		AA6FFD7C1D658847009AD328 /* MapViewController1.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA6FFD7B1D658847009AD328 /* MapViewController1.swift */; };
+		AA6FFDFB1D65A9B2009AD328 /* aeroplane@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = AA6FFDEE1D65A9B2009AD328 /* aeroplane@2x.png */; };
+		AA6FFDFC1D65A9B2009AD328 /* DisplayViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA6FFDEF1D65A9B2009AD328 /* DisplayViewController.swift */; };
+		AA6FFDFD1D65A9B2009AD328 /* FileHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA6FFDF01D65A9B2009AD328 /* FileHelper.swift */; };
+		AA6FFDFE1D65A9B2009AD328 /* icon_list@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = AA6FFDF11D65A9B2009AD328 /* icon_list@2x.png */; };
+		AA6FFDFF1D65A9B2009AD328 /* icon_play@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = AA6FFDF21D65A9B2009AD328 /* icon_play@2x.png */; };
+		AA6FFE001D65A9B2009AD328 /* icon_stop@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = AA6FFDF31D65A9B2009AD328 /* icon_stop@2x.png */; };
+		AA6FFE011D65A9B2009AD328 /* location_no@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = AA6FFDF41D65A9B2009AD328 /* location_no@2x.png */; };
+		AA6FFE021D65A9B2009AD328 /* location_yes@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = AA6FFDF51D65A9B2009AD328 /* location_yes@2x.png */; };
+		AA6FFE031D65A9B2009AD328 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA6FFDF61D65A9B2009AD328 /* MainViewController.swift */; };
+		AA6FFE041D65A9B2009AD328 /* RecordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA6FFDF71D65A9B2009AD328 /* RecordViewController.swift */; };
+		AA6FFE051D65A9B2009AD328 /* Route.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA6FFDF81D65A9B2009AD328 /* Route.swift */; };
+		AA6FFE061D65A9B2009AD328 /* StatusView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA6FFDF91D65A9B2009AD328 /* StatusView.swift */; };
+		AA6FFE071D65A9B2009AD328 /* TipView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA6FFDFA1D65A9B2009AD328 /* TipView.swift */; };
 		AAD3F48C1D61BD170053F641 /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAD3F48B1D61BD170053F641 /* BaseViewController.swift */; };
 		AAD3F4E01D61C85B0053F641 /* Extension_NSArray.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAD3F4C61D61C85B0053F641 /* Extension_NSArray.swift */; };
 		AAD3F4E11D61C85B0053F641 /* Extension_NSBundle.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAD3F4C71D61C85B0053F641 /* Extension_NSBundle.swift */; };
@@ -126,6 +139,19 @@
 		AA6F33011D5DBBA2002CDAB1 /* 23.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = 23.jpg; sourceTree = "<group>"; };
 		AA6FFD761D6585B2009AD328 /* MapViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
 		AA6FFD7B1D658847009AD328 /* MapViewController1.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapViewController1.swift; sourceTree = "<group>"; };
+		AA6FFDEE1D65A9B2009AD328 /* aeroplane@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "aeroplane@2x.png"; sourceTree = "<group>"; };
+		AA6FFDEF1D65A9B2009AD328 /* DisplayViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DisplayViewController.swift; sourceTree = "<group>"; };
+		AA6FFDF01D65A9B2009AD328 /* FileHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FileHelper.swift; sourceTree = "<group>"; };
+		AA6FFDF11D65A9B2009AD328 /* icon_list@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon_list@2x.png"; sourceTree = "<group>"; };
+		AA6FFDF21D65A9B2009AD328 /* icon_play@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon_play@2x.png"; sourceTree = "<group>"; };
+		AA6FFDF31D65A9B2009AD328 /* icon_stop@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon_stop@2x.png"; sourceTree = "<group>"; };
+		AA6FFDF41D65A9B2009AD328 /* location_no@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "location_no@2x.png"; sourceTree = "<group>"; };
+		AA6FFDF51D65A9B2009AD328 /* location_yes@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "location_yes@2x.png"; sourceTree = "<group>"; };
+		AA6FFDF61D65A9B2009AD328 /* MainViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
+		AA6FFDF71D65A9B2009AD328 /* RecordViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecordViewController.swift; sourceTree = "<group>"; };
+		AA6FFDF81D65A9B2009AD328 /* Route.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Route.swift; sourceTree = "<group>"; };
+		AA6FFDF91D65A9B2009AD328 /* StatusView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StatusView.swift; sourceTree = "<group>"; };
+		AA6FFDFA1D65A9B2009AD328 /* TipView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TipView.swift; sourceTree = "<group>"; };
 		AAD3F48B1D61BD170053F641 /* BaseViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
 		AAD3F4C61D61C85B0053F641 /* Extension_NSArray.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Extension_NSArray.swift; sourceTree = "<group>"; };
 		AAD3F4C71D61C85B0053F641 /* Extension_NSBundle.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Extension_NSBundle.swift; sourceTree = "<group>"; };
@@ -267,6 +293,26 @@
 			path = MapView;
 			sourceTree = "<group>";
 		};
+		AA6FFDED1D65A9B2009AD328 /* Route */ = {
+			isa = PBXGroup;
+			children = (
+				AA6FFDEE1D65A9B2009AD328 /* aeroplane@2x.png */,
+				AA6FFDEF1D65A9B2009AD328 /* DisplayViewController.swift */,
+				AA6FFDF01D65A9B2009AD328 /* FileHelper.swift */,
+				AA6FFDF11D65A9B2009AD328 /* icon_list@2x.png */,
+				AA6FFDF21D65A9B2009AD328 /* icon_play@2x.png */,
+				AA6FFDF31D65A9B2009AD328 /* icon_stop@2x.png */,
+				AA6FFDF41D65A9B2009AD328 /* location_no@2x.png */,
+				AA6FFDF51D65A9B2009AD328 /* location_yes@2x.png */,
+				AA6FFDF61D65A9B2009AD328 /* MainViewController.swift */,
+				AA6FFDF71D65A9B2009AD328 /* RecordViewController.swift */,
+				AA6FFDF81D65A9B2009AD328 /* Route.swift */,
+				AA6FFDF91D65A9B2009AD328 /* StatusView.swift */,
+				AA6FFDFA1D65A9B2009AD328 /* TipView.swift */,
+			);
+			path = Route;
+			sourceTree = "<group>";
+		};
 		AAD3F4C41D61C85B0053F641 /* Categorys */ = {
 			isa = PBXGroup;
 			children = (
@@ -366,6 +412,7 @@
 		AADD70871D62B1690081D986 /* ThridPart */ = {
 			isa = PBXGroup;
 			children = (
+				AA6FFDED1D65A9B2009AD328 /* Route */,
 				AADD708E1D62B6770081D986 /* fmdb */,
 				AADD709A1D62B6770081D986 /* MJNIndexView */,
 			);
@@ -585,20 +632,26 @@
 				AA6F330A1D5DBBA2002CDAB1 /* 01.jpg in Resources */,
 				AA6F330B1D5DBBA2002CDAB1 /* 02.jpg in Resources */,
 				AA6F331C1D5DBBA2002CDAB1 /* 19.jpg in Resources */,
+				AA6FFE011D65A9B2009AD328 /* location_no@2x.png in Resources */,
 				AA6F330E1D5DBBA2002CDAB1 /* 05.jpg in Resources */,
 				AA6F331F1D5DBBA2002CDAB1 /* 22.jpg in Resources */,
 				AA20C0A01D646870009D3A45 /* Icon.png in Resources */,
 				AA6F331B1D5DBBA2002CDAB1 /* 18.jpg in Resources */,
 				AA6F33151D5DBBA2002CDAB1 /* 12.jpg in Resources */,
+				AA6FFE001D65A9B2009AD328 /* icon_stop@2x.png in Resources */,
 				AA20C0A11D646870009D3A45 /* Icon@2x.png in Resources */,
 				AA6F33101D5DBBA2002CDAB1 /* 07.jpg in Resources */,
 				AADD70851D62B1350081D986 /* dataBase0.jpg in Resources */,
 				AA6F33131D5DBBA2002CDAB1 /* 10.jpg in Resources */,
 				AA6F331A1D5DBBA2002CDAB1 /* 17.jpg in Resources */,
+				AA6FFDFB1D65A9B2009AD328 /* aeroplane@2x.png in Resources */,
+				AA6FFDFF1D65A9B2009AD328 /* icon_play@2x.png in Resources */,
+				AA6FFE021D65A9B2009AD328 /* location_yes@2x.png in Resources */,
 				AA6F330F1D5DBBA2002CDAB1 /* 06.jpg in Resources */,
 				AAD406FA1D5C6EFA009D18D5 /* LaunchScreen.storyboard in Resources */,
 				AA6F331E1D5DBBA2002CDAB1 /* 21.jpg in Resources */,
 				AA6F33091D5DBBA2002CDAB1 /* 00.jpg in Resources */,
+				AA6FFDFE1D65A9B2009AD328 /* icon_list@2x.png in Resources */,
 				AA6F33201D5DBBA2002CDAB1 /* 23.jpg in Resources */,
 				AA20C07E1D640C10009D3A45 /* T_DrugName.db in Resources */,
 				AAD406F71D5C6EFA009D18D5 /* Assets.xcassets in Resources */,
@@ -673,6 +726,7 @@
 				AADD70A11D62B6770081D986 /* FMResultSet.m in Sources */,
 				AAD3F4F01D61C85B0053F641 /* Extension_UIControl.swift in Sources */,
 				AAD3F4E81D61C85B0053F641 /* Extension_NSObject.swift in Sources */,
+				AA6FFE041D65A9B2009AD328 /* RecordViewController.swift in Sources */,
 				AA6FFD771D6585B2009AD328 /* MapViewController.swift in Sources */,
 				AAD3F4EA1D61C85B0053F641 /* Extension_NSTimer.swift in Sources */,
 				AADD70A01D62B6770081D986 /* FMDatabaseQueue.m in Sources */,
@@ -680,9 +734,11 @@
 				AAD3F4E61D61C85B0053F641 /* Extension_NSNotificationCenter.swift in Sources */,
 				AADD70BD1D62BC010081D986 /* CollectionViewController.swift in Sources */,
 				AADD70AA1D62B8100081D986 /* DataBase.m in Sources */,
+				AA6FFE051D65A9B2009AD328 /* Route.swift in Sources */,
 				AAD3F4E01D61C85B0053F641 /* Extension_NSArray.swift in Sources */,
 				AAD3F4EB1D61C85B0053F641 /* Extension_String.swift in Sources */,
 				AAD3F4E41D61C85B0053F641 /* Extension_NSDictionary.swift in Sources */,
+				AA6FFDFD1D65A9B2009AD328 /* FileHelper.swift in Sources */,
 				AA6FFD7C1D658847009AD328 /* MapViewController1.swift in Sources */,
 				AADD70BF1D62BC010081D986 /* NavigationController.swift in Sources */,
 				AAD3F4E21D61C85B0053F641 /* Extension_NSData.swift in Sources */,
@@ -690,6 +746,7 @@
 				AAD406F01D5C6EFA009D18D5 /* AppDelegate.swift in Sources */,
 				AAD3F4E71D61C85B0053F641 /* Extension_NSNumber.swift in Sources */,
 				AADD70AB1D62B8100081D986 /* DrugSearchModel.m in Sources */,
+				AA6FFE061D65A9B2009AD328 /* StatusView.swift in Sources */,
 				AAD3F4F51D61C85B0053F641 /* Extension_UIScrollView.swift in Sources */,
 				AADD70BE1D62BC010081D986 /* CustomTabBarController.swift in Sources */,
 				AADD70C01D62BC010081D986 /* TabBarController.swift in Sources */,
@@ -702,11 +759,14 @@
 				AAD3F4F91D61C9190053F641 /* Extension_UIImageView.swift in Sources */,
 				AAD3F4E91D61C85B0053F641 /* Extension_NSThread.swift in Sources */,
 				AA20C07B1D640307009D3A45 /* TableViewController2.swift in Sources */,
+				AA6FFE031D65A9B2009AD328 /* MainViewController.swift in Sources */,
 				AAD3F4F31D61C85B0053F641 /* Extension_UIImage.swift in Sources */,
+				AA6FFE071D65A9B2009AD328 /* TipView.swift in Sources */,
 				AAD3F48C1D61BD170053F641 /* BaseViewController.swift in Sources */,
 				AADD70C51D62BFF60081D986 /* TableViewController1.swift in Sources */,
 				AAD3F4E31D61C85B0053F641 /* Extension_NSDate.swift in Sources */,
 				AAD3F4F71D61C85B0053F641 /* Extension_UIView.swift in Sources */,
+				AA6FFDFC1D65A9B2009AD328 /* DisplayViewController.swift in Sources */,
 				AAD3F4EC1D61C85B0053F641 /* Extension_UIApplication.swift in Sources */,
 				AAD3F4F11D61C85B0053F641 /* Extension_UIDevice.swift in Sources */,
 				AAD3F4EF1D61C85B0053F641 /* Extension_UIColor.swift in Sources */,
