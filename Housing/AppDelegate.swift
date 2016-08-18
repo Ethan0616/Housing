@@ -13,8 +13,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
 
+    private let MapViewAPIKey = "2594c2a3219fc215949df291c231a6cb"
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
+        AMapServices.sharedServices().apiKey = MapViewAPIKey
         // Override point for customization after application launch.
         return true
     }

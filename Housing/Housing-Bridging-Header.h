@@ -6,3 +6,8 @@
 #import "FMDB.h"
 #import "DataBase.h"
 #import "DrugSearchModel.h"
+// 高德地图
+#import <MAMapKit/MAMapKit.h>
+#import <AMapNaviKit/AMapNaviKit.h>
+#import <AMapSearchKit/AMapSearchKit.h>
+#import <AMapFoundationKit/AMapFoundationKit.h>

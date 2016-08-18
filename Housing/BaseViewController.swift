@@ -12,7 +12,7 @@ class BaseViewController: UIViewController {
 
     var ViewControllerTitle = "ViewController"
     
-    var sectionTitles : NSArray = ["ViewControllers","CustomView","APIView","CoreAnimation","GCD","=== title ==="]
+    var sectionTitles : NSArray = ["ViewControllers","MapView"]
     
     var titles : NSArray!
     var classNames : NSArray!
@@ -61,56 +61,50 @@ extension BaseViewController{
     func initTitles(){
         
         let ViewControllers : NSArray = ["UITableViewController",
-                                         "UINavigationController",
-                                         "UITabBarController",
-                                         "UICollectionViewController",
-                                         "CustomTabBarController"]
-        let CustomViews : NSArray = ["键盘"]
-        let APIViews : NSArray = ["ViewControllers1",
-                                  "ViewControllers2",
-                                  "ViewControllers3",
-                                  "ViewControllers4",
-                                  "ViewControllers5"]
-        let CoreAnimations : NSArray = ["ViewControllers1",
-                                        "ViewControllers2",
-                                        "ViewControllers3",
-                                        "ViewControllers4",
-                                        "ViewControllers5"]
-        let GCD : NSArray = ["ViewControllers1",
-                             "ViewControllers2",
-                             "ViewControllers3",
-                             "ViewControllers4",
-                             "ViewControllers5"]
+                                         "UICollectionViewController"]
+        let CustomViews : NSArray = ["MapViewController"]
+//        let APIViews : NSArray = ["ViewControllers1",
+//                                  "ViewControllers2",
+//                                  "ViewControllers3",
+//                                  "ViewControllers4",
+//                                  "ViewControllers5"]
+//        let CoreAnimations : NSArray = ["ViewControllers1",
+//                                        "ViewControllers2",
+//                                        "ViewControllers3",
+//                                        "ViewControllers4",
+//                                        "ViewControllers5"]
+//        let GCD : NSArray = ["ViewControllers1",
+//                             "ViewControllers2",
+//                             "ViewControllers3",
+//                             "ViewControllers4",
+//                             "ViewControllers5"]
         
-        titles = [ViewControllers,CustomViews,APIViews,CoreAnimations,GCD]
+        titles = [ViewControllers,CustomViews]
         
     }
     
     func initClassNames(){
         
         let ViewControllers : NSArray = ["TableViewController",
-                                         "NavigationController",
-                                         "TabBarController",
-                                         "CollectionViewController",
-                                         "CustomTabBarController"]
-        let CustomViews : NSArray = ["CustomViewController"]
-        let APIViews : NSArray = ["ViewControllers1",
-                                  "ViewControllers2",
-                                  "ViewControllers3",
-                                  "ViewControllers4",
-                                  "ViewControllers5"]
-        let CoreAnimations : NSArray = ["ViewControllers1",
-                                        "ViewControllers2",
-                                        "ViewControllers3",
-                                        "ViewControllers4",
-                                        "ViewControllers5"]
-        let GCD : NSArray = ["ViewControllers1",
-                             "ViewControllers2",
-                             "ViewControllers3",
-                             "ViewControllers4",
-                             "ViewControllers5"]
+                                         "CollectionViewController"]
+        let CustomViews : NSArray = ["MapViewController"]
+//        let APIViews : NSArray = ["ViewControllers1",
+//                                  "ViewControllers2",
+//                                  "ViewControllers3",
+//                                  "ViewControllers4",
+//                                  "ViewControllers5"]
+//        let CoreAnimations : NSArray = ["ViewControllers1",
+//                                        "ViewControllers2",
+//                                        "ViewControllers3",
+//                                        "ViewControllers4",
+//                                        "ViewControllers5"]
+//        let GCD : NSArray = ["ViewControllers1",
+//                             "ViewControllers2",
+//                             "ViewControllers3",
+//                             "ViewControllers4",
+//                             "ViewControllers5"]
         
-        classNames = [ViewControllers,CustomViews,APIViews,CoreAnimations,GCD]
+        classNames = [ViewControllers,CustomViews]
     }
     
     
