@@ -9,6 +9,9 @@
 /* Begin PBXBuildFile section */
 		AA20C07B1D640307009D3A45 /* TableViewController2.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA20C07A1D640307009D3A45 /* TableViewController2.swift */; };
 		AA20C07E1D640C10009D3A45 /* T_DrugName.db in Resources */ = {isa = PBXBuildFile; fileRef = AA20C07D1D640C10009D3A45 /* T_DrugName.db */; };
+		AA20C0A01D646870009D3A45 /* Icon.png in Resources */ = {isa = PBXBuildFile; fileRef = AA20C09D1D646870009D3A45 /* Icon.png */; };
+		AA20C0A11D646870009D3A45 /* Icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = AA20C09E1D646870009D3A45 /* Icon@2x.png */; };
+		AA20C0A21D646870009D3A45 /* Icon120.png in Resources */ = {isa = PBXBuildFile; fileRef = AA20C09F1D646870009D3A45 /* Icon120.png */; };
 		AA6F33091D5DBBA2002CDAB1 /* 00.jpg in Resources */ = {isa = PBXBuildFile; fileRef = AA6F32EA1D5DBBA2002CDAB1 /* 00.jpg */; };
 		AA6F330A1D5DBBA2002CDAB1 /* 01.jpg in Resources */ = {isa = PBXBuildFile; fileRef = AA6F32EB1D5DBBA2002CDAB1 /* 01.jpg */; };
 		AA6F330B1D5DBBA2002CDAB1 /* 02.jpg in Resources */ = {isa = PBXBuildFile; fileRef = AA6F32EC1D5DBBA2002CDAB1 /* 02.jpg */; };
@@ -92,6 +95,9 @@
 		83141BFB173305AB063B4E7E /* Pods-Housing.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Housing.release.xcconfig"; path = "Pods/Target Support Files/Pods-Housing/Pods-Housing.release.xcconfig"; sourceTree = "<group>"; };
 		AA20C07A1D640307009D3A45 /* TableViewController2.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TableViewController2.swift; sourceTree = "<group>"; };
 		AA20C07D1D640C10009D3A45 /* T_DrugName.db */ = {isa = PBXFileReference; lastKnownFileType = file; path = T_DrugName.db; sourceTree = "<group>"; };
+		AA20C09D1D646870009D3A45 /* Icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Icon.png; path = ../../Icon.png; sourceTree = "<group>"; };
+		AA20C09E1D646870009D3A45 /* Icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Icon@2x.png"; path = "../../Icon@2x.png"; sourceTree = "<group>"; };
+		AA20C09F1D646870009D3A45 /* Icon120.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Icon120.png; path = ../../Icon120.png; sourceTree = "<group>"; };
 		AA6F32EA1D5DBBA2002CDAB1 /* 00.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = 00.jpg; sourceTree = "<group>"; };
 		AA6F32EB1D5DBBA2002CDAB1 /* 01.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = 01.jpg; sourceTree = "<group>"; };
 		AA6F32EC1D5DBBA2002CDAB1 /* 02.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = 02.jpg; sourceTree = "<group>"; };
@@ -214,6 +220,9 @@
 		AA6F32E91D5DBBA2002CDAB1 /* resource */ = {
 			isa = PBXGroup;
 			children = (
+				AA20C09D1D646870009D3A45 /* Icon.png */,
+				AA20C09E1D646870009D3A45 /* Icon@2x.png */,
+				AA20C09F1D646870009D3A45 /* Icon120.png */,
 				AADD70831D62B1350081D986 /* dataBase0.jpg */,
 				AADD70841D62B1350081D986 /* dataBase1.jpg */,
 				AA6F32EA1D5DBBA2002CDAB1 /* 00.jpg */,
@@ -564,8 +573,10 @@
 				AA6F331C1D5DBBA2002CDAB1 /* 19.jpg in Resources */,
 				AA6F330E1D5DBBA2002CDAB1 /* 05.jpg in Resources */,
 				AA6F331F1D5DBBA2002CDAB1 /* 22.jpg in Resources */,
+				AA20C0A01D646870009D3A45 /* Icon.png in Resources */,
 				AA6F331B1D5DBBA2002CDAB1 /* 18.jpg in Resources */,
 				AA6F33151D5DBBA2002CDAB1 /* 12.jpg in Resources */,
+				AA20C0A11D646870009D3A45 /* Icon@2x.png in Resources */,
 				AA6F33101D5DBBA2002CDAB1 /* 07.jpg in Resources */,
 				AADD70851D62B1350081D986 /* dataBase0.jpg in Resources */,
 				AA6F33131D5DBBA2002CDAB1 /* 10.jpg in Resources */,
@@ -577,6 +588,7 @@
 				AA6F33201D5DBBA2002CDAB1 /* 23.jpg in Resources */,
 				AA20C07E1D640C10009D3A45 /* T_DrugName.db in Resources */,
 				AAD406F71D5C6EFA009D18D5 /* Assets.xcassets in Resources */,
+				AA20C0A21D646870009D3A45 /* Icon120.png in Resources */,
 				AAD406F51D5C6EFA009D18D5 /* Main.storyboard in Resources */,
 				AADD70861D62B1350081D986 /* dataBase1.jpg in Resources */,
 				AA6F331D1D5DBBA2002CDAB1 /* 20.jpg in Resources */,
@@ -799,6 +811,7 @@
 				CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES = NO;
 				CLANG_ENABLE_MODULES = YES;
 				INFOPLIST_FILE = Housing/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = Housing.Housing;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -815,6 +828,7 @@
 				CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES = NO;
 				CLANG_ENABLE_MODULES = YES;
 				INFOPLIST_FILE = Housing/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = Housing.Housing;
 				PRODUCT_NAME = "$(TARGET_NAME)";
