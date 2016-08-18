@@ -76,7 +76,7 @@ class TableViewController2: BaseViewController{
         indexView.dataSource = self
         indexView.getSelectedItemsAfterPanGestureIsFinished = true;
         indexView.font = UIFont(name:"HelveticaNeue" , size: 13.0)
-        indexView.selectedItemFont = UIFont(name:"HelveticaNeue-Bold" , size: 40.0)
+        indexView.selectedItemFont = UIFont(name:"HelveticaNeue-Bold" , size: 20)
         indexView.backgroundColor = UIColor.clearColor()
         indexView.curtainColor = nil
         indexView.curtainFade = 0.0
