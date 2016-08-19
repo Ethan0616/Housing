@@ -99,7 +99,7 @@ class Route: NSObject, NSCoding {
         
         return locations.lastObject as? CLLocation
     }
-    
+    // 总距离
     func totalDistance() -> CLLocationDistance {
         
         var distance: CLLocationDistance = 0
@@ -126,7 +126,7 @@ class Route: NSObject, NSCoding {
         
         return endTime.timeIntervalSinceDate(startTime)
     }
-    
+    // 持续时间
     func formattedDuration(duration: NSTimeInterval) -> String {
 
         var component: [Double] = [0, 0, 0]

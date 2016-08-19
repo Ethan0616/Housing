@@ -193,7 +193,7 @@ class MainViewController: BaseViewController, MAMapViewDelegate {
         
         if isRecording {
             // filter the result
-            if userLocation.location.horizontalAccuracy < 80.0 {
+            if userLocation.location.horizontalAccuracy < 80.0 && userLocation.location.horizontalAccuracy > 0 {
                 
                 addLocation(userLocation.location)
             }
