@@ -111,7 +111,9 @@ class Route: NSObject, NSCoding {
                 
                 let loc = location as! CLLocation
 
-                distance += loc.distanceFromLocation(currentLocation!)
+                if currentLocation != nil {
+                    distance += loc.distanceFromLocation(currentLocation!)
+                }
                 currentLocation = loc
             }
             

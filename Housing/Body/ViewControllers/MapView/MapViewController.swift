@@ -13,8 +13,8 @@ class MapViewController: BaseViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        titles = [["常规地图显示","轨迹地图显示"]]
-        classNames = [["MapViewController1","MainViewController"]]
+        titles = [["常规地图显示","轨迹地图显示","离线地图"]]
+        classNames = [["MapViewController1","MainViewController","OfflineDetailViewController"]]
         initTableView()
         // Do any additional setup after loading the view.
     }
@@ -22,6 +22,55 @@ class MapViewController: BaseViewController {
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
+    }
+    
+    override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        tableView.deselectRowAtIndexPath(indexPath, animated: true)
+        let className : String  = (classNames.objectAtIndex(indexPath.section).objectAtIndex(indexPath.row) as? String)!
+        let type   = NSClassFromString(className) as? UIViewController.Type
+        
+        if let subViewController =  type {
+            let controller = subViewController.init()
+            controller.title = titles.objectAtIndex(indexPath.section).objectAtIndex(indexPath.row) as? String
+            if let titleName = controller.title {
+                if  let con = controller as? BaseViewController {
+                    con.ViewControllerTitle = titleName
+                }
+            }else{
+                if controller is OfflineDetailViewController {
+                    let con = controller as! OfflineDetailViewController
+                
+                    let mapView = MAMapView(frame: self.view.bounds)
+                    //        mapView.language = .En // 英文，没什么卵用
+                    mapView.showsUserLocation = true // 打开定位
+                    /*
+                     MAUserTrackingModeNone：仅在地图上显示，不跟随用户位置。
+                     MAUserTrackingModeFollow：跟随用户位置移动，并将定位点设置成地图中心点。
+                     MAUserTrackingModeFollowWithHeading：跟随用户的位置和角度移动。
+                     */
+                    mapView.setUserTrackingMode(.Follow, animated: true)
+                    mapView.setZoomLevel(15, animated: true)
+                    
+                    // 后台定位
+                    mapView.pausesLocationUpdatesAutomatically = false // 不自动暂停
+                    mapView.allowsBackgroundLocationUpdates = true // 是否自动定位
+                    
+                    // 实时路况
+                    mapView.showTraffic = true
+                    
+                    /*
+                     1）普通地图 MAMapTypeStandard；
+                     2）卫星地图 MAMapTypeSatellite；
+                     3）夜间地图 MAMapTypeStandardNight；
+                     */
+                    mapView.mapType = .Standard
+                    self.navigationController?.pushViewController(con, animated: true)
+                    return
+
+                }
+            }
+            self.navigationController?.pushViewController(controller, animated: true)
+        }
     }
     
 
