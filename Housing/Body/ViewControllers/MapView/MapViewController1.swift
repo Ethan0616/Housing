@@ -11,12 +11,12 @@ import UIKit
 @objc (MapViewController1)
 class MapViewController1: BaseViewController {
 
-    private var mapView : MAMapView!
-    private var search: AMapSearchAPI?
+    fileprivate var mapView : MAMapView!
+    fileprivate var search: AMapSearchAPI?
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.navigationController?.navigationBarHidden = true
+        self.navigationController?.isNavigationBarHidden = true
         initMapView()
         search = AMapSearchAPI()
         search?.delegate = self
@@ -40,7 +40,7 @@ class MapViewController1: BaseViewController {
          MAUserTrackingModeFollow：跟随用户位置移动，并将定位点设置成地图中心点。
          MAUserTrackingModeFollowWithHeading：跟随用户的位置和角度移动。
          */
-        mapView.setUserTrackingMode(.Follow, animated: true)
+        mapView.setUserTrackingMode(.follow, animated: true)
         mapView.setZoomLevel(15, animated: true)
         
         // 后台定位
@@ -48,27 +48,27 @@ class MapViewController1: BaseViewController {
         mapView.allowsBackgroundLocationUpdates = true // 是否自动定位
         
         // 实时路况
-        mapView.showTraffic = true
+        mapView.isShowTraffic = true
         
         /*
          1）普通地图 MAMapTypeStandard；
          2）卫星地图 MAMapTypeSatellite；
          3）夜间地图 MAMapTypeStandardNight；
          */
-        mapView.mapType = .Standard
+        mapView.mapType = .standard
         view.addSubview(mapView)
     }
     
     func initToolBar() {
         let prompts: UILabel = UILabel()
-        prompts.frame = CGRectMake(0, self.view.bounds.height - 44, self.view.bounds.width, 44)
+        prompts.frame = CGRect(x: 0, y: self.view.bounds.height - 44, width: self.view.bounds.width, height: 44)
         prompts.text = "Long press to add Annotation"
-        prompts.textAlignment = NSTextAlignment.Center
-        prompts.backgroundColor = UIColor.blackColor().colorWithAlphaComponent(0.6)
-        prompts.textColor = UIColor.whiteColor()
+        prompts.textAlignment = NSTextAlignment.center
+        prompts.backgroundColor = UIColor.black.withAlphaComponent(0.6)
+        prompts.textColor = UIColor.white
         prompts.font = UIFont(name:"HelveticaNeue-Bold" , size: 20)
         
-        prompts.autoresizingMask = [.FlexibleTopMargin,.FlexibleWidth]
+        prompts.autoresizingMask = [.flexibleTopMargin,.flexibleWidth]
         
         self.view.addSubview(prompts)
     }
@@ -91,13 +91,13 @@ class MapViewController1: BaseViewController {
     */
 
     
-    func searchReGeocodeWithCoordinate(coordinate: CLLocationCoordinate2D!) {
+    func searchReGeocodeWithCoordinate(_ coordinate: CLLocationCoordinate2D!) {
         let regeo: AMapReGeocodeSearchRequest = AMapReGeocodeSearchRequest()
         
-        regeo.location = AMapGeoPoint.locationWithLatitude(CGFloat(coordinate.latitude), longitude: CGFloat(coordinate.longitude))
+        regeo.location = AMapGeoPoint.location(withLatitude: CGFloat(coordinate.latitude), longitude: CGFloat(coordinate.longitude))
         print("regeo :\(regeo)")
         
-        self.search!.AMapReGoecodeSearch(regeo)
+        self.search!.aMapReGoecodeSearch(regeo)
     }
 }
 
@@ -129,16 +129,16 @@ extension MapViewController1 : MAMapViewDelegate{
 //    //    }
     
     //- (void)mapView:(MAMapView *)mapView didUpdateUserLocation:(MAUserLocation *)userLocation
-    func mapView(mapView: MAMapView , didUpdateUserLocation userLocation: MAUserLocation ) {
+    private func mapView(_ mapView: MAMapView , didUpdateUserLocation userLocation: MAUserLocation ) {
         print("location :\(userLocation.location)")
     }
     
-    func mapView(mapView: MAMapView, viewForAnnotation annotation: MAAnnotation) -> MAAnnotationView? {
+    func mapView(_ mapView: MAMapView, viewFor annotation: MAAnnotation) -> MAAnnotationView? {
         
-        if annotation.isKindOfClass(MAPointAnnotation) {
+        if annotation.isKind(of: MAPointAnnotation.self) {
             let annotationIdentifier = "invertGeoIdentifier"
             
-            var poiAnnotationView = mapView.dequeueReusableAnnotationViewWithIdentifier(annotationIdentifier) as? MAPinAnnotationView
+            var poiAnnotationView = mapView.dequeueReusableAnnotationView(withIdentifier: annotationIdentifier) as? MAPinAnnotationView
             
             if poiAnnotationView == nil {
                 poiAnnotationView = MAPinAnnotationView(annotation: annotation, reuseIdentifier: annotationIdentifier)
@@ -153,12 +153,12 @@ extension MapViewController1 : MAMapViewDelegate{
     }
     
     // - (MAOverlayRenderer *)mapView:(MAMapView *)mapView rendererForOverlay:(id <MAOverlay>)overlay;
-    func mapView(mapView: MAMapView, rendererForOverlay overlay: MAOverlay) -> MAOverlayRenderer? {
+    func mapView(_ mapView: MAMapView, rendererFor overlay: MAOverlay) -> MAOverlayRenderer? {
         
-        if overlay.isKindOfClass(MACircle) {
+        if overlay.isKind(of: MACircle.self) {
             let renderer: MACircleRenderer = MACircleRenderer(overlay: overlay)
-            renderer.fillColor = UIColor.greenColor().colorWithAlphaComponent(0.4)
-            renderer.strokeColor = UIColor.redColor()
+            renderer.fillColor = UIColor.green.withAlphaComponent(0.4)
+            renderer.strokeColor = UIColor.red
             renderer.lineWidth = 4.0
             
             return renderer
@@ -170,13 +170,13 @@ extension MapViewController1 : MAMapViewDelegate{
 
 extension MapViewController1 : AMapSearchDelegate{
     // - (void)search:(id)searchRequest error:(NSString*)errInfo;
-    func search(searchRequest: AnyObject, error errInfo: String) {
+    func search(_ searchRequest: AnyObject, error errInfo: String) {
         print("request :\(searchRequest), error: \(errInfo)")
         
     }
     
     //    - (void)onReGeocodeSearchDone:(AMapReGeocodeSearchRequest *)request response:(AMapReGeocodeSearchResponse *)response
-    func onReGeocodeSearchDone(request: AMapReGeocodeSearchRequest, response: AMapReGeocodeSearchResponse) {
+    func onReGeocodeSearchDone(_ request: AMapReGeocodeSearchRequest, response: AMapReGeocodeSearchResponse) {
         
         print("request :\(request)")
         print("response :\(response)")
@@ -190,8 +190,8 @@ extension MapViewController1 : AMapSearchDelegate{
             annotation.subtitle = response.regeocode.addressComponent.province
             mapView!.addAnnotation(annotation)
             
-            let overlay = MACircle(centerCoordinate: coordinate, radius: 50.0)
-            mapView!.addOverlay(overlay)
+            let overlay = MACircle(center: coordinate, radius: 50.0)
+            mapView!.add(overlay)
         }
     }
 
@@ -203,13 +203,13 @@ extension MapViewController1 : UIGestureRecognizerDelegate{
     
     //    - (BOOL)gestureRecognizer:(UIGestureRecognizer *)gestureRecognizer shouldRecognizeSimultaneouslyWithGestureRecognizer:(UIGestureRecognizer *)otherGestureRecognizer
     
-    func gestureRecognizer(gestureRecognizer: UIGestureRecognizer, shouldRecognizeSimultaneouslyWithGestureRecognizer otherGestureRecognizer: UIGestureRecognizer) -> Bool {
+    func gestureRecognizer(_ gestureRecognizer: UIGestureRecognizer, shouldRecognizeSimultaneouslyWith otherGestureRecognizer: UIGestureRecognizer) -> Bool {
         return true
     }
     
-    func handleLongPress(gesture: UILongPressGestureRecognizer) {
-        if gesture.state == UIGestureRecognizerState.Began {
-            let coordinate = mapView!.convertPoint(gesture.locationInView(self.view), toCoordinateFromView: mapView)
+    func handleLongPress(_ gesture: UILongPressGestureRecognizer) {
+        if gesture.state == UIGestureRecognizerState.began {
+            let coordinate = mapView!.convert(gesture.location(in: self.view), toCoordinateFrom: mapView)
             
             searchReGeocodeWithCoordinate(coordinate)
             

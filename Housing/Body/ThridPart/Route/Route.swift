@@ -12,13 +12,13 @@ class Route: NSObject, NSCoding {
     
     let distanceFilter: CLLocationDistance = 10
     
-    var startTime: NSDate
-    var endTime: NSDate
+    var startTime: Date
+    var endTime: Date
     var locations: NSMutableArray
     
     override init() {
         
-        startTime = NSDate()
+        startTime = Date()
         endTime = startTime
         locations = NSMutableArray()
         
@@ -31,22 +31,22 @@ class Route: NSObject, NSCoding {
     
     /// NSCoding
     
-    func encodeWithCoder(aCoder: NSCoder) {
-        aCoder.encodeObject(startTime, forKey: "startTime")
-        aCoder.encodeObject(endTime, forKey: "endTime")
-        aCoder.encodeObject(locations, forKey: "locations")
+    func encode(with aCoder: NSCoder) {
+        aCoder.encode(startTime, forKey: "startTime")
+        aCoder.encode(endTime, forKey: "endTime")
+        aCoder.encode(locations, forKey: "locations")
     }
     
     required init(coder aDecoder: NSCoder) {
         
-        startTime = aDecoder.decodeObjectForKey("startTime") as! NSDate
-        endTime = aDecoder.decodeObjectForKey("endTime") as! NSDate
-        locations = aDecoder.decodeObjectForKey("locations") as! NSMutableArray
+        startTime = aDecoder.decodeObject(forKey: "startTime") as! Date
+        endTime = aDecoder.decodeObject(forKey: "endTime") as! Date
+        locations = aDecoder.decodeObject(forKey: "locations") as! NSMutableArray
     }
     
     /// Interface
     
-    func addLocation(location: CLLocation?) -> Bool {
+    func addLocation(_ location: CLLocation?) -> Bool {
         
         if location == nil {
             return false
@@ -56,26 +56,26 @@ class Route: NSObject, NSCoding {
         
         if lastLocation != nil {
             
-            let distance: CLLocationDistance = lastLocation!.distanceFromLocation(location!)
+            let distance: CLLocationDistance = lastLocation!.distance(from: location!)
             
             if distance < distanceFilter {
                 return false
             }
         }
         
-        locations.addObject(location!)
-        endTime = NSDate()
+        locations.add(location!)
+        endTime = Date()
         
         return true
     }
     
     func title() -> String! {
         
-        let formatter: NSDateFormatter = NSDateFormatter()
-        formatter.timeZone = NSTimeZone.localTimeZone()
+        let formatter: DateFormatter = DateFormatter()
+        formatter.timeZone = TimeZone.autoupdatingCurrent
         formatter.dateFormat = "YYYY-MM-dd hh:mm:ss"
         
-        return formatter.stringFromDate(self.startTime)
+        return formatter.string(from: self.startTime)
     }
     
     func detail() -> String! {
@@ -107,12 +107,12 @@ class Route: NSObject, NSCoding {
             
             var currentLocation: CLLocation?
             
-            for location: AnyObject in locations {
+            for location: Any in locations {
                 
                 let loc = location as! CLLocation
 
                 if currentLocation != nil {
-                    distance += loc.distanceFromLocation(currentLocation!)
+                    distance += loc.distance(from: currentLocation!)
                 }
                 currentLocation = loc
             }
@@ -122,18 +122,18 @@ class Route: NSObject, NSCoding {
         return distance
     }
     
-    func totalDuration() -> NSTimeInterval {
+    func totalDuration() -> TimeInterval {
         
-        return endTime.timeIntervalSinceDate(startTime)
+        return endTime.timeIntervalSince(startTime)
     }
     // 持续时间
-    func formattedDuration(duration: NSTimeInterval) -> String {
+    func formattedDuration(_ duration: TimeInterval) -> String {
 
         var component: [Double] = [0, 0, 0]
         var t = duration
         
         for i in 0 ..< component.count {
-            component[i] = t % 60.0
+            component[i] = t.truncatingRemainder(dividingBy: 60.0)
             t /= 60.0
         }
         
@@ -145,7 +145,7 @@ class Route: NSObject, NSCoding {
         var coordinates: [CLLocationCoordinate2D] = []
         if locations.count > 1 {
             
-            for location: AnyObject in locations {
+            for location: Any in locations {
                 
                 let loc = location as! CLLocation
                 

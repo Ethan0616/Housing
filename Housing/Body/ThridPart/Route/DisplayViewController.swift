@@ -20,7 +20,7 @@ class DisplayViewController: UIViewController, MAMapViewDelegate {
     
     override func viewDidLoad() {
         
-        self.view.backgroundColor = UIColor.grayColor()
+        self.view.backgroundColor = UIColor.gray
         
         initMapView()
         
@@ -34,12 +34,12 @@ class DisplayViewController: UIViewController, MAMapViewDelegate {
         mapView = MAMapView(frame: self.view.bounds)
         mapView!.delegate = self
         self.view.addSubview(mapView!)
-        self.view.sendSubviewToBack(mapView!)
+        self.view.sendSubview(toBack: mapView!)
     }
     
     func initToolBar() {
         
-        let playButtonItem: UIBarButtonItem = UIBarButtonItem(image: UIImage(named: "icon_play.png"), style: .Done, target: self, action: #selector(DisplayViewController.actionPlayAndStop))
+        let playButtonItem: UIBarButtonItem = UIBarButtonItem(image: UIImage(named: "icon_play.png"), style: .done, target: self, action: #selector(DisplayViewController.actionPlayAndStop))
         
         navigationItem.rightBarButtonItem = playButtonItem
     }
@@ -68,7 +68,7 @@ class DisplayViewController: UIViewController, MAMapViewDelegate {
         
         let polyline = MAPolyline(coordinates: &coordiantes, count: UInt(coordiantes.count))
 
-        mapView!.addOverlay(polyline)
+        mapView!.add(polyline)
         
         mapView!.showAnnotations(mapView!.annotations, animated: true)
         
@@ -103,7 +103,7 @@ class DisplayViewController: UIViewController, MAMapViewDelegate {
         else {
             navigationItem.rightBarButtonItem!.image = UIImage(named: "icon_play.png")
             
-            let view: MAAnnotationView? = mapView!.viewForAnnotation(myLocation)
+            let view: MAAnnotationView? = mapView!.view(for: myLocation)
             if (view != nil) {
                 view!.layer.removeAllAnimations()
             }
@@ -111,7 +111,7 @@ class DisplayViewController: UIViewController, MAMapViewDelegate {
         }
     }
     
-    func coordinateHeading(from: CLLocationCoordinate2D, to: CLLocationCoordinate2D) -> Double {
+    func coordinateHeading(_ from: CLLocationCoordinate2D, to: CLLocationCoordinate2D) -> Double {
         
         if !CLLocationCoordinate2DIsValid(from) || !CLLocationCoordinate2DIsValid(to) {
             return 0.0
@@ -154,9 +154,9 @@ class DisplayViewController: UIViewController, MAMapViewDelegate {
         
         let distance: CLLocationDistance  = MAMetersBetweenMapPoints(MAMapPointForCoordinate(nextCoord), MAMapPointForCoordinate(prevCoord));
        
-        let duration: NSTimeInterval = distance / (averageSpeed * 100)
+        let duration: TimeInterval = distance / (averageSpeed * 100)
 
-        UIView.animateWithDuration(duration, animations: {
+        UIView.animate(withDuration: duration, animations: {
             self.myLocation!.coordinate = nextCoord
             }, completion: {
                 (value: Bool) in
@@ -168,35 +168,35 @@ class DisplayViewController: UIViewController, MAMapViewDelegate {
                 }
             })
         
-        let view: MAAnnotationView? = mapView!.viewForAnnotation(myLocation)
+        let view: MAAnnotationView? = mapView!.view(for: myLocation)
         if (view != nil) {
-            view!.transform = CGAffineTransformMakeRotation(CGFloat(heading / 180.0 * M_PI));
+            view!.transform = CGAffineTransform(rotationAngle: CGFloat(heading / 180.0 * M_PI));
         }
     }
     
     /// MAMapViewDelegate
     
-    func mapView(mapView: MAMapView, viewForAnnotation annotation: MAAnnotation) -> MAAnnotationView? {
+    func mapView(_ mapView: MAMapView, viewFor annotation: MAAnnotation) -> MAAnnotationView? {
         
         if annotation.isEqual(myLocation) {
             
             let annotationIdentifier = "myLcoationIdentifier"
             
-            var poiAnnotationView = mapView.dequeueReusableAnnotationViewWithIdentifier(annotationIdentifier)
+            var poiAnnotationView = mapView.dequeueReusableAnnotationView(withIdentifier: annotationIdentifier)
             if poiAnnotationView == nil {
                 poiAnnotationView = MAAnnotationView(annotation: annotation, reuseIdentifier: annotationIdentifier)
             }
             
-            poiAnnotationView.image = UIImage(named: "aeroplane.png")
+            poiAnnotationView?.image = UIImage(named: "aeroplane.png")
             poiAnnotationView!.canShowCallout = false
             
             return poiAnnotationView;
         }
         
-        if annotation.isKindOfClass(MAPointAnnotation) {
+        if annotation.isKind(of: MAPointAnnotation.self) {
             let annotationIdentifier = "lcoationIdentifier"
             
-            var poiAnnotationView = mapView.dequeueReusableAnnotationViewWithIdentifier(annotationIdentifier) as? MAPinAnnotationView
+            var poiAnnotationView = mapView.dequeueReusableAnnotationView(withIdentifier: annotationIdentifier) as? MAPinAnnotationView
             
             if poiAnnotationView == nil {
                 poiAnnotationView = MAPinAnnotationView(annotation: annotation, reuseIdentifier: annotationIdentifier)
@@ -211,11 +211,11 @@ class DisplayViewController: UIViewController, MAMapViewDelegate {
         return nil
     }
 
-    func mapView(mapView: MAMapView, rendererForOverlay overlay: MAOverlay) -> MAOverlayRenderer? {
+    func mapView(_ mapView: MAMapView, rendererFor overlay: MAOverlay) -> MAOverlayRenderer? {
         
-        if overlay.isKindOfClass(MAPolyline) {
+        if overlay.isKind(of: MAPolyline.self) {
             let renderer: MAPolylineRenderer = MAPolylineRenderer(overlay: overlay)
-            renderer.strokeColor = UIColor.redColor()
+            renderer.strokeColor = UIColor.red
             renderer.lineWidth = 6.0
             
             return renderer

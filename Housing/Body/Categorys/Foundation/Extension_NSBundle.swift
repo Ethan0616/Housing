@@ -8,6 +8,6 @@
 
 import Foundation
 
-extension NSBundle{
+extension Bundle{
     
 }

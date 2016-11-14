@@ -23,17 +23,17 @@ class BaseViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
-        self.edgesForExtendedLayout = .None
+        self.edgesForExtendedLayout = UIRectEdge()
         self.automaticallyAdjustsScrollViewInsets = false
-        self.view.backgroundColor = UIColor.yellowColor()
+        self.view.backgroundColor = UIColor.yellow
         title = ViewControllerTitle
     }
     
-    override func viewWillAppear(animated: Bool) {
+    override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
-        self.navigationController?.navigationBar.barStyle = .Black
-        self.navigationController?.navigationBar.translucent = false
+        self.navigationController?.navigationBar.barStyle = .black
+        self.navigationController?.navigationBar.isTranslucent = false
         self.navigationController?.setToolbarHidden(true, animated: animated)
     }
     
@@ -109,10 +109,10 @@ extension BaseViewController{
     
     
     func initTableView(){
-        tableView = UITableView(frame: view.bounds,style: .Grouped)
+        tableView = UITableView(frame: view.bounds,style: .grouped)
         tableView.delegate = self
         tableView.dataSource = self
-        tableView.backgroundColor = UIColor.lightGrayColor()
+        tableView.backgroundColor = UIColor.lightGray
         tableView.contentInset = UIEdgeInsetsMake(20, 0, 25, 0)
         view.addSubview(tableView)
     }
@@ -121,54 +121,54 @@ extension BaseViewController{
 
 extension BaseViewController : UITableViewDelegate,UITableViewDataSource{
     
-    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return self.titles[section].count ?? 1
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return (self.titles[section] as AnyObject).count ?? 1
     }
     
-    func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+    func numberOfSections(in tableView: UITableView) -> Int {
         return titles.count
     }
     
-    func tableView(tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
         return 15.0
     }
     
     
     
-    func tableView(tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+    func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
         
-        return sectionTitles.objectAtIndex(section) as? String
+        return sectionTitles.object(at: section) as? String
 
     }
     
-    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let ViewControllerIdentifier = "ViewControllerIdentifier"
         
-        var cell : UITableViewCell? = tableView.dequeueReusableCellWithIdentifier(ViewControllerIdentifier)
+        var cell : UITableViewCell? = tableView.dequeueReusableCell(withIdentifier: ViewControllerIdentifier)
         guard let tableViewCell : UITableViewCell = cell  else{
-            cell = UITableViewCell(style: .Subtitle,reuseIdentifier: ViewControllerIdentifier)
-            cell!.accessoryType = .DisclosureIndicator
+            cell = UITableViewCell(style: .subtitle,reuseIdentifier: ViewControllerIdentifier)
+            cell!.accessoryType = .disclosureIndicator
             
-            cell!.textLabel?.text = titles.objectAtIndex(indexPath.section).objectAtIndex(indexPath.row) as? String
-            cell!.detailTextLabel?.text = classNames.objectAtIndex(indexPath.section).objectAtIndex(indexPath.row) as? String
+            cell!.textLabel?.text = (titles.object(at: indexPath.section) as AnyObject).object(at: indexPath.row) as? String
+            cell!.detailTextLabel?.text = (classNames.object(at: indexPath.section) as AnyObject).object(at: indexPath.row) as? String
             
             return cell!
         }
-        tableViewCell.textLabel?.text = titles.objectAtIndex(indexPath.section).objectAtIndex(indexPath.row) as? String
-        tableViewCell.detailTextLabel?.text = classNames.objectAtIndex(indexPath.section).objectAtIndex(indexPath.row) as? String
+        tableViewCell.textLabel?.text = (titles.object(at: indexPath.section) as AnyObject).object(at: indexPath.row) as? String
+        tableViewCell.detailTextLabel?.text = (classNames.object(at: indexPath.section) as AnyObject).object(at: indexPath.row) as? String
         
         return tableViewCell
     }
     
     
-    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        tableView.deselectRowAtIndexPath(indexPath, animated: true)
-        let className : String  = (classNames.objectAtIndex(indexPath.section).objectAtIndex(indexPath.row) as? String)!
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated: true)
+        let className : String  = ((classNames.object(at: indexPath.section) as AnyObject).object(at: indexPath.row) as? String)!
         let type   = NSClassFromString(className) as? BaseViewController.Type
         
         if let subViewController =  type {
             let controller = subViewController.init()
-            controller.title = titles.objectAtIndex(indexPath.section).objectAtIndex(indexPath.row) as? String
+            controller.title = (titles.object(at: indexPath.section) as AnyObject).object(at: indexPath.row) as? String
             if let titleName = controller.title {
                 controller.ViewControllerTitle = titleName
             }

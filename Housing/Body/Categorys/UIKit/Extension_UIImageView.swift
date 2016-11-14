@@ -11,7 +11,7 @@ import UIKit
 
 extension UIImageView{
     
-    func ex_setImageWithURL(url: NSURL, placeholderImage: UIImage) {
+    func ex_setImageWithURL(_ url: URL, placeholderImage: UIImage) {
         
     }
 }

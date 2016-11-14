@@ -13,15 +13,15 @@ class TableViewController1: BaseViewController ,TwitterScrollDelegate {
 
     lazy var tableV : UITableView = {
         let  tableV = UITableView()
-        tableV.backgroundColor = UIColor.clearColor()
+        tableV.backgroundColor = UIColor.clear
         tableV.showsVerticalScrollIndicator = false
-        tableV.separatorStyle = .None
+        tableV.separatorStyle = .none
         return tableV
     }()
     
     lazy var scrollV : UIScrollView = {
         let  scrollV = UIScrollView()
-        scrollV.backgroundColor = UIColor.clearColor()
+        scrollV.backgroundColor = UIColor.clear
         scrollV.showsVerticalScrollIndicator = false
         return scrollV
     }()
@@ -29,7 +29,7 @@ class TableViewController1: BaseViewController ,TwitterScrollDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.navigationController?.navigationBarHidden = true
+        self.navigationController?.isNavigationBarHidden = true
         tableV.frame = view.bounds
         twitterScrollView = TwitterScroll(backgroundImage: UIImage(named: "dataBase1.jpg")!, avatarImage: UIImage(named: "dataBase0.jpg")!, titleString: "Hello,Kitty", subtitleString: "Back dropdown", buttonTitle: "下拉返回", scrollView: tableV)
 //        scrollV.frame = view.bounds
@@ -46,9 +46,9 @@ class TableViewController1: BaseViewController ,TwitterScrollDelegate {
     }
     // back
     func recievedMBTwitterScrollEvent(){
-        self.navigationController?.navigationBarHidden = false
+        self.navigationController?.isNavigationBarHidden = false
 
-        self.navigationController?.popViewControllerAnimated(true)
+        self.navigationController?.popViewController(animated: true)
         
     }
 
@@ -66,7 +66,7 @@ class TableViewController1: BaseViewController ,TwitterScrollDelegate {
 
 @objc protocol TwitterScrollDelegate : NSObjectProtocol {
     func recievedMBTwitterScrollEvent()
-    optional func recievedMBTwitterScrollButtonClicked()
+    @objc optional func recievedMBTwitterScrollButtonClicked()
 }
 
 class TwitterScroll: UIView {
@@ -80,45 +80,45 @@ class TwitterScroll: UIView {
         var imageView = UIImageView()
         imageView.layer.cornerRadius = 10
         imageView.layer.borderWidth = 3
-        imageView.layer.borderColor = UIColor.whiteColor().CGColor
+        imageView.layer.borderColor = UIColor.white.cgColor
         imageView.clipsToBounds = true
         
         return imageView
     }()
     lazy var  headerLabel   : UILabel  = {
         var label = UILabel()
-        label.frame = CGRectZero
-        label.textAlignment = .Center
+        label.frame = CGRect.zero
+        label.textAlignment = .center
         label.font = UIFont(name: "HelveticaNeue-Medium",size: 18.0)
-        label.textColor = UIColor.whiteColor()
+        label.textColor = UIColor.white
         
         return label
     }()
     var headerButton    : UIButton = {
         var btn = UIButton()
-        btn.setTitleColor(UIColor.lightGrayColor(), forState: .Normal)
+        btn.setTitleColor(UIColor.lightGray, for: UIControlState())
         btn.titleLabel?.font = UIFont(name: "HelveticaNeue-Medium",size: 12)
-        btn.layer.borderColor = UIColor.lightGrayColor().CGColor
+        btn.layer.borderColor = UIColor.lightGray.cgColor
         btn.layer.borderWidth = 1
         btn.layer.cornerRadius = 8
         
         return btn
     }()
     
-    private enum TSType{
-        case Table
-        case Scroll
+    fileprivate enum TSType{
+        case table
+        case scroll
     }
-    private let offset_HeaderStop       : CGFloat = 40.0
-    private let offset_B_LabelHeader    : CGFloat = 95.0
-    private let distance_W_LabelHeader  : CGFloat = 35.0
-    private var scrollViewType          : TSType = .Scroll
-    private weak var tableview          : UITableView!
-    private var titleLabel              = UILabel()
-    private lazy var subtitleLabel      : UILabel = {
+    fileprivate let offset_HeaderStop       : CGFloat = 40.0
+    fileprivate let offset_B_LabelHeader    : CGFloat = 95.0
+    fileprivate let distance_W_LabelHeader  : CGFloat = 35.0
+    fileprivate var scrollViewType          : TSType = .scroll
+    fileprivate weak var tableview          : UITableView!
+    fileprivate var titleLabel              = UILabel()
+    fileprivate lazy var subtitleLabel      : UILabel = {
             var label = UILabel()
             label.font = UIFont(name:"HelveticaNeue-Medium",size: 12)
-            label.textColor = UIColor.lightGrayColor()
+            label.textColor = UIColor.lightGray
         
         return label
     }()
@@ -129,18 +129,18 @@ class TwitterScroll: UIView {
         addSubview(header)
         headerImageView = UIImageView()
         headerImageView.image = backgroundImage
-        headerImageView.contentMode = .ScaleAspectFill
+        headerImageView.contentMode = .scaleAspectFill
         headerLabel.text = titleString
         header.addSubview(headerLabel)
         header.clipsToBounds = true
         header.insertSubview(self.headerImageView, aboveSubview: self.headerLabel)
 
         if let tableView = scrollView as? UITableView {
-            scrollViewType = .Table
+            scrollViewType = .table
             self.tableview = tableView
-            self.tableview.separatorStyle = .None
+            self.tableview.separatorStyle = .none
             self.frame = self.tableview.bounds
-            self.tableview.tableHeaderView?.frame = CGRectMake(self.x, self.y, self.width, self.header.height + 100)
+            self.tableview.tableHeaderView?.frame = CGRect(x: self.x, y: self.y, width: self.width, height: self.header.height + 100)
             self.tableview.addSubview(self.avatarImage)
             self.tableview.addSubview(self.titleLabel)
             self.tableview.addSubview(self.subtitleLabel)
@@ -148,9 +148,9 @@ class TwitterScroll: UIView {
                 self.tableview.addSubview(self.headerButton)
             }
             self.addSubview(self.tableview)
-            self.tableview.addObserver(self, forKeyPath: "contentOffset", options: .New, context: nil)
+            self.tableview.addObserver(self, forKeyPath: "contentOffset", options: .new, context: nil)
         }else{
-            scrollViewType = .Scroll
+            scrollViewType = .scroll
             self.scrollView = scrollView
             self.frame = self.scrollView.bounds
             self.scrollView.addSubview(self.avatarImage)
@@ -160,36 +160,36 @@ class TwitterScroll: UIView {
                 self.scrollView.addSubview(self.headerButton)
             }
             self.addSubview(self.scrollView)
-            self.scrollView.addObserver(self, forKeyPath: "contentOffset", options: .New, context: nil)
+            self.scrollView.addObserver(self, forKeyPath: "contentOffset", options: .new, context: nil)
         }
         
         self.avatarImage.image = avatarImage
         titleLabel.text = titleString
         subtitleLabel.text = subtitleString
-        headerButton.setTitle(buttonTitle as String, forState: .Normal)
-        headerButton.addTarget(self, action: #selector(touchUpHeaderButton), forControlEvents: .TouchUpInside)
+        headerButton.setTitle(buttonTitle as String, for: UIControlState())
+        headerButton.addTarget(self, action: #selector(touchUpHeaderButton), for: .touchUpInside)
 
         
-        header.frame = CGRectMake(self.x, self.y, self.width, 107)
-        headerLabel.frame       = CGRectMake(self.x, self.header.height - 5, self.width, 25)
-        self.avatarImage.frame  = CGRectMake(10, 79, 69, 69)
-        titleLabel.frame        = CGRectMake(10, 156, 250, 25)
-        subtitleLabel.frame     = CGRectMake(10, 177, 250, 25)
-        headerButton.frame      = CGRectMake(self.width - 100, 120, 80, 35)
+        header.frame = CGRect(x: self.x, y: self.y, width: self.width, height: 107)
+        headerLabel.frame       = CGRect(x: self.x, y: self.header.height - 5, width: self.width, height: 25)
+        self.avatarImage.frame  = CGRect(x: 10, y: 79, width: 69, height: 69)
+        titleLabel.frame        = CGRect(x: 10, y: 156, width: 250, height: 25)
+        subtitleLabel.frame     = CGRect(x: 10, y: 177, width: 250, height: 25)
+        headerButton.frame      = CGRect(x: self.width - 100, y: 120, width: 80, height: 35)
         headerImageView.frame   = header.frame
         
         
-        dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0)) { 
+        DispatchQueue.global(priority: DispatchQueue.GlobalQueuePriority.default).async { 
             self.prepareForBlurImages()
         }
     }
     
     
-    override func observeValueForKeyPath(keyPath: String?, ofObject object: AnyObject?, change: [String : AnyObject]?, context: UnsafeMutablePointer<Void>) {
+    override func observeValue(forKeyPath keyPath: String?, of object: Any?, change: [NSKeyValueChangeKey : Any]?, context: UnsafeMutableRawPointer?) {
         var offset : CGFloat = 0
-        if scrollViewType == .Table {
+        if scrollViewType == .table {
             offset = self.tableview.contentOffset.y
-        }else if scrollViewType == .Scroll{
+        }else if scrollViewType == .scroll{
             offset = self.scrollView.contentOffset.y
         }
         animationForScroll(offset)
@@ -198,19 +198,19 @@ class TwitterScroll: UIView {
     // MARK: Methods
     func prepareForBlurImages(){
         var factor = 0.1
-        self.blurImages.addObject(self.headerImageView.image!)
+        self.blurImages.add(self.headerImageView.image!)
         var height  = Int(self.headerImageView.frame.size.height)
         if height == 0 {
             height = 120 // 最多生成13张图片
         }
         
         for _ in 0..<(height / 10) {
-            self.blurImages.addObject(self.headerImageView.image!.boxblurImageWithBlur(factor))
+            self.blurImages.add(self.headerImageView.image!.boxblurImageWithBlur(factor))
             factor += 0.04
         }
     }
     
-    func animationForScroll(offset : CGFloat){
+    func animationForScroll(_ offset : CGFloat){
         
         var headerTransform : CATransform3D  = CATransform3DIdentity
         var avatarTransform : CATransform3D  = CATransform3DIdentity
@@ -233,7 +233,7 @@ class TwitterScroll: UIView {
                 if self.delegate != nil {
                     self.delegate = nil
                 }
-                if scrollViewType == .Table {
+                if scrollViewType == .table {
                     self.tableview.removeFromSuperview()
                     self.tableview.removeObserver(self, forKeyPath: "contentOffset")
                 }else{
@@ -285,7 +285,7 @@ class TwitterScroll: UIView {
         
     }
     
-    func blurWithOffset(offset : CGFloat){
+    func blurWithOffset(_ offset : CGFloat){
         guard blurImages.count > 0 else{
             return
         }
@@ -303,7 +303,7 @@ class TwitterScroll: UIView {
         }
     }
     
-    func touchUpHeaderButton(sender : UIButton){
+    func touchUpHeaderButton(_ sender : UIButton){
         self.delegate?.recievedMBTwitterScrollButtonClicked
     }
 }

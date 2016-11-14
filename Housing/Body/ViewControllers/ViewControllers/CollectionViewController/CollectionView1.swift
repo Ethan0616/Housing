@@ -11,15 +11,15 @@ import UIKit
 @objc (CollectionView1)
 class CollectionView1: BaseViewController {
     
-    private var     collectionView : UICollectionView!
-    private var     collectionLayout : CollectionLayout!
-    private let     cellColumn                = 3
-    private let     cellMargin      : CGFloat = 2
-    private let     cellMinHeight   : CGFloat = 50.0;
-    private let     cellMaxHeight   : CGFloat = 200.0;
-    private let     cell_count = 1000
-    private let     section_count = 1
-    private let     scroll_offset_y = 300
+    fileprivate var     collectionView : UICollectionView!
+    fileprivate var     collectionLayout : CollectionLayout!
+    fileprivate let     cellColumn                = 3
+    fileprivate let     cellMargin      : CGFloat = 2
+    fileprivate let     cellMinHeight   : CGFloat = 50.0;
+    fileprivate let     cellMaxHeight   : CGFloat = 200.0;
+    fileprivate let     cell_count = 1000
+    fileprivate let     section_count = 1
+    fileprivate let     scroll_offset_y = 300
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -55,11 +55,11 @@ private extension CollectionView1{
     
     func initCollectionView(){
         collectionView = UICollectionView(frame: view.bounds, collectionViewLayout: collectionLayout)
-        collectionView.backgroundColor = UIColor.whiteColor()
+        collectionView.backgroundColor = UIColor.white
         collectionView.dataSource = self
         collectionView.delegate = self
         view.addSubview(collectionView)
-        collectionView.registerClass(NSClassFromString("CollectionCell"), forCellWithReuseIdentifier: "collectionViewCellIdentifier")
+        collectionView.register(NSClassFromString("CollectionCell"), forCellWithReuseIdentifier: "collectionViewCellIdentifier")
         // 注册cell、sectionHeader、sectionFooter
         //        [_collectionView registerClass:[UICollectionViewCell class] forCellWithReuseIdentifier:cellId];
         //        [_collectionView registerClass:[UICollectionReusableView class] forSupplementaryViewOfKind:UICollectionElementKindSectionHeader withReuseIdentifier:headerId];
@@ -70,25 +70,25 @@ private extension CollectionView1{
 extension CollectionView1 : UICollectionViewDataSource,UICollectionViewDelegate,CollectionLayoutDelegate{
     
     // MARK: UICollectionViewDataSource
-    func numberOfSectionsInCollectionView(collectionView: UICollectionView) -> Int{
+    func numberOfSections(in collectionView: UICollectionView) -> Int{
         return section_count
     }
     
     
-    func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int{
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int{
         return cell_count
     }
     
-    func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell{
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell{
         
         var cell : UICollectionViewCell?
         
-        cell = collectionView.dequeueReusableCellWithReuseIdentifier("collectionViewCellIdentifier", forIndexPath: indexPath)
+        cell = collectionView.dequeueReusableCell(withReuseIdentifier: "collectionViewCellIdentifier", for: indexPath)
         
         guard let collectionCell = cell as? CollectionCell else{
             return CollectionCell()
         }
-        collectionCell.backgroundColor = UIColor.redColor()
+        collectionCell.backgroundColor = UIColor.red
         let imageIndex =  arc4random() % 23
         let imageName  = String(format: "%02ld.jpg", imageIndex)
         
@@ -102,28 +102,28 @@ extension CollectionView1 : UICollectionViewDataSource,UICollectionViewDelegate,
     
     // MARK: CollectionLayoutDelegate
     /*** 确定布局行数的回调 */
-    func numberOfColumnWithCollectionView(collectionView:UICollectionView,collectionLayout:CollectionLayout) -> NSInteger{
+    func numberOfColumnWithCollectionView(_ collectionView:UICollectionView,collectionLayout:CollectionLayout) -> NSInteger{
         return cellColumn
     }
     
     /*** 确定cell的Margin*/
-    func marginOfCellWithCollectionView(collectionView:UICollectionView,collectionLayout:CollectionLayout) -> CGFloat{
+    func marginOfCellWithCollectionView(_ collectionView:UICollectionView,collectionLayout:CollectionLayout) -> CGFloat{
         return cellMargin
     }
     
     
     /*** 确定cell的最小高度*/
-    func minHeightOfCellWithCollectionView(collectionView:UICollectionView,collectionLayout:CollectionLayout) -> CGFloat{
+    func minHeightOfCellWithCollectionView(_ collectionView:UICollectionView,collectionLayout:CollectionLayout) -> CGFloat{
         return cellMinHeight
     }
     
     /*** 确定cell的最大高度*/
-    func maxHeightOfCellWithCollectionView(collectionView:UICollectionView,collectionLayout:CollectionLayout) -> CGFloat {
+    func maxHeightOfCellWithCollectionView(_ collectionView:UICollectionView,collectionLayout:CollectionLayout) -> CGFloat {
         return cellMaxHeight
     }
     
     // MARK: UIScrollViewDelegate
-    func scrollViewDidScroll(scrollView: UIScrollView) {
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
         var offsetY = scrollView.contentOffset.y
         if offsetY < 0 {
             offsetY = 0
@@ -171,24 +171,24 @@ final class CollectionLayout: UICollectionViewLayout {
         super.init()
     }
     
-    override func prepareLayout() {
-        super.prepareLayout()
+    override func prepare() {
+        super.prepare()
         initData()
     }
     
     // 该方法返回每一个Cell的ContentSize
-    override func collectionViewContentSize() -> CGSize {
+    override var collectionViewContentSize : CGSize {
         let height = maxCellYInArray(cellYArray)
         
-        return CGSizeMake((self.collectionView?.bounds.width) ?? 0.0, height)
+        return CGSize(width: (self.collectionView?.bounds.width) ?? 0.0, height: height)
     }
     // 该方法为每个Cell绑定一个Layout属性
-    override func layoutAttributesForElementsInRect(rect: CGRect) -> [UICollectionViewLayoutAttributes]? {
+    override func layoutAttributesForElements(in rect: CGRect) -> [UICollectionViewLayoutAttributes]? {
         initCellYArray()
         var arrayM : [UICollectionViewLayoutAttributes] = []
         for i in 0..<numberOfCellsInSections{
-            let indexPath = NSIndexPath(forItem: i, inSection: 0)
-            let attributes : UICollectionViewLayoutAttributes? = self.layoutAttributesForItemAtIndexPath(indexPath)
+            let indexPath = IndexPath(item: i, section: 0)
+            let attributes : UICollectionViewLayoutAttributes? = self.layoutAttributesForItem(at: indexPath)
             if let attr = attributes {
                 arrayM.append(attr)
             }else{
@@ -199,14 +199,14 @@ final class CollectionLayout: UICollectionViewLayout {
         return arrayM
     }
     
-    override func layoutAttributesForItemAtIndexPath(indexPath: NSIndexPath) -> UICollectionViewLayoutAttributes? {
-        let attributes = UICollectionViewLayoutAttributes(forCellWithIndexPath: indexPath)
+    override func layoutAttributesForItem(at indexPath: IndexPath) -> UICollectionViewLayoutAttributes? {
+        let attributes = UICollectionViewLayoutAttributes(forCellWith: indexPath)
         let cellHeight = cellHeightArray[indexPath.row] as! CGFloat
         let minYindex = minCellYInArray(cellYArray)
         let tempX : CGFloat = cellXArray[minYindex] as! CGFloat
         let tempY : CGFloat = cellYArray[minYindex] as! CGFloat
         
-        let frame : CGRect =  CGRectMake(tempX, tempY, cellWidth, cellHeight)
+        let frame : CGRect =  CGRect(x: tempX, y: tempY, width: cellWidth, height: cellHeight)
         //更新相应的Y坐标
         cellYArray[minYindex] = tempY + cellHeight + margin
         //计算每个Cell的位置
@@ -221,8 +221,8 @@ final class CollectionLayout: UICollectionViewLayout {
     
     // MARK:  privateMethod
     func initData(){
-        numberOfSections = self.collectionView?.numberOfSections()
-        numberOfCellsInSections = self.collectionView?.numberOfItemsInSection(0)
+        numberOfSections = self.collectionView?.numberOfSections
+        numberOfCellsInSections = self.collectionView?.numberOfItems(inSection: 0)
         columnCount = self.layoutDelegate?.numberOfColumnWithCollectionView(self.collectionView!, collectionLayout: self)
         margin = self.layoutDelegate?.marginOfCellWithCollectionView(self.collectionView!, collectionLayout: self)
         cellMinHeight = self.layoutDelegate?.minHeightOfCellWithCollectionView(self.collectionView!, collectionLayout: self)
@@ -239,26 +239,26 @@ final class CollectionLayout: UICollectionViewLayout {
         cellXArray = NSMutableArray(capacity: columnCount)
         for i in 0..<columnCount{
             let tempx : CGFloat = CGFloat(i) * (cellWidth + margin)
-            cellXArray.insertObject(tempx, atIndex: i)
+            cellXArray.insert(tempx, at: i)
         }
     }
     func initHeightArray(){
         //随机生成Cell的高度
         cellHeightArray = NSMutableArray(capacity: numberOfCellsInSections)
         for i in 0..<numberOfCellsInSections{
-            let cellHeight : CGFloat = CGFloat(arc4random()) % cellMaxHeight + cellMinHeight
-            cellHeightArray.insertObject(cellHeight, atIndex: i)
+            let cellHeight : CGFloat = CGFloat(arc4random()).truncatingRemainder(dividingBy: cellMaxHeight) + cellMinHeight
+            cellHeightArray.insert(cellHeight, at: i)
         }
     }
     func initCellYArray(){
         cellYArray = NSMutableArray(capacity:columnCount)
         for _ in 0..<columnCount {
-            cellYArray.addObject(0)
+            cellYArray.add(0)
         }
     }
     
     // MARK:  Tools
-    func maxCellYInArray(arr : NSMutableArray) -> CGFloat{
+    func maxCellYInArray(_ arr : NSMutableArray) -> CGFloat{
         guard arr.count > 0 else{
             return 0.0
         }
@@ -274,7 +274,7 @@ final class CollectionLayout: UICollectionViewLayout {
         return max
     }
     // 取回索引最小
-    func minCellYInArray(arr : NSMutableArray) -> NSInteger{
+    func minCellYInArray(_ arr : NSMutableArray) -> NSInteger{
         guard arr.count > 0 else{
             return 0
         }
@@ -298,17 +298,17 @@ final class CollectionLayout: UICollectionViewLayout {
 @objc protocol CollectionLayoutDelegate : NSObjectProtocol {
     
     /*** 确定布局行数的回调 */
-    func numberOfColumnWithCollectionView(collectionView:UICollectionView,collectionLayout:CollectionLayout) -> NSInteger
+    func numberOfColumnWithCollectionView(_ collectionView:UICollectionView,collectionLayout:CollectionLayout) -> NSInteger
     
     /*** 确定cell的Margin*/
-    func marginOfCellWithCollectionView(collectionView:UICollectionView,collectionLayout:CollectionLayout) -> CGFloat
+    func marginOfCellWithCollectionView(_ collectionView:UICollectionView,collectionLayout:CollectionLayout) -> CGFloat
     
     
     /*** 确定cell的最小高度*/
-    func minHeightOfCellWithCollectionView(collectionView:UICollectionView,collectionLayout:CollectionLayout) -> CGFloat
+    func minHeightOfCellWithCollectionView(_ collectionView:UICollectionView,collectionLayout:CollectionLayout) -> CGFloat
     
     /*** 确定cell的最大高度*/
-    func maxHeightOfCellWithCollectionView(collectionView:UICollectionView,collectionLayout:CollectionLayout) -> CGFloat
+    func maxHeightOfCellWithCollectionView(_ collectionView:UICollectionView,collectionLayout:CollectionLayout) -> CGFloat
     
 }
 
@@ -319,7 +319,7 @@ final class CollectionCell : UICollectionViewCell{
     
     override init(frame: CGRect) {
         super.init(frame: frame)
-        imageView.contentMode = .ScaleAspectFill
+        imageView.contentMode = .scaleAspectFill
         self.clipsToBounds = true
         addSubview(imageView)
     }

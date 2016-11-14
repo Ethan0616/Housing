@@ -37,11 +37,11 @@ class TableViewController2: BaseViewController{
         self.titles = titleArray
         self.classNames = classArray
         
-        dispatch_barrier_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0)) {
+        DispatchQueue.global(priority: DispatchQueue.GlobalQueuePriority.default).async(flags: .barrier, execute: {
             
             for name in tempArr{
                 
-                let arr = DataBase.shareDataBase().getAllDataBase(name as! String) as! [DrugSearchModel]
+                let arr = DataBase.share().getAllDataBase(name as! String) as! [DrugSearchModel]
                 guard arr.count > 0 else{
                     continue
                 }
@@ -51,33 +51,33 @@ class TableViewController2: BaseViewController{
                 
                 for i in 0..<arr.count{
                     let model = arr[i]
-                        nameArr.addObject(model.showName)
-                        textArr.addObject(model.factory)
+                        nameArr.add(model.showName)
+                        textArr.add(model.factory)
                 }
                 
-                sectionArray.addObject(name)
-                titleArray.addObject(nameArr)
-                classArray.addObject(textArr)
+                sectionArray.add(name)
+                titleArray.add(nameArr)
+                classArray.add(textArr)
                 
-                dispatch_async(dispatch_get_main_queue(), {
+                DispatchQueue.main.async(execute: {
 
                     self.tableView.reloadData()
                     self.indexView.refreshIndexItems()
                 })   
             }
             
-        }
+        }) 
     }
     
     func firstAttributesForMJNIndexView(){
         indexView = MJNIndexView()
-        indexView.frame = CGRectMake(0, 0, view.width, view.height - 64)
-        indexView.backgroundColor = UIColor.yellowColor()
+        indexView.frame = CGRect(x: 0, y: 0, width: view.width, height: view.height - 64)
+        indexView.backgroundColor = UIColor.yellow
         indexView.dataSource = self
         indexView.getSelectedItemsAfterPanGestureIsFinished = true;
         indexView.font = UIFont(name:"HelveticaNeue" , size: 13.0)
         indexView.selectedItemFont = UIFont(name:"HelveticaNeue-Bold" , size: 20)
-        indexView.backgroundColor = UIColor.clearColor()
+        indexView.backgroundColor = UIColor.clear
         indexView.curtainColor = nil
         indexView.curtainFade = 0.0
         indexView.curtainStays = false
@@ -87,7 +87,7 @@ class TableViewController2: BaseViewController{
         indexView.upperMargin = 22.0
         indexView.lowerMargin = 22.0
         indexView.rightMargin = 10.0
-        indexView.itemsAligment = .Center
+        indexView.itemsAligment = .center
         indexView.maxItemDeflection = 100.0
         indexView.rangeOfDeflection = 5
         indexView.fontColor = UIColor.RGBA(0.3, g: 0.3, b: 0.3, a: 1.0)
@@ -110,13 +110,19 @@ class TableViewController2: BaseViewController{
 }
 
 extension TableViewController2 : MJNIndexViewDataSource{
+    public func sectionIndexTitles(for indexView: MJNIndexView!) -> [Any]! {
+        return self.sectionTitles as [AnyObject]
+    }
+
+
+
     // you have to implement this method to provide this UIControl with NSArray of items you want to display in your index
-    func sectionIndexTitlesForMJNIndexView(indexView: MJNIndexView!) -> [AnyObject]! {
+    func sectionIndexTitles(for indexView: MJNIndexView!) -> [AnyObject]! {
         return self.sectionTitles as [AnyObject]
     }
     
     // you have to implement this method to get the selected index item
-    func sectionForSectionMJNIndexTitle(title: String!, atIndex index: Int) {
-        self.tableView .scrollToRowAtIndexPath(NSIndexPath(forItem: 0, inSection: index), atScrollPosition: .Top, animated: true)
+    func section(forSectionMJNIndexTitle title: String!, at index: Int) {
+        self.tableView .scrollToRow(at: IndexPath(item: 0, section: index), at: .top, animated: true)
     }
 }

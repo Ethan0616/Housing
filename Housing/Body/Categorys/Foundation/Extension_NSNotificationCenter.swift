@@ -8,6 +8,6 @@
 
 import Foundation
 
-extension NSNotificationCenter{
+extension NotificationCenter{
     
 }

@@ -12,38 +12,38 @@ class StatusView: UIView {
 
     let controlHeight: CGFloat = 20.0
     
-    private var textView: UITextView
-    private var control: UIButton
-    private var originalFrame: CGRect
-    private var isOpen: Bool
+    fileprivate var textView: UITextView
+    fileprivate var control: UIButton
+    fileprivate var originalFrame: CGRect
+    fileprivate var isOpen: Bool
     
     override init(frame: CGRect) {
         
         isOpen = true
-        textView = UITextView(frame: CGRectMake(0, controlHeight, CGRectGetWidth(frame), CGRectGetHeight(frame)))
+        textView = UITextView(frame: CGRect(x: 0, y: controlHeight, width: frame.width, height: frame.height))
         control = UIButton()
         originalFrame = frame
         
         super.init(frame: frame)
         
-        self.backgroundColor = UIColor.blackColor().colorWithAlphaComponent(0.4)
+        self.backgroundColor = UIColor.black.withAlphaComponent(0.4)
         
                 ///
-        textView.backgroundColor = UIColor.clearColor()
-        textView.textColor = UIColor.whiteColor()
-        textView.font = UIFont.systemFontOfSize(12)
-        textView.editable = false
-        textView.selectable = false
-        textView.autoresizingMask = [.FlexibleWidth,.FlexibleHeight] 
+        textView.backgroundColor = UIColor.clear
+        textView.textColor = UIColor.white
+        textView.font = UIFont.systemFont(ofSize: 12)
+        textView.isEditable = false
+        textView.isSelectable = false
+        textView.autoresizingMask = [.flexibleWidth,.flexibleHeight] 
         
         addSubview(textView)
         
         ///
-        control.frame = CGRectMake(0, 0, CGRectGetWidth(frame), controlHeight)
-        control.backgroundColor = UIColor.blackColor().colorWithAlphaComponent(0.6)
-        control.titleLabel!.font = UIFont.systemFontOfSize(16)
-        control.setTitle("Opened", forState: UIControlState.Normal)
-        control.addTarget(self, action: #selector(StatusView.actionSwitch), forControlEvents: UIControlEvents.TouchUpInside)
+        control.frame = CGRect(x: 0, y: 0, width: frame.width, height: controlHeight)
+        control.backgroundColor = UIColor.black.withAlphaComponent(0.6)
+        control.titleLabel!.font = UIFont.systemFont(ofSize: 16)
+        control.setTitle("Opened", for: UIControlState())
+        control.addTarget(self, action: #selector(StatusView.actionSwitch), for: UIControlEvents.touchUpInside)
         
         addSubview(control)
     }
@@ -56,28 +56,28 @@ class StatusView: UIView {
         isOpen = !isOpen
         
         if isOpen {
-            control.setTitle("Opened", forState: UIControlState.Normal)
+            control.setTitle("Opened", for: UIControlState())
             
-            UIView.animateWithDuration(0.25, animations: {
+            UIView.animate(withDuration: 0.25, animations: {
                 self.frame = self.originalFrame
                 
-                self.textView.frame = CGRectMake(0, self.controlHeight, CGRectGetWidth(self.originalFrame), CGRectGetHeight(self.originalFrame))
+                self.textView.frame = CGRect(x: 0, y: self.controlHeight, width: self.originalFrame.width, height: self.originalFrame.height)
                 })
         }
         else {
-            control.setTitle("Closed", forState: UIControlState.Normal)
+            control.setTitle("Closed", for: UIControlState())
             
-            UIView.animateWithDuration(0.25, animations: {
-                self.frame = CGRectMake(self.originalFrame.origin.x, self.originalFrame.origin.y, self.originalFrame.size.width, self.controlHeight)
+            UIView.animate(withDuration: 0.25, animations: {
+                self.frame = CGRect(x: self.originalFrame.origin.x, y: self.originalFrame.origin.y, width: self.originalFrame.size.width, height: self.controlHeight)
                 
-                self.textView.frame = CGRectMake(0, self.controlHeight, CGRectGetWidth(self.originalFrame), 0)
+                self.textView.frame = CGRect(x: 0, y: self.controlHeight, width: self.originalFrame.width, height: 0)
                 })
         }
     }
     
     /// Interface
     
-    func showStatusInfo(info: [(String, String)]?) {
+    func showStatusInfo(_ info: [(String, String)]?) {
         
         if (info == nil) {
             textView.text = ""

@@ -13,7 +13,7 @@ class RecordViewController: UIViewController, UITableViewDataSource, UITableView
     var tableView: UITableView?
     var routes: [Route]
     
-    override init(nibName nibNameOrNil: String!, bundle nibBundleOrNil: NSBundle!) {
+    override init(nibName nibNameOrNil: String!, bundle nibBundleOrNil: Bundle!) {
         
         routes = FileHelper.routesArray()
         super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
@@ -25,14 +25,14 @@ class RecordViewController: UIViewController, UITableViewDataSource, UITableView
     
     override func viewDidLoad() {
         
-        self.view.backgroundColor = UIColor.grayColor()
+        self.view.backgroundColor = UIColor.gray
         initTableView()
     }
     
     func initTableView() {
         
         tableView = UITableView(frame: view.bounds)
-        tableView!.autoresizingMask = [.FlexibleHeight,.FlexibleWidth]
+        tableView!.autoresizingMask = [.flexibleHeight,.flexibleWidth]
         
         tableView!.delegate = self
         tableView!.dataSource = self
@@ -42,33 +42,33 @@ class RecordViewController: UIViewController, UITableViewDataSource, UITableView
     
     /// Helpers
     
-    func deleteRoute(index: Int) {
+    func deleteRoute(_ index: Int) {
         
         if !routes.isEmpty {
             
             let route: Route = routes[index]
             FileHelper.deleteFile(route.title())
             
-            routes.removeAtIndex(index)
+            routes.remove(at: index)
         }
     }
         
     /// UITableViewDataSource
     
-    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
 
         return routes.count
         
     }
     
-    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
 
         let cellIdentifier = "routeCellIdentifier"
         
-        var cell = tableView.dequeueReusableCellWithIdentifier(cellIdentifier)         
+        var cell = tableView.dequeueReusableCell(withIdentifier: cellIdentifier)         
         if cell == nil {
             
-            cell = UITableViewCell(style: UITableViewCellStyle.Subtitle, reuseIdentifier: cellIdentifier)
+            cell = UITableViewCell(style: UITableViewCellStyle.subtitle, reuseIdentifier: cellIdentifier)
         }
         
         if !routes.isEmpty {
@@ -82,28 +82,28 @@ class RecordViewController: UIViewController, UITableViewDataSource, UITableView
         return cell!
     }
     
-    func tableView(tableView: UITableView, canEditRowAtIndexPath indexPath: NSIndexPath) -> Bool {
+    func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
         
         return true
     }
     
-    func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
         
-        if editingStyle != UITableViewCellEditingStyle.Delete {
+        if editingStyle != UITableViewCellEditingStyle.delete {
             return
         }
         
         deleteRoute(indexPath.row)
         
-        tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: UITableViewRowAnimation.Fade)
+        tableView.deleteRows(at: [indexPath], with: UITableViewRowAnimation.fade)
         
     }
     
     /// UITableViewDelegate
     
-    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
-        tableView.deselectRowAtIndexPath(indexPath, animated: true)
+        tableView.deselectRow(at: indexPath, animated: true)
         
         if !routes.isEmpty {
             

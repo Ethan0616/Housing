@@ -11,17 +11,17 @@ import UIKit
 
 extension UIColor{
     
-    class func colorWith(red: Int, green: Int, blue: Int, alpha: CGFloat) -> UIColor {
+    class func colorWith(_ red: Int, green: Int, blue: Int, alpha: CGFloat) -> UIColor {
         let color = UIColor(red: CGFloat(red) / 255.0, green: CGFloat(green) / 255.0, blue: CGFloat(blue) / 255.0, alpha: alpha)
         return color
     }
     
     //  **********
-    class func RGBA (r:CGFloat, g:CGFloat, b:CGFloat, a:CGFloat) -> UIColor {
+    class func RGBA (_ r:CGFloat, g:CGFloat, b:CGFloat, a:CGFloat) -> UIColor {
         return UIColor (red: r/255.0, green: g/255.0, blue: b/255.0, alpha: a)
     }
     
-    class func UIColorFromRGBString(colorString: String?) -> UIColor? {
+    class func UIColorFromRGBString(_ colorString: String?) -> UIColor? {
         
         // 检查字符串是否为空和位数是否正确
         if colorString == nil || colorString!.utf16.count != 6 {
@@ -36,9 +36,9 @@ extension UIColor{
         
         for i in 0...2 {
             
-            let range = colorString!.startIndex.advancedBy(i*2) ..< colorString!.startIndex.advancedBy(i*2+2)
+            let range = colorString!.characters.index(colorString!.startIndex, offsetBy: i*2) ..< colorString!.characters.index(colorString!.startIndex, offsetBy: i*2+2)
             
-            let colorSegment = colorString!.substringWithRange(range)
+            let colorSegment = colorString!.substring(with: range)
             
             let colorNumber = strtol(colorSegment, nil, 16)
             
@@ -57,7 +57,7 @@ extension UIColor{
         return RGBA(CGFloat(red), g: CGFloat(green), b: CGFloat(blue), a: 1.0)
     }
     
-    class func RGBStringFromUIColor(color: UIColor) -> String? {
+    class func RGBStringFromUIColor(_ color: UIColor) -> String? {
         
         var red: CGFloat = 0
         var green: CGFloat = 0

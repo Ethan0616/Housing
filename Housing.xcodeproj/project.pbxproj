@@ -621,6 +621,7 @@
 					AAD406EB1D5C6EFA009D18D5 = {
 						CreatedOnToolsVersion = 7.3;
 						DevelopmentTeam = MLRN73NFF6;
+						LastSwiftMigration = 0810;
 					};
 				};
 			};
@@ -928,6 +929,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "Housing/Housing-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 3.0;
 			};
 			name = Debug;
 		};
@@ -947,6 +949,7 @@
 				PRODUCT_MODULE_NAME = "$(PRODUCT_NAME:c99extidentifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "Housing/Housing-Bridging-Header.h";
+				SWIFT_VERSION = 3.0;
 			};
 			name = Release;
 		};

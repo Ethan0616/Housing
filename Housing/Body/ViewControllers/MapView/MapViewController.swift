@@ -24,14 +24,14 @@ class MapViewController: BaseViewController {
         // Dispose of any resources that can be recreated.
     }
     
-    override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        tableView.deselectRowAtIndexPath(indexPath, animated: true)
-        let className : String  = (classNames.objectAtIndex(indexPath.section).objectAtIndex(indexPath.row) as? String)!
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated: true)
+        let className : String  = ((classNames.object(at: indexPath.section) as AnyObject).object(at: indexPath.row) as? String)!
         let type   = NSClassFromString(className) as? UIViewController.Type
         
         if let subViewController =  type {
             let controller = subViewController.init()
-            controller.title = titles.objectAtIndex(indexPath.section).objectAtIndex(indexPath.row) as? String
+            controller.title = (titles.object(at: indexPath.section) as AnyObject).object(at: indexPath.row) as? String
             if let titleName = controller.title {
                 if  let con = controller as? BaseViewController {
                     con.ViewControllerTitle = titleName
@@ -48,7 +48,7 @@ class MapViewController: BaseViewController {
                      MAUserTrackingModeFollow：跟随用户位置移动，并将定位点设置成地图中心点。
                      MAUserTrackingModeFollowWithHeading：跟随用户的位置和角度移动。
                      */
-                    mapView.setUserTrackingMode(.Follow, animated: true)
+                    mapView.setUserTrackingMode(.follow, animated: true)
                     mapView.setZoomLevel(15, animated: true)
                     
                     // 后台定位
@@ -56,14 +56,14 @@ class MapViewController: BaseViewController {
                     mapView.allowsBackgroundLocationUpdates = true // 是否自动定位
                     
                     // 实时路况
-                    mapView.showTraffic = true
+                    mapView.isShowTraffic = true
                     
                     /*
                      1）普通地图 MAMapTypeStandard；
                      2）卫星地图 MAMapTypeSatellite；
                      3）夜间地图 MAMapTypeStandardNight；
                      */
-                    mapView.mapType = .Standard
+                    mapView.mapType = .standard
                     self.navigationController?.pushViewController(con, animated: true)
                     return
 

@@ -23,7 +23,7 @@ class MainViewController: BaseViewController, MAMapViewDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
-        self.edgesForExtendedLayout = UIRectEdge.None
+        self.edgesForExtendedLayout = UIRectEdge()
         
         initToolBar()
         initMapView()
@@ -33,7 +33,7 @@ class MainViewController: BaseViewController, MAMapViewDelegate {
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
         
-        tipView!.frame = CGRectMake(0, CGRectGetHeight(view.bounds) - 30, CGRectGetWidth(view.bounds), 30)
+        tipView!.frame = CGRect(x: 0, y: view.bounds.height - 30, width: view.bounds.width, height: 30)
     }
 
     /// Initialization
@@ -43,10 +43,10 @@ class MainViewController: BaseViewController, MAMapViewDelegate {
         mapView = MAMapView(frame: self.view.bounds)
         mapView!.delegate = self
         self.view.addSubview(mapView!)
-        self.view.sendSubviewToBack(mapView!)
+        self.view.sendSubview(toBack: mapView!)
         
         mapView!.showsUserLocation = true
-        mapView!.userTrackingMode = MAUserTrackingMode.Follow
+        mapView!.userTrackingMode = MAUserTrackingMode.follow
         
         mapView!.distanceFilter = 10.0
         mapView!.desiredAccuracy = kCLLocationAccuracyBestForNavigation
@@ -56,38 +56,38 @@ class MainViewController: BaseViewController, MAMapViewDelegate {
     
     func initToolBar() {
         
-        let rightButtonItem: UIBarButtonItem = UIBarButtonItem(image: UIImage(named: "icon_list.png"), style: .Done, target: self, action: #selector(MainViewController.actionHistory))
+        let rightButtonItem: UIBarButtonItem = UIBarButtonItem(image: UIImage(named: "icon_list.png"), style: .done, target: self, action: #selector(MainViewController.actionHistory))
         
         navigationItem.rightBarButtonItem = rightButtonItem
         
-        let leftButtonItem: UIBarButtonItem = UIBarButtonItem(image: UIImage(named: "icon_play.png"), style: .Done, target: self, action: #selector(MainViewController.actionRecordAndStop))
+        let leftButtonItem: UIBarButtonItem = UIBarButtonItem(image: UIImage(named: "icon_play.png"), style: .done, target: self, action: #selector(MainViewController.actionRecordAndStop))
 
         navigationItem.leftBarButtonItem = leftButtonItem
         
         imageLocated = UIImage(named: "location_yes.png")
         imageNotLocate = UIImage(named: "location_no.png")
         
-        locationButton = UIButton(frame: CGRectMake(20, CGRectGetHeight(view.bounds) - 80, 40, 40))
-        locationButton!.autoresizingMask = [.FlexibleRightMargin,.FlexibleTopMargin]
-        locationButton!.backgroundColor = UIColor.whiteColor()
+        locationButton = UIButton(frame: CGRect(x: 20, y: view.bounds.height - 80, width: 40, height: 40))
+        locationButton!.autoresizingMask = [.flexibleRightMargin,.flexibleTopMargin]
+        locationButton!.backgroundColor = UIColor.white
         locationButton!.layer.cornerRadius = 5
-        locationButton!.layer.shadowColor = UIColor.blackColor().CGColor
-        locationButton!.layer.shadowOffset = CGSizeMake(5, 5)
+        locationButton!.layer.shadowColor = UIColor.black.cgColor
+        locationButton!.layer.shadowOffset = CGSize(width: 5, height: 5)
         locationButton!.layer.shadowRadius = 5
         
-        locationButton!.addTarget(self, action: #selector(MainViewController.actionLocation(_:)), forControlEvents: UIControlEvents.TouchUpInside)
+        locationButton!.addTarget(self, action: #selector(MainViewController.actionLocation(_:)), for: UIControlEvents.touchUpInside)
         
-        locationButton!.setImage(imageNotLocate, forState: UIControlState.Normal)
+        locationButton!.setImage(imageNotLocate, for: UIControlState())
         
         view.addSubview(locationButton!)
     }
     
     func initTipView() {
         
-        tipView = TipView(frame: CGRectMake(0, 0, CGRectGetWidth(view.bounds), 30))
+        tipView = TipView(frame: CGRect(x: 0, y: 0, width: view.bounds.width, height: 30))
         view.addSubview(tipView!)
         
-        statusView = StatusView(frame: CGRectMake(5, 35, 150, 150))
+        statusView = StatusView(frame: CGRect(x: 5, y: 35, width: 150, height: 150))
         
         statusView!.showStatusInfo(nil)
         
@@ -100,7 +100,7 @@ class MainViewController: BaseViewController, MAMapViewDelegate {
     func stopLocationIfNeeded() {
         if !isRecording {
             print("stop location")
-            mapView!.setUserTrackingMode(MAUserTrackingMode.None, animated: false)
+            mapView!.setUserTrackingMode(MAUserTrackingMode.none, animated: false)
             mapView!.showsUserLocation = false
         }
     }
@@ -140,22 +140,22 @@ class MainViewController: BaseViewController, MAMapViewDelegate {
 
     }
     
-    func actionLocation(sender: UIButton) {
+    func actionLocation(_ sender: UIButton) {
         print("actionLocation")
         
-        if mapView!.userTrackingMode == MAUserTrackingMode.Follow {
+        if mapView!.userTrackingMode == MAUserTrackingMode.follow {
             
-            mapView!.setUserTrackingMode(MAUserTrackingMode.None, animated: false)
+            mapView!.setUserTrackingMode(MAUserTrackingMode.none, animated: false)
             mapView!.showsUserLocation = false
         }
         else {
-            mapView!.setUserTrackingMode(MAUserTrackingMode.Follow, animated: true)
+            mapView!.setUserTrackingMode(MAUserTrackingMode.follow, animated: true)
         }
     }
     
     /// Helpers
     
-    func addLocation(location: CLLocation?) {
+    func addLocation(_ location: CLLocation?) {
         let success = currentRoute!.addLocation(location)
         if success {
             showTip("locations: \(currentRoute!.locations.count)")
@@ -179,17 +179,17 @@ class MainViewController: BaseViewController, MAMapViewDelegate {
         currentRoute = nil
     }
     
-    func showTip(tip: String?) {
+    func showTip(_ tip: String?) {
         tipView!.showTip(tip)
     }
     
     func hideTip() {
-        tipView!.hidden = true
+        tipView!.isHidden = true
     }
     
     /// MAMapViewDelegate
     
-    func mapView(mapView: MAMapView , didUpdateUserLocation userLocation: MAUserLocation ) {
+    private func mapView(_ mapView: MAMapView , didUpdateUserLocation userLocation: MAUserLocation ) {
         
         if isRecording {
             // filter the result
@@ -212,12 +212,12 @@ class MainViewController: BaseViewController, MAMapViewDelegate {
     /** 
     - (void)mapView:(MAMapView *)mapView didChangeUserTrackingMode:(MAUserTrackingMode)mode animated:(BOOL)animated;
     */
-    func mapView(mapView: MAMapView, didChangeUserTrackingMode mode: MAUserTrackingMode, animated: Bool) {
-        if mode == MAUserTrackingMode.None {
-            locationButton?.setImage(imageNotLocate, forState: UIControlState.Normal)
+    func mapView(_ mapView: MAMapView, didChange mode: MAUserTrackingMode, animated: Bool) {
+        if mode == MAUserTrackingMode.none {
+            locationButton?.setImage(imageNotLocate, for: UIControlState())
         }
         else {
-            locationButton?.setImage(imageLocated, forState: UIControlState.Normal)
+            locationButton?.setImage(imageLocated, for: UIControlState())
         }
     }
 
