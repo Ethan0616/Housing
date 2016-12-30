@@ -47,8 +47,7 @@ class TableViewController1: BaseViewController ,TwitterScrollDelegate {
     // back
     func recievedMBTwitterScrollEvent(){
         self.navigationController?.isNavigationBarHidden = false
-
-        self.navigationController?.popViewController(animated: true)
+        self.navigationController?.popViewController(animated: true)?.viewWillAppear(true)
         
     }
 
@@ -179,7 +178,7 @@ class TwitterScroll: UIView {
         headerImageView.frame   = header.frame
         
         
-        DispatchQueue.global(priority: DispatchQueue.GlobalQueuePriority.default).async { 
+        DispatchQueue.global().async {
             self.prepareForBlurImages()
         }
     }
@@ -304,7 +303,9 @@ class TwitterScroll: UIView {
     }
     
     func touchUpHeaderButton(_ sender : UIButton){
-        self.delegate?.recievedMBTwitterScrollButtonClicked
+        if let funcRecieved = self.delegate?.recievedMBTwitterScrollEvent() {
+                funcRecieved
+        }
     }
 }
 

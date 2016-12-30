@@ -37,8 +37,7 @@ class TableViewController2: BaseViewController{
         self.titles = titleArray
         self.classNames = classArray
         
-        DispatchQueue.global(priority: DispatchQueue.GlobalQueuePriority.default).async(flags: .barrier, execute: {
-            
+        DispatchQueue.global().async { 
             for name in tempArr{
                 
                 let arr = DataBase.share().getAllDataBase(name as! String) as! [DrugSearchModel]
@@ -51,8 +50,8 @@ class TableViewController2: BaseViewController{
                 
                 for i in 0..<arr.count{
                     let model = arr[i]
-                        nameArr.add(model.showName)
-                        textArr.add(model.factory)
+                    nameArr.add(model.showName)
+                    textArr.add(model.factory)
                 }
                 
                 sectionArray.add(name)
@@ -60,13 +59,13 @@ class TableViewController2: BaseViewController{
                 classArray.add(textArr)
                 
                 DispatchQueue.main.async(execute: {
-
+                    
                     self.tableView.reloadData()
                     self.indexView.refreshIndexItems()
-                })   
+                })
             }
-            
-        }) 
+        }
+
     }
     
     func firstAttributesForMJNIndexView(){

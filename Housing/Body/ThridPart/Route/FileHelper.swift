@@ -88,6 +88,7 @@ class FileHelper: NSObject {
         return []
     }
     
+    @discardableResult
     class func deleteFile(_ file: String!) -> Bool! {
         
         let path = recordPathWithName(file)

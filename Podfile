@@ -7,4 +7,7 @@ target 'Housing' do
     	pod 'AMapNavi', '~> 2.0.0'  #高德导航2.0
     	pod 'AMapSearch', '~> 4.1.0' #搜索服务SDK
     	pod 'AMapFoundation', '~> 1.1.0'
+    	pod 'SwifterSwift'
+
 end
+
