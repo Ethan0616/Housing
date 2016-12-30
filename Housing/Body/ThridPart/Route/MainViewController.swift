@@ -189,7 +189,7 @@ class MainViewController: BaseViewController, MAMapViewDelegate {
     
     /// MAMapViewDelegate
     
-    private func mapView(_ mapView: MAMapView , didUpdateUserLocation userLocation: MAUserLocation ) {
+    fileprivate func mapView(_ mapView: MAMapView , didUpdateUserLocation userLocation: MAUserLocation ) {
         
         if isRecording {
             // filter the result

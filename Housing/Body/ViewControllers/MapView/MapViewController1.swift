@@ -129,7 +129,7 @@ extension MapViewController1 : MAMapViewDelegate{
 //    //    }
     
     //- (void)mapView:(MAMapView *)mapView didUpdateUserLocation:(MAUserLocation *)userLocation
-    private func mapView(_ mapView: MAMapView , didUpdateUserLocation userLocation: MAUserLocation ) {
+    fileprivate func mapView(_ mapView: MAMapView , didUpdateUserLocation userLocation: MAUserLocation ) {
         print("location :\(userLocation.location)")
     }
     

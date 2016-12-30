@@ -4,12 +4,32 @@
 <dict>
 	<key>SchemeUserState</key>
 	<dict>
+		<key>Alamofire.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
+		<key>FreeStreamer.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
 		<key>Pods-Housing.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
 		</dict>
-		<key>SwifterSwift.xcscheme</key>
+		<key>Reachability.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
+		<key>SDWebImage.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
+		<key>SVProgressHUD.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
@@ -17,12 +37,32 @@
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
-		<key>4B2CE1232DFB74913F8DBA20520785C6</key>
+		<key>0C397AA89C62A5795B4BB32AF5463730</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>A1FE0CF154C50433E985CCCAB0C6B028</key>
+		<key>4E2BF6551E9C45BC370F7C2F6A373569</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>6A6026B1B53DC129F93D58EBD695D5AC</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>79C040AFDDCE1BCBF6D8B5EB0B85887F</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>AAB6F5ABB9AC02C720A70DBDA5B82E33</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>CC7083EA8E3EF430D0FA3AA662188CE5</key>
 		<dict>
 			<key>primary</key>
 			<true/>

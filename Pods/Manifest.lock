@@ -1,4 +1,5 @@
 PODS:
+  - Alamofire (4.2.0)
   - AMap3DMap (4.0.3):
     - AMapFoundation (~> 1.0)
   - AMapFoundation (1.1.0)
@@ -7,22 +8,36 @@ PODS:
     - AMapFoundation (~> 1.0)
   - AMapSearch (4.1.0):
     - AMapFoundation (~> 1.0)
-  - SwifterSwift (1.4.1)
+  - FreeStreamer (3.5.8):
+    - Reachability (~> 3.0)
+  - Reachability (3.2)
+  - SDWebImage (3.8.2):
+    - SDWebImage/Core (= 3.8.2)
+  - SDWebImage/Core (3.8.2)
+  - SVProgressHUD (2.0.4)
 
 DEPENDENCIES:
+  - Alamofire (~> 4.0)
   - AMap3DMap (~> 4.0.3)
   - AMapFoundation (~> 1.1.0)
   - AMapNavi (~> 2.0.0)
   - AMapSearch (~> 4.1.0)
-  - SwifterSwift
+  - FreeStreamer (~> 3.5.8)
+  - Reachability (~> 3.2)
+  - SDWebImage (~> 3.7)
+  - SVProgressHUD (~> 2.0.3)
 
 SPEC CHECKSUMS:
+  Alamofire: aa2e09d871c9160ac53c90e83c68064a94e3dfbe
   AMap3DMap: 8619d67fe7b3bbe45abf74b3434eb9ab20220507
   AMapFoundation: 15db20567e6512422a086a01b42a88b145bc2500
   AMapNavi: d6d94118143ce1d3e3117d8085750fae5af55af4
   AMapSearch: cb4722480d2d4331a032d43bd1070ed0fa55dac9
-  SwifterSwift: bef9fbfb6558091a70c71a5f7441cb17bbed78a7
+  FreeStreamer: 61471ef4a1934c67de7ec152adb91ca8fff8318f
+  Reachability: 33e18b67625424e47b6cde6d202dce689ad7af96
+  SDWebImage: 098e97e6176540799c27e804c96653ee0833d13c
+  SVProgressHUD: bfde85ed6c573ea802b9cb37894ed9b629034f1b
 
-PODFILE CHECKSUM: f15fa2f4b6dd2cbe482e282d71ae4abd91d141ac
+PODFILE CHECKSUM: 5173ce2c563551e21ef0685927d8e06bf7483ad5
 
 COCOAPODS: 1.0.1

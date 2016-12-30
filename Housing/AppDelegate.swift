@@ -7,11 +7,15 @@
 //
 
 import UIKit
+import Reachability
+
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
+    var AppNav : UINavigationController!
+    var reach: Reachability?
 
     fileprivate let MapViewAPIKey = "2594c2a3219fc215949df291c231a6cb"
 
@@ -46,3 +50,64 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
 }
 
+extension AppDelegate{
+    fileprivate func codeForTachograph(){
+        AMapServices.shared().apiKey = MapViewAPIKey
+        
+        isReachable()
+        
+        window = UIWindow(frame: Screen)
+        
+        window?.backgroundColor = UIColor.orange
+        
+        window?.rootViewController = showLeadpage()
+        
+        window?.makeKeyAndVisible()
+    }
+    
+    // 当网络发生变化
+    fileprivate func isReachable() -> Void{
+        
+//        self.reach = Reachability.forInternetConnection()
+//        
+//        // Set the blocks
+//        self.reach?.reachableBlock = {
+//            ( reach: Reachability!) -> Void in
+//            // keep in mind this is called on a background thread
+//            // and if you are updating the UI it needs to happen
+//            // on the main thread, like this:
+//            DispatchQueue.main.async {
+//                MSGLog(Message: "REACHABLE!")
+//            }
+//            
+//        }
+//        
+//        self.reach?.unreachableBlock = {
+//            ( reach: Reachability!) -> Void in
+//            MSGLog(Message: "UNREACHABLE!")
+//        }
+//        
+//        self.reach!.startNotifier()
+        
+    }
+    
+    //MARK: - 引导页设置
+    fileprivate func showLeadpage() -> UIViewController {
+        let versionStr = "CFBundleShortVersionString"
+        let cureentVersion = Bundle.main.infoDictionary![versionStr] as! String
+        let oldVersion = (UserDefaults.standard.object(forKey: versionStr) as? String) ?? ""
+        
+        if cureentVersion.compare(oldVersion) == ComparisonResult.orderedDescending {
+            UserDefaults.standard.set(cureentVersion, forKey: versionStr)
+            UserDefaults.standard.synchronize()
+            let AppNav  = UINavigationController.init(rootViewController: ADViewController())
+            AppNav.setNavigationBarHidden(true, animated: false)
+            
+            
+            return AppNav
+        }
+        let AppNav  = UINavigationController.init(rootViewController: MainViewController())
+        AppNav.setNavigationBarHidden(true, animated: false)
+        return AppNav
+    }
+}
