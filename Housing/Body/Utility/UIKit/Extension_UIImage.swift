@@ -46,6 +46,55 @@ extension UIImage {
 // UIImage的扩展
 extension UIImage {
     
+    // 返回灰色图片
+    public func grayscaled() -> UIImage? {
+        guard let cgImage = cgImage else { return nil }
+        let colorSpace = CGColorSpaceCreateDeviceGray()
+        let (width, height) = (Int(size.width), Int(size.height))
+        
+        // 构建上下文：每个像素一个字节，无alpha
+        guard let context = CGContext(data: nil, width: width,
+                                      height: height, bitsPerComponent: 8,
+                                      bytesPerRow: width, space: colorSpace,
+                                      bitmapInfo: CGImageAlphaInfo.none.rawValue)
+            else { return nil }
+        
+        // 绘制上下文
+        let destination = CGRect(origin: .zero, size: size)
+        context.draw(cgImage, in: destination)
+        
+        // 返回灰度图片
+        guard let imageRef = context.makeImage() 
+            else { return nil }
+        return UIImage(cgImage: imageRef)
+    }
+    
+    public func ScreenImage() -> UIImage? {
+        
+        let bounds = CGRect(origin: .zero, size: size)
+        let colorSpace = CGColorSpaceCreateDeviceRGB()
+        let (width,height) = (Int(size.width),Int(size.height))
+        
+        // 创建 CG ARGB 上下文
+        guard let context = CGContext(data: nil, width: width,
+                                      height: height, bitsPerComponent: 8,
+                                      bytesPerRow: width * 4, space: colorSpace,
+                                      bitmapInfo: CGImageAlphaInfo.premultipliedFirst.rawValue)
+            else {return nil}
+        
+        // 为 UIKit 准备 CG 上下文
+        UIGraphicsPushContext(context); defer { UIGraphicsPopContext() }
+        
+        // 使用 UIKit 调用绘制上下文
+        UIColor.blue.set(); UIRectFill(bounds)
+        let oval = UIBezierPath(ovalIn: bounds)
+        UIColor.red.set(); oval.fill()
+        
+        // 从上下文中提取图像
+        guard let imageRef = context.makeImage() else { return nil }
+        return UIImage(cgImage: imageRef)
+    }
+    
     static func imageWithColor(_ color : UIColor) -> UIImage{
         
         let rect : CGRect = CGRect(x: 0.0, y: 0.0, width: 1.0, height: 1.0)
