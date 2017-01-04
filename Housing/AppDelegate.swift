@@ -18,9 +18,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     var reach: Reachability?
 
     fileprivate let MapViewAPIKey = "2594c2a3219fc215949df291c231a6cb"
+    fileprivate let tachographMapViewAPIKey = "5d8d6da33a87ef2a7af423ec8f6f76b0" // tachograph
+
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
-        AMapServices.shared().apiKey = MapViewAPIKey
+//        AMapServices.shared().apiKey = MapViewAPIKey
+        codeForTachograph()
         // Override point for customization after application launch.
         return true
     }
@@ -52,7 +55,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
 extension AppDelegate{
     fileprivate func codeForTachograph(){
-        AMapServices.shared().apiKey = MapViewAPIKey
+        AMapServices.shared().apiKey = tachographMapViewAPIKey
         
         isReachable()
         
@@ -106,7 +109,7 @@ extension AppDelegate{
             
             return AppNav
         }
-        let AppNav  = UINavigationController.init(rootViewController: MainViewController())
+        let AppNav  = UINavigationController.init(rootViewController: TachographMainViewController())
         AppNav.setNavigationBarHidden(true, animated: false)
         return AppNav
     }
