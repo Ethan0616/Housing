@@ -43,15 +43,17 @@
 		<true/>
 	</dict>
 	<key>NSCameraUsageDescription</key>
-	<string>cameraDesciption</string>
+	<string>YES</string>
 	<key>NSContactsUsageDescription</key>
-	<string>contactsDesciption</string>
+	<string>YES</string>
 	<key>NSLocationAlwaysUsageDescription</key>
+	<string>YES</string>
+	<key>NSPhotoLibraryUsageDescription</key>
 	<string>YES</string>
 	<key>NSLocationWhenInUseUsageDeescription</key>
 	<string>YES</string>
 	<key>NSMicrophoneUsageDescription</key>
-	<string>microphoneDesciption</string>
+	<string>YES</string>
 	<key>UIBackgroundModes</key>
 	<array>
 		<string>location</string>
