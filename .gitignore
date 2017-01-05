@@ -15,21 +15,15 @@ DerivedData/
 !default.mode2v3
 *.perspectivev3
 !default.perspectivev3
-*.xcuserstate
-project.xcworkspace
-xcuserdata
 UserInterfaceState.xcuserstate
-project.xcworkspace/
 xcuserdata/
-UserInterface.xcuserstate 
 *.xcworkspace
+*.xcuserdatad
 .DS_Store
 
 ## Other
 *.moved-aside
 *.xcuserstate
-project.xcworkspace
-UserInterfaceState.xcuserstate
 project.xcworkspace/
 UserInterface.xcuserstate
 *.xcworkspace
