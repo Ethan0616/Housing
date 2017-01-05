@@ -78,6 +78,12 @@ extension TachographMainViewController : TachographMainViewDelegate{
         }else if index == 0{
             let vc = MusicListViewController()
             navigationController?.pushViewController(vc, animated: true)
+            navigationController?.setNavigationBarHidden(false, animated: false)
+
+        }else{
+            let vc = ViewController()
+            navigationController?.pushViewController(vc, animated: true)
+            navigationController?.setNavigationBarHidden(false, animated: false)
         }
         
         

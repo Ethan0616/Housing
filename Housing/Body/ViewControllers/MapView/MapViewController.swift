@@ -65,11 +65,14 @@ class MapViewController: BaseViewController {
                      */
                     mapView.mapType = .standard
                     self.navigationController?.pushViewController(con, animated: true)
+                    navigationController?.setNavigationBarHidden(false, animated: false)
                     return
 
                 }
             }
             self.navigationController?.pushViewController(controller, animated: true)
+            navigationController?.setNavigationBarHidden(false, animated: false)
+
         }
     }
     

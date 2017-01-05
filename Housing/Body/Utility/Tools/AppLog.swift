@@ -39,14 +39,14 @@ import Reachability
 
 #if DEBUG
     // debug 版本保存日志
-    private let writeFileWithOutPut  : Bool = false
+    private let writeFileWithOutPut  : Bool = true
     
     // 控制台输出
     private let openLog : Bool = true
 #else
     
     private let writeFileWithOutPut  : Bool = false
-    private let openLog : Bool = false
+    private let openLog : Bool = true
     
 #endif
 private var filePath : String = ""

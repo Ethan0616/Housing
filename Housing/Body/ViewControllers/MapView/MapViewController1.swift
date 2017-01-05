@@ -16,7 +16,7 @@ class MapViewController1: BaseViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.navigationController?.isNavigationBarHidden = true
+//        self.navigationController?.isNavigationBarHidden = true
         initMapView()
         search = AMapSearchAPI()
         search?.delegate = self
