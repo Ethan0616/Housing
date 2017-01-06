@@ -92,7 +92,7 @@ extension CollectionView1 : UICollectionViewDataSource,UICollectionViewDelegate,
         let imageIndex =  arc4random() % 23
         let imageName  = String(format: "%02ld.jpg", imageIndex)
         
-        collectionCell.imageView.image = UIImage(named: imageName)
+        collectionCell.imageView.image = UIImage.init(asName: imageName, directory: "resource") 
         
         return collectionCell
     }

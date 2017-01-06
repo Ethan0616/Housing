@@ -36,7 +36,7 @@ class MusicPlayViewController: UIViewController{
         view.backgroundColor = UIColor.black
         
         let backBtn = UIButton()
-        backBtn.setImage(UIImage(named: "down"), for: UIControlState())
+        backBtn.setImage(UIImage.init(asName: "down", directory: "resource"), for: UIControlState())
         backBtn.addTarget(self, action: #selector(back), for: .touchUpInside)
         view.addSubview(backBtn)
         backBtn.translatesAutoresizingMaskIntoConstraints = false

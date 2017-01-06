@@ -31,7 +31,7 @@ class TableViewController1: BaseViewController ,TwitterScrollDelegate {
         super.viewDidLoad()
         self.navigationController?.isNavigationBarHidden = true
         tableV.frame = view.bounds
-        twitterScrollView = TwitterScroll(backgroundImage: UIImage(named: "dataBase1.jpg")!, avatarImage: UIImage(named: "dataBase0.jpg")!, titleString: "Hello,Kitty", subtitleString: "Back dropdown", buttonTitle: "下拉返回", scrollView: tableV)
+        twitterScrollView = TwitterScroll(backgroundImage: UIImage(asName: "dataBase1", directory: "resource", type: "jpg")!, avatarImage: UIImage(asName: "dataBase0", directory: "resource", type: "jpg")!, titleString: "Hello,Kitty", subtitleString: "Back dropdown", buttonTitle: "下拉返回", scrollView: tableV)
 //        scrollV.frame = view.bounds
 //        scrollV.contentSize = CGSizeMake(scrollV.width, scrollV.height * 4)
 //        twitterScrollView = TwitterScroll(backgroundImage: UIImage(named: "dataBase1.jpg")!, avatarImage: UIImage(named: "dataBase0.jpg")!, titleString: "Hello,Kitty", subtitleString: "subtitleStri", buttonTitle: "buttonTitle", scrollView: scrollV)

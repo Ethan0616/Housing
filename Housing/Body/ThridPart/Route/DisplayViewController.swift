@@ -39,7 +39,7 @@ class DisplayViewController: UIViewController, MAMapViewDelegate {
     
     func initToolBar() {
         
-        let playButtonItem: UIBarButtonItem = UIBarButtonItem(image: UIImage(named: "icon_play.png"), style: .done, target: self, action: #selector(DisplayViewController.actionPlayAndStop))
+        let playButtonItem: UIBarButtonItem = UIBarButtonItem(image: UIImage.init(asName: "icon_play.png", directory: "resource") , style: .done, target: self, action: #selector(DisplayViewController.actionPlayAndStop))
         
         navigationItem.rightBarButtonItem = playButtonItem
     }
@@ -88,7 +88,7 @@ class DisplayViewController: UIViewController, MAMapViewDelegate {
         isPlaying = !isPlaying
         
         if isPlaying {
-            navigationItem.rightBarButtonItem!.image = UIImage(named: "icon_stop.png")
+            navigationItem.rightBarButtonItem!.image = UIImage.init(asName: "icon_stop.png", directory: "resource")
             
             if (myLocation == nil) {
                 myLocation = MAPointAnnotation()
@@ -101,7 +101,7 @@ class DisplayViewController: UIViewController, MAMapViewDelegate {
             animateToNextCoordinate()
         }
         else {
-            navigationItem.rightBarButtonItem!.image = UIImage(named: "icon_play.png")
+            navigationItem.rightBarButtonItem!.image = UIImage.init(asName: "icon_play.png", directory: "resource")
             
             let view: MAAnnotationView? = mapView!.view(for: myLocation)
             if (view != nil) {
@@ -187,7 +187,7 @@ class DisplayViewController: UIViewController, MAMapViewDelegate {
                 poiAnnotationView = MAAnnotationView(annotation: annotation, reuseIdentifier: annotationIdentifier)
             }
             
-            poiAnnotationView?.image = UIImage(named: "aeroplane.png")
+            poiAnnotationView?.image = UIImage.init(asName: "aeroplane.png", directory: "resource") 
             poiAnnotationView!.canShowCallout = false
             
             return poiAnnotationView;
