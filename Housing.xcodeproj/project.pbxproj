@@ -99,6 +99,9 @@
 		AA436FCA1E1F787400985B4F /* TableViewController1.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA436F541E1F787400985B4F /* TableViewController1.swift */; };
 		AA436FCB1E1F787400985B4F /* TableViewController2.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA436F551E1F787400985B4F /* TableViewController2.swift */; };
 		AA436FCF1E1F78AB00985B4F /* T_DrugName.db in Resources */ = {isa = PBXBuildFile; fileRef = AA436FCE1E1F78AB00985B4F /* T_DrugName.db */; };
+		AA76DB5A1E1F8A07002D0A76 /* Icon.png in Resources */ = {isa = PBXBuildFile; fileRef = AA76DB571E1F8A07002D0A76 /* Icon.png */; };
+		AA76DB5B1E1F8A07002D0A76 /* Icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = AA76DB581E1F8A07002D0A76 /* Icon@2x.png */; };
+		AA76DB5C1E1F8A07002D0A76 /* Icon120.png in Resources */ = {isa = PBXBuildFile; fileRef = AA76DB591E1F8A07002D0A76 /* Icon120.png */; };
 		AA99E0321E163E5A00F61A79 /* Resources.bundle in Resources */ = {isa = PBXBuildFile; fileRef = AA99E0311E163E5A00F61A79 /* Resources.bundle */; };
 		AAD406F01D5C6EFA009D18D5 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAD406EF1D5C6EFA009D18D5 /* AppDelegate.swift */; };
 		AAD406F51D5C6EFA009D18D5 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AAD406F31D5C6EFA009D18D5 /* Main.storyboard */; };
@@ -220,6 +223,9 @@
 		AA436F541E1F787400985B4F /* TableViewController1.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TableViewController1.swift; sourceTree = "<group>"; };
 		AA436F551E1F787400985B4F /* TableViewController2.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TableViewController2.swift; sourceTree = "<group>"; };
 		AA436FCE1E1F78AB00985B4F /* T_DrugName.db */ = {isa = PBXFileReference; lastKnownFileType = file; path = T_DrugName.db; sourceTree = "<group>"; };
+		AA76DB571E1F8A07002D0A76 /* Icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Icon.png; sourceTree = "<group>"; };
+		AA76DB581E1F8A07002D0A76 /* Icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon@2x.png"; sourceTree = "<group>"; };
+		AA76DB591E1F8A07002D0A76 /* Icon120.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Icon120.png; sourceTree = "<group>"; };
 		AA99E0311E163E5A00F61A79 /* Resources.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = Resources.bundle; sourceTree = "<group>"; };
 		AAD406EC1D5C6EFA009D18D5 /* Housing.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Housing.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		AAD406EF1D5C6EFA009D18D5 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -581,6 +587,9 @@
 				AA436FCE1E1F78AB00985B4F /* T_DrugName.db */,
 				AAD406F81D5C6EFA009D18D5 /* LaunchScreen.storyboard */,
 				AAD406FB1D5C6EFA009D18D5 /* Info.plist */,
+				AA76DB571E1F8A07002D0A76 /* Icon.png */,
+				AA76DB581E1F8A07002D0A76 /* Icon@2x.png */,
+				AA76DB591E1F8A07002D0A76 /* Icon120.png */,
 			);
 			path = Housing;
 			sourceTree = "<group>";
@@ -657,6 +666,9 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AA76DB5C1E1F8A07002D0A76 /* Icon120.png in Resources */,
+				AA76DB5A1E1F8A07002D0A76 /* Icon.png in Resources */,
+				AA76DB5B1E1F8A07002D0A76 /* Icon@2x.png in Resources */,
 				AA436FAD1E1F787400985B4F /* location_no@2x.png in Resources */,
 				AA99E0321E163E5A00F61A79 /* Resources.bundle in Resources */,
 				AA436FCF1E1F78AB00985B4F /* T_DrugName.db in Resources */,
