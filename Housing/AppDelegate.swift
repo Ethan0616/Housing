@@ -103,7 +103,7 @@ extension AppDelegate{
         if cureentVersion.compare(oldVersion) == ComparisonResult.orderedDescending {
             UserDefaults.standard.set(cureentVersion, forKey: versionStr)
             UserDefaults.standard.synchronize()
-            let AppNav  = UINavigationController.init(rootViewController: ADViewController())
+            let AppNav  = UINavigationController.init(rootViewController: ViewController())
             AppNav.setNavigationBarHidden(true, animated: false)
             
             

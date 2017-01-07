@@ -10,4 +10,18 @@ import Foundation
 
 extension NSDictionary{
     
+    func valueForKey(_ key : NSString,DefaultValue defaultValue : NSString) -> NSString{
+        
+        guard !key.isEqual(to: "") else {
+            return defaultValue
+        }
+        
+        let result = self.value(forKey: key as String)
+        
+        guard !(result is NSString) else {
+            return result.debugDescription as NSString
+        }
+        
+        return result as! NSString
+    }
 }

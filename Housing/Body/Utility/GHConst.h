@@ -8,7 +8,6 @@
 
 #import <Foundation/Foundation.h>
 #import <UIKit/UIKit.h>
-#import "NSDictionary+NullSafe.h"
 
 #define kNewRedColor kColor(238, 80, 80)
 #define kNewGrayColor kColor(221, 221, 221)

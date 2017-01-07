@@ -9,7 +9,6 @@
 /* Begin PBXBuildFile section */
 		AA436EB61E1F767A00985B4F /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA436EB41E1F767A00985B4F /* BaseViewController.swift */; };
 		AA436EB71E1F767A00985B4F /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA436EB51E1F767A00985B4F /* ViewController.swift */; };
-		AA436F561E1F787400985B4F /* ADViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA436EB81E1F787400985B4F /* ADViewController.swift */; };
 		AA436F571E1F787400985B4F /* Extension_NSArray.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA436EBB1E1F787400985B4F /* Extension_NSArray.swift */; };
 		AA436F581E1F787400985B4F /* Extension_NSBundle.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA436EBC1E1F787400985B4F /* Extension_NSBundle.swift */; };
 		AA436F591E1F787400985B4F /* Extension_NSData.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA436EBD1E1F787400985B4F /* Extension_NSData.swift */; };
@@ -74,18 +73,12 @@
 		AA436FB11E1F787400985B4F /* Route.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA436F2C1E1F787400985B4F /* Route.swift */; };
 		AA436FB21E1F787400985B4F /* StatusView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA436F2D1E1F787400985B4F /* StatusView.swift */; };
 		AA436FB31E1F787400985B4F /* TipView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA436F2E1E1F787400985B4F /* TipView.swift */; };
-		AA436FB41E1F787400985B4F /* AppColorConfigure.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA436F301E1F787400985B4F /* AppColorConfigure.swift */; };
-		AA436FB51E1F787400985B4F /* AppCommon.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA436F311E1F787400985B4F /* AppCommon.swift */; };
 		AA436FB61E1F787400985B4F /* AppConfigure.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA436F321E1F787400985B4F /* AppConfigure.swift */; };
-		AA436FB71E1F787400985B4F /* AppExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA436F331E1F787400985B4F /* AppExtension.swift */; };
 		AA436FB81E1F787400985B4F /* AppLog.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA436F341E1F787400985B4F /* AppLog.swift */; };
 		AA436FB91E1F787400985B4F /* FileManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA436F351E1F787400985B4F /* FileManager.swift */; };
 		AA436FBA1E1F787400985B4F /* GHConst.m in Sources */ = {isa = PBXBuildFile; fileRef = AA436F371E1F787400985B4F /* GHConst.m */; };
-		AA436FBB1E1F787400985B4F /* Network.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA436F381E1F787400985B4F /* Network.swift */; };
 		AA436FBC1E1F787400985B4F /* NSArray+Log.m in Sources */ = {isa = PBXBuildFile; fileRef = AA436F3A1E1F787400985B4F /* NSArray+Log.m */; };
 		AA436FBD1E1F787400985B4F /* NSData+SDDataCache.m in Sources */ = {isa = PBXBuildFile; fileRef = AA436F3C1E1F787400985B4F /* NSData+SDDataCache.m */; };
-		AA436FBE1E1F787400985B4F /* NSDictionary+NullSafe.m in Sources */ = {isa = PBXBuildFile; fileRef = AA436F3E1E1F787400985B4F /* NSDictionary+NullSafe.m */; };
-		AA436FBF1E1F787400985B4F /* String+Hash.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA436F3F1E1F787400985B4F /* String+Hash.swift */; };
 		AA436FC01E1F787400985B4F /* UIImage+BundleImage.m in Sources */ = {isa = PBXBuildFile; fileRef = AA436F411E1F787400985B4F /* UIImage+BundleImage.m */; };
 		AA436FC11E1F787400985B4F /* CustomViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA436F441E1F787400985B4F /* CustomViewController.swift */; };
 		AA436FC21E1F787400985B4F /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA436F461E1F787400985B4F /* MapViewController.swift */; };
@@ -117,7 +110,6 @@
 		83141BFB173305AB063B4E7E /* Pods-Housing.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Housing.release.xcconfig"; path = "Pods/Target Support Files/Pods-Housing/Pods-Housing.release.xcconfig"; sourceTree = "<group>"; };
 		AA436EB41E1F767A00985B4F /* BaseViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = BaseViewController.swift; path = Body/BaseViewController.swift; sourceTree = "<group>"; };
 		AA436EB51E1F767A00985B4F /* ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ViewController.swift; path = Body/ViewController.swift; sourceTree = "<group>"; };
-		AA436EB81E1F787400985B4F /* ADViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ADViewController.swift; path = Body/ADViewController.swift; sourceTree = "<group>"; };
 		AA436EBB1E1F787400985B4F /* Extension_NSArray.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Extension_NSArray.swift; sourceTree = "<group>"; };
 		AA436EBC1E1F787400985B4F /* Extension_NSBundle.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Extension_NSBundle.swift; sourceTree = "<group>"; };
 		AA436EBD1E1F787400985B4F /* Extension_NSData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Extension_NSData.swift; sourceTree = "<group>"; };
@@ -193,22 +185,15 @@
 		AA436F2C1E1F787400985B4F /* Route.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Route.swift; sourceTree = "<group>"; };
 		AA436F2D1E1F787400985B4F /* StatusView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StatusView.swift; sourceTree = "<group>"; };
 		AA436F2E1E1F787400985B4F /* TipView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TipView.swift; sourceTree = "<group>"; };
-		AA436F301E1F787400985B4F /* AppColorConfigure.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppColorConfigure.swift; sourceTree = "<group>"; };
-		AA436F311E1F787400985B4F /* AppCommon.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppCommon.swift; sourceTree = "<group>"; };
 		AA436F321E1F787400985B4F /* AppConfigure.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppConfigure.swift; sourceTree = "<group>"; };
-		AA436F331E1F787400985B4F /* AppExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppExtension.swift; sourceTree = "<group>"; };
 		AA436F341E1F787400985B4F /* AppLog.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppLog.swift; sourceTree = "<group>"; };
 		AA436F351E1F787400985B4F /* FileManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FileManager.swift; sourceTree = "<group>"; };
 		AA436F361E1F787400985B4F /* GHConst.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GHConst.h; sourceTree = "<group>"; };
 		AA436F371E1F787400985B4F /* GHConst.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GHConst.m; sourceTree = "<group>"; };
-		AA436F381E1F787400985B4F /* Network.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Network.swift; sourceTree = "<group>"; };
 		AA436F391E1F787400985B4F /* NSArray+Log.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSArray+Log.h"; sourceTree = "<group>"; };
 		AA436F3A1E1F787400985B4F /* NSArray+Log.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSArray+Log.m"; sourceTree = "<group>"; };
 		AA436F3B1E1F787400985B4F /* NSData+SDDataCache.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSData+SDDataCache.h"; sourceTree = "<group>"; };
 		AA436F3C1E1F787400985B4F /* NSData+SDDataCache.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSData+SDDataCache.m"; sourceTree = "<group>"; };
-		AA436F3D1E1F787400985B4F /* NSDictionary+NullSafe.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDictionary+NullSafe.h"; sourceTree = "<group>"; };
-		AA436F3E1E1F787400985B4F /* NSDictionary+NullSafe.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDictionary+NullSafe.m"; sourceTree = "<group>"; };
-		AA436F3F1E1F787400985B4F /* String+Hash.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "String+Hash.swift"; sourceTree = "<group>"; };
 		AA436F401E1F787400985B4F /* UIImage+BundleImage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+BundleImage.h"; sourceTree = "<group>"; };
 		AA436F411E1F787400985B4F /* UIImage+BundleImage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+BundleImage.m"; sourceTree = "<group>"; };
 		AA436F441E1F787400985B4F /* CustomViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomViewController.swift; sourceTree = "<group>"; };
@@ -441,22 +426,15 @@
 		AA436F2F1E1F787400985B4F /* Utility */ = {
 			isa = PBXGroup;
 			children = (
-				AA436F301E1F787400985B4F /* AppColorConfigure.swift */,
-				AA436F311E1F787400985B4F /* AppCommon.swift */,
 				AA436F321E1F787400985B4F /* AppConfigure.swift */,
-				AA436F331E1F787400985B4F /* AppExtension.swift */,
 				AA436F341E1F787400985B4F /* AppLog.swift */,
 				AA436F351E1F787400985B4F /* FileManager.swift */,
 				AA436F361E1F787400985B4F /* GHConst.h */,
 				AA436F371E1F787400985B4F /* GHConst.m */,
-				AA436F381E1F787400985B4F /* Network.swift */,
 				AA436F391E1F787400985B4F /* NSArray+Log.h */,
 				AA436F3A1E1F787400985B4F /* NSArray+Log.m */,
 				AA436F3B1E1F787400985B4F /* NSData+SDDataCache.h */,
 				AA436F3C1E1F787400985B4F /* NSData+SDDataCache.m */,
-				AA436F3D1E1F787400985B4F /* NSDictionary+NullSafe.h */,
-				AA436F3E1E1F787400985B4F /* NSDictionary+NullSafe.m */,
-				AA436F3F1E1F787400985B4F /* String+Hash.swift */,
 				AA436F401E1F787400985B4F /* UIImage+BundleImage.h */,
 				AA436F411E1F787400985B4F /* UIImage+BundleImage.m */,
 			);
@@ -581,7 +559,6 @@
 				AAD406EF1D5C6EFA009D18D5 /* AppDelegate.swift */,
 				AA436EB41E1F767A00985B4F /* BaseViewController.swift */,
 				AA436EB51E1F767A00985B4F /* ViewController.swift */,
-				AA436EB81E1F787400985B4F /* ADViewController.swift */,
 				AAD406F31D5C6EFA009D18D5 /* Main.storyboard */,
 				AAD406F61D5C6EFA009D18D5 /* Assets.xcassets */,
 				AA436FCE1E1F78AB00985B4F /* T_DrugName.db */,
@@ -740,10 +717,8 @@
 			files = (
 				AA436F701E1F787400985B4F /* Extension_UIViewController.swift in Sources */,
 				AA436F601E1F787400985B4F /* Extension_NSThread.swift in Sources */,
-				AA436FBF1E1F787400985B4F /* String+Hash.swift in Sources */,
 				AAD406F01D5C6EFA009D18D5 /* AppDelegate.swift in Sources */,
 				AA436FC51E1F787400985B4F /* CollectionViewController.swift in Sources */,
-				AA436F561E1F787400985B4F /* ADViewController.swift in Sources */,
 				AA436F6C1E1F787400985B4F /* Extension_UIScreen.swift in Sources */,
 				AA436FCA1E1F787400985B4F /* TableViewController1.swift in Sources */,
 				AA436F671E1F787400985B4F /* Extension_UIControl.swift in Sources */,
@@ -761,7 +736,6 @@
 				AA436FBC1E1F787400985B4F /* NSArray+Log.m in Sources */,
 				AA436F791E1F787400985B4F /* TabbarView.swift in Sources */,
 				AA436F7B1E1F787400985B4F /* DataBase.m in Sources */,
-				AA436FB41E1F787400985B4F /* AppColorConfigure.swift in Sources */,
 				AA436FB31E1F787400985B4F /* TipView.swift in Sources */,
 				AA436FA91E1F787400985B4F /* FileHelper.swift in Sources */,
 				AA436FCB1E1F787400985B4F /* TableViewController2.swift in Sources */,
@@ -789,10 +763,8 @@
 				AA436F5E1E1F787400985B4F /* Extension_NSNumber.swift in Sources */,
 				AA436FC81E1F787400985B4F /* TabBarController.swift in Sources */,
 				AA436F5B1E1F787400985B4F /* Extension_NSDictionary.swift in Sources */,
-				AA436FBB1E1F787400985B4F /* Network.swift in Sources */,
 				AA436F5D1E1F787400985B4F /* Extension_NSNotificationCenter.swift in Sources */,
 				AA436FC01E1F787400985B4F /* UIImage+BundleImage.m in Sources */,
-				AA436FB71E1F787400985B4F /* AppExtension.swift in Sources */,
 				AA436F5F1E1F787400985B4F /* Extension_NSObject.swift in Sources */,
 				AA436FA61E1F787400985B4F /* MJNIndexView.m in Sources */,
 				AA436F771E1F787400985B4F /* MainView.swift in Sources */,
@@ -808,9 +780,7 @@
 				AA436FB91E1F787400985B4F /* FileManager.swift in Sources */,
 				AA436FA31E1F787400985B4F /* FMDatabasePool.m in Sources */,
 				AA436FA81E1F787400985B4F /* DisplayViewController.swift in Sources */,
-				AA436FBE1E1F787400985B4F /* NSDictionary+NullSafe.m in Sources */,
 				AA436FA51E1F787400985B4F /* FMResultSet.m in Sources */,
-				AA436FB51E1F787400985B4F /* AppCommon.swift in Sources */,
 				AA436F6D1E1F787400985B4F /* Extension_UIScrollView.swift in Sources */,
 				AA436F7D1E1F787400985B4F /* MovieListController.swift in Sources */,
 				AA436F581E1F787400985B4F /* Extension_NSBundle.swift in Sources */,

@@ -261,14 +261,14 @@ extension AppLog{
      *  应用名称
      */
     fileprivate class func AppDisplayName() -> String {
-        return "\(infoDict.value(forKey: "CFBundleDisplayName", defaultValue: "没有CFBundleDisplayName"))"
+        return "\(infoDict.valueForKey("CFBundleDisplayName", DefaultValue: "没有CFBundleDisplayName"))"
     }
     
     /**
      *  应用版本号
      */
     fileprivate class func AppVersion() -> String {
-        return "\(infoDict.value(forKey: "CFBundleVersion", defaultValue: "没有CFBundleVersion!"))"
+        return "\(infoDict.valueForKey("CFBundleVersion", DefaultValue: "没有CFBundleVersion!"))"
     }
     
     /**

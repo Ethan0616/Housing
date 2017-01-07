@@ -16,7 +16,6 @@
 // Tachograph
 #import <CommonCrypto/CommonCrypto.h>
 #import "GHConst.h"
-#import "NSDictionary+NullSafe.h"
 #import "NSData+SDDataCache.h"
 #import "NSArray+Log.h"
 #import "UIImage+BundleImage.h"

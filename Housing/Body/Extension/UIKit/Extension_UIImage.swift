@@ -192,4 +192,43 @@ extension UIImage {
         return returnImage
     }
     
+/*
+     
+     + (nullable UIImage *)imageWithASName:(nullable NSString *)nameStr directory:(nullable NSString *)dirStr
+     {
+     
+     
+     NSString *bundleStr = [[NSBundle mainBundle] pathForResource:@"Resources"
+     ofType:@"bundle"];
+     
+     return  [UIImage imageNamed:[[NSBundle bundleWithPath:bundleStr] pathForResource:nameStr
+     ofType:@"png"
+     inDirectory:dirStr]];
+     
+     
+     }
+     
+     + (nullable UIImage *)imageWithASName:(nullable NSString *)nameStr directory:(nullable NSString *)dirStr bundle:(nullable NSString *)bundleName
+     {
+     NSString *bundleStr = [[NSBundle mainBundle] pathForResource:bundleName ofType:@"bundle"];
+     
+     return [UIImage imageNamed:[[NSBundle bundleWithPath:bundleStr] pathForResource:nameStr ofType:@"png" inDirectory:dirStr]];
+     }
+     
+     + (nullable UIImage *)imageWithASName:(nullable NSString *)nameStr directory:(nullable NSString *)dirStr type:(nullable NSString *)typeStr
+     {
+     
+     
+     NSString *bundleStr = [[NSBundle mainBundle] pathForResource:@"Resources"
+     ofType:@"bundle"];
+     
+     return  [UIImage imageNamed:[[NSBundle bundleWithPath:bundleStr] pathForResource:nameStr
+     ofType:typeStr
+     inDirectory:dirStr]];
+     
+     
+     }
+     */
+
+
 }
