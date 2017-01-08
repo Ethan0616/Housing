@@ -41,11 +41,7 @@ extension UIImage {
         
         return clipImage!
     }
-}
 
-// UIImage的扩展
-extension UIImage {
-    
     // 返回灰色图片
     public func grayscaled() -> UIImage? {
         guard let cgImage = cgImage else { return nil }
