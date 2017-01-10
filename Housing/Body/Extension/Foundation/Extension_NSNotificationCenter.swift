@@ -11,3 +11,9 @@ import Foundation
 extension NotificationCenter{
     
 }
+
+extension Notification.Name{
+    public struct App{
+        public static let Login = Notification.Name("loginnotification")
+    }
+}

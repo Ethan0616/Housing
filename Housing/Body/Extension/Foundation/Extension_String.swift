@@ -10,6 +10,45 @@ import Foundation
 import CoreLocation
 
 extension String  {
+    
+    static func getDocument() ->String {
+        return NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true).first!
+    }
+    
+    static func appendingDocumentDirectory(_ fileName : String) -> String{
+        return "\(String.getDocument())/\(fileName)"
+    }
+    
+    static func getPathForDocuments(_ name : String ,Dir dir : String) -> String{
+        
+        let dirPath = String.appendingDocumentDirectory("\(dir)")
+        
+        if !String.isFileExists(dirPath) {
+            do {
+                try FileManager.default.createDirectory(atPath : dirPath , withIntermediateDirectories: true )
+            }catch{
+                print("\(dirPath)文件创建失败！\(#line)\(#file)")
+            }
+        }
+        
+        return String.appendingDocumentDirectory("\(dir)/\(name)")
+    }
+    
+    @discardableResult
+    static func deleteWithFilePath(_ filePath : String) -> Bool {
+        do {
+            try FileManager.default.removeItem(atPath: filePath)
+        }catch{
+            return false
+        }
+        return true
+    }
+    
+    static func isFileExists(_ filePath : String) -> Bool{
+        return FileManager.default.fileExists(atPath: filePath)
+    }
+    
+    
     /// 判断是否是邮箱
     func validateEmail() -> Bool {
         let emailRegex: String = "[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,4}"

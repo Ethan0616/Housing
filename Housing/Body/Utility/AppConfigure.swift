@@ -14,11 +14,42 @@ public let ScreenWidth: CGFloat = UIScreen.main.bounds.size.width
 public let ScreenHeight: CGFloat = UIScreen.main.bounds.size.height
 public let ScreenBounds: CGRect = UIScreen.main.bounds
 public let Screen : CGRect = UIScreen.main.bounds
+
+// MARK:  Layout
+let MAWidth     : CGFloat = UIScreen.main.bounds.width
+let MAHeight    : CGFloat = UIScreen.main.bounds.height
+let MABounds    : CGRect  = UIScreen.main.bounds
+
+
 struct AppCommon {
     
+    // MARK: 字体
+    // 小字体
+    static let fontSmall            = UIFont.systemFont(ofSize: 12.0)
+    // 加粗小字体
+    static let fontSmallBold        = UIFont.boldSystemFont(ofSize: 12.0)
+    // 默认字体
+    static let fontNormal           = UIFont.boldSystemFont(ofSize: 14.0)
+    // 默认加粗字体
+    static let fontNormalBold       = UIFont.boldSystemFont(ofSize: 14.0)
+    // 大字体
+    static let fontLarge            = UIFont.systemFont(ofSize: 16.0)
+    // 加粗大字体
+    static let fontLargeBold        = UIFont.boldSystemFont(ofSize: 16.0)
+    // 最大
+    static let fontExtraLarge       = UIFont.boldSystemFont(ofSize: 18.0)
     
-    
+    // MARK: 颜色
+    // 导航条颜色
+    static let colorNavigationBar   = UIColor.RGBA(r: 218, g: 26, b: 35, a: 1)
+    // ViewController默认背景颜色
+    static let colorBackground      = UIColor.RGBA(r: 245, g: 245, b: 245, a: 1)
+    // 随机色
+    static let colorTest            = UIColor.colorArc4random()
 }
+
+
+
 
 
 class AppConfigure: NSObject {

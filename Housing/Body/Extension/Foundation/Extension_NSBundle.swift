@@ -9,5 +9,18 @@
 import Foundation
 
 extension Bundle{
+    private static let bundleName = "Resource"
     
+    static func userBundle() -> String{
+        return Bundle.main.path(forResource: bundleName, ofType: "Bundle")!
+    }
+    
+    static func pathForResource(_ name : String , Dir dir : String? = nil) -> String{
+        
+        guard let dirStr = dir else {
+            return Bundle.userBundle().appending("/\(name).png")
+        }
+        
+        return Bundle.userBundle().appending("/\(dirStr)/\(name).png")
+    }
 }

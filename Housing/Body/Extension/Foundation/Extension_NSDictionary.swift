@@ -24,4 +24,33 @@ extension NSDictionary{
         
         return result as! NSString
     }
+    
+    func asDescription(){
+        guard self.count > 0 else {
+            print("字符串为空\(#file)\(#line)")
+            return
+        }
+        var mutableStr = "(\n"
+        for (key,value) in self {
+            mutableStr.append("\tkey : \(key) , value : \(value)\n")
+        }
+        mutableStr.append(")")
+        print(mutableStr)
+    }
 }
+
+extension Dictionary{
+    func asDescription(){
+        guard self.count > 0 else {
+            print("字符串为空\(#file)\(#line)")
+            return
+        }
+        var mutableStr = "(\n"
+        for (key,value) in self {
+            mutableStr.append("\tkey : \(key) , value : \(value)\n")
+        }
+        mutableStr.append(")")
+        print(mutableStr)
+    }
+}
+

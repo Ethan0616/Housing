@@ -75,9 +75,7 @@
 		AA436FB31E1F787400985B4F /* TipView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA436F2E1E1F787400985B4F /* TipView.swift */; };
 		AA436FB61E1F787400985B4F /* AppConfigure.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA436F321E1F787400985B4F /* AppConfigure.swift */; };
 		AA436FB81E1F787400985B4F /* AppLog.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA436F341E1F787400985B4F /* AppLog.swift */; };
-		AA436FB91E1F787400985B4F /* FileManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA436F351E1F787400985B4F /* FileManager.swift */; };
 		AA436FBA1E1F787400985B4F /* GHConst.m in Sources */ = {isa = PBXBuildFile; fileRef = AA436F371E1F787400985B4F /* GHConst.m */; };
-		AA436FBC1E1F787400985B4F /* NSArray+Log.m in Sources */ = {isa = PBXBuildFile; fileRef = AA436F3A1E1F787400985B4F /* NSArray+Log.m */; };
 		AA436FBD1E1F787400985B4F /* NSData+SDDataCache.m in Sources */ = {isa = PBXBuildFile; fileRef = AA436F3C1E1F787400985B4F /* NSData+SDDataCache.m */; };
 		AA436FC11E1F787400985B4F /* CustomViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA436F441E1F787400985B4F /* CustomViewController.swift */; };
 		AA436FC21E1F787400985B4F /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA436F461E1F787400985B4F /* MapViewController.swift */; };
@@ -100,6 +98,7 @@
 		AAD406F71D5C6EFA009D18D5 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AAD406F61D5C6EFA009D18D5 /* Assets.xcassets */; };
 		AAD406FA1D5C6EFA009D18D5 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AAD406F81D5C6EFA009D18D5 /* LaunchScreen.storyboard */; };
 		AADD70A41D62B7430081D986 /* libsqlite3.0.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = AADD70A31D62B7430081D986 /* libsqlite3.0.tbd */; };
+		AAF9FB8B1E24713200584BF7 /* Extension_FileManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAF9FB8A1E24713200584BF7 /* Extension_FileManager.swift */; };
 		C275F52C023BB74D1A4B3258 /* Pods_Housing.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 41E2D075F2FEC6E3C65E086F /* Pods_Housing.framework */; };
 /* End PBXBuildFile section */
 
@@ -186,11 +185,8 @@
 		AA436F2E1E1F787400985B4F /* TipView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TipView.swift; sourceTree = "<group>"; };
 		AA436F321E1F787400985B4F /* AppConfigure.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppConfigure.swift; sourceTree = "<group>"; };
 		AA436F341E1F787400985B4F /* AppLog.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppLog.swift; sourceTree = "<group>"; };
-		AA436F351E1F787400985B4F /* FileManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FileManager.swift; sourceTree = "<group>"; };
 		AA436F361E1F787400985B4F /* GHConst.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GHConst.h; sourceTree = "<group>"; };
 		AA436F371E1F787400985B4F /* GHConst.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GHConst.m; sourceTree = "<group>"; };
-		AA436F391E1F787400985B4F /* NSArray+Log.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSArray+Log.h"; sourceTree = "<group>"; };
-		AA436F3A1E1F787400985B4F /* NSArray+Log.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSArray+Log.m"; sourceTree = "<group>"; };
 		AA436F3B1E1F787400985B4F /* NSData+SDDataCache.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSData+SDDataCache.h"; sourceTree = "<group>"; };
 		AA436F3C1E1F787400985B4F /* NSData+SDDataCache.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSData+SDDataCache.m"; sourceTree = "<group>"; };
 		AA436F441E1F787400985B4F /* CustomViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomViewController.swift; sourceTree = "<group>"; };
@@ -217,6 +213,7 @@
 		AAD406FB1D5C6EFA009D18D5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		AADD708C1D62B1C10081D986 /* Housing-Bridging-Header.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Housing-Bridging-Header.h"; sourceTree = "<group>"; };
 		AADD70A31D62B7430081D986 /* libsqlite3.0.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libsqlite3.0.tbd; path = usr/lib/libsqlite3.0.tbd; sourceTree = SDKROOT; };
+		AAF9FB8A1E24713200584BF7 /* Extension_FileManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Extension_FileManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -266,6 +263,7 @@
 				AA436EC41E1F787400985B4F /* Extension_NSThread.swift */,
 				AA436EC51E1F787400985B4F /* Extension_NSTimer.swift */,
 				AA436EC61E1F787400985B4F /* Extension_String.swift */,
+				AAF9FB8A1E24713200584BF7 /* Extension_FileManager.swift */,
 			);
 			path = Foundation;
 			sourceTree = "<group>";
@@ -425,11 +423,8 @@
 			children = (
 				AA436F321E1F787400985B4F /* AppConfigure.swift */,
 				AA436F341E1F787400985B4F /* AppLog.swift */,
-				AA436F351E1F787400985B4F /* FileManager.swift */,
 				AA436F361E1F787400985B4F /* GHConst.h */,
 				AA436F371E1F787400985B4F /* GHConst.m */,
-				AA436F391E1F787400985B4F /* NSArray+Log.h */,
-				AA436F3A1E1F787400985B4F /* NSArray+Log.m */,
 				AA436F3B1E1F787400985B4F /* NSData+SDDataCache.h */,
 				AA436F3C1E1F787400985B4F /* NSData+SDDataCache.m */,
 			);
@@ -728,7 +723,6 @@
 				AA436FAF1E1F787400985B4F /* MainViewController.swift in Sources */,
 				AA436FA11E1F787400985B4F /* FMDatabase.m in Sources */,
 				AA436F761E1F787400985B4F /* CaptureView.swift in Sources */,
-				AA436FBC1E1F787400985B4F /* NSArray+Log.m in Sources */,
 				AA436F791E1F787400985B4F /* TabbarView.swift in Sources */,
 				AA436F7B1E1F787400985B4F /* DataBase.m in Sources */,
 				AA436FB31E1F787400985B4F /* TipView.swift in Sources */,
@@ -771,7 +765,6 @@
 				AA436FA21E1F787400985B4F /* FMDatabaseAdditions.m in Sources */,
 				AA436EB71E1F767A00985B4F /* ViewController.swift in Sources */,
 				AA436F651E1F787400985B4F /* Extension_UIBezierPath.swift in Sources */,
-				AA436FB91E1F787400985B4F /* FileManager.swift in Sources */,
 				AA436FA31E1F787400985B4F /* FMDatabasePool.m in Sources */,
 				AA436FA81E1F787400985B4F /* DisplayViewController.swift in Sources */,
 				AA436FA51E1F787400985B4F /* FMResultSet.m in Sources */,
@@ -783,6 +776,7 @@
 				AA436F691E1F787400985B4F /* Extension_UIFont.swift in Sources */,
 				AA436F9F1E1F787400985B4F /* MAHeaderView.m in Sources */,
 				AA436EB61E1F767A00985B4F /* BaseViewController.swift in Sources */,
+				AAF9FB8B1E24713200584BF7 /* Extension_FileManager.swift in Sources */,
 				AA436FB61E1F787400985B4F /* AppConfigure.swift in Sources */,
 				AA436F6A1E1F787400985B4F /* Extension_UIImage.swift in Sources */,
 				AA436F721E1F787400985B4F /* CaptureManager.swift in Sources */,

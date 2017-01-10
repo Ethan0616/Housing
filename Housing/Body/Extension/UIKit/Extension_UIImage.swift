@@ -13,6 +13,10 @@ import Accelerate
 // UIImage的扩展
 extension UIImage {
     
+    static func resource(_ name : String , Dir dir : String? = nil) -> UIImage?{
+        return UIImage(contentsOfFile: Bundle.pathForResource(name, Dir: dir))
+    }
+    
     open class func imageWithASName(_ nameStr : String , SubPath subPath : String = "resource", ImageType imageType : String = "png", BundleName bundleName : String = "Resources") -> UIImage?{
 
         
@@ -212,45 +216,4 @@ extension UIImage {
         
         return returnImage
     }
-    
-
-/*
-     
-     + (nullable UIImage *)imageWithASName:(nullable NSString *)nameStr directory:(nullable NSString *)dirStr
-     {
-     
-     
-     NSString *bundleStr = [[NSBundle mainBundle] pathForResource:@"Resources"
-     ofType:@"bundle"];
-     
-     return  [UIImage imageNamed:[[NSBundle bundleWithPath:bundleStr] pathForResource:nameStr
-     ofType:@"png"
-     inDirectory:dirStr]];
-     
-     
-     }
-     
-     + (nullable UIImage *)imageWithASName:(nullable NSString *)nameStr directory:(nullable NSString *)dirStr bundle:(nullable NSString *)bundleName
-     {
-     NSString *bundleStr = [[NSBundle mainBundle] pathForResource:bundleName ofType:@"bundle"];
-     
-     return [UIImage imageNamed:[[NSBundle bundleWithPath:bundleStr] pathForResource:nameStr ofType:@"png" inDirectory:dirStr]];
-     }
-     
-     + (nullable UIImage *)imageWithASName:(nullable NSString *)nameStr directory:(nullable NSString *)dirStr type:(nullable NSString *)typeStr
-     {
-     
-     
-     NSString *bundleStr = [[NSBundle mainBundle] pathForResource:@"Resources"
-     ofType:@"bundle"];
-     
-     return  [UIImage imageNamed:[[NSBundle bundleWithPath:bundleStr] pathForResource:nameStr
-     ofType:typeStr
-     inDirectory:dirStr]];
-     
-     
-     }
-     */
-
-
 }

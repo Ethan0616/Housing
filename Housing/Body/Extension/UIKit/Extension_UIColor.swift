@@ -10,11 +10,18 @@ import Foundation
 import UIKit
 
 extension UIColor{
-    // UIColor的扩展
-//    class func colorWithRed(red: Int, green: Int, blue: Int, alpha: CGFloat) -> UIColor {
-//        let color = UIColor(red: CGFloat(red) / 255.0, green: CGFloat(green) / 255.0, blue: CGFloat(blue) / 255.0, alpha: alpha)
-//        return color
-//    }
+    class func RGBA(r:CGFloat, g:CGFloat, b:CGFloat, a:CGFloat) -> UIColor {
+        return UIColor(red: r/255.0, green: g/255.0, blue: b/255.0, alpha: a)
+    }
+    
+    class func colorArc4random() -> UIColor{
+        
+        let r = CGFloat(arc4random()%255)
+        let g = CGFloat(arc4random()%255)
+        let b = CGFloat(arc4random()%255)
+        
+        return UIColor.RGBA(r: r, g: g, b: b, a: 1)
+    }
     
 
     class func colorWith(_ red: Int, green: Int, blue: Int, alpha: CGFloat) -> UIColor {
