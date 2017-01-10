@@ -36,7 +36,7 @@ class MusicPlayViewController: UIViewController{
         view.backgroundColor = UIColor.black
         
         let backBtn = UIButton()
-        backBtn.setImage(UIImage.init(asName: "down", directory: "resource"), for: UIControlState())
+        backBtn.setImage(UIImage.imageWithASName("down"), for: UIControlState())
         backBtn.addTarget(self, action: #selector(back), for: .touchUpInside)
         view.addSubview(backBtn)
         backBtn.translatesAutoresizingMaskIntoConstraints = false
@@ -55,7 +55,7 @@ class MusicPlayViewController: UIViewController{
         view.addSubview(progress)
         view.addConstraints([proTopCon,proLeadingCon,proCenterXCon])
         
-        let bgImageView = UIImageView(image: UIImage(asName: "演员", directory: "Music", type: "jpg"))
+        let bgImageView = UIImageView(image: UIImage.imageWithASName("演员", SubPath: "Music", ImageType: "jpg"))
         bgImageView.alpha = 0.6
         bgImageView.contentMode = .scaleAspectFill
         view.addSubview(bgImageView)

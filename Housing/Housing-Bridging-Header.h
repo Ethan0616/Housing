@@ -18,4 +18,4 @@
 #import "GHConst.h"
 #import "NSData+SDDataCache.h"
 #import "NSArray+Log.h"
-#import "UIImage+BundleImage.h"
+

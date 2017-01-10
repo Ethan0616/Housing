@@ -79,7 +79,6 @@
 		AA436FBA1E1F787400985B4F /* GHConst.m in Sources */ = {isa = PBXBuildFile; fileRef = AA436F371E1F787400985B4F /* GHConst.m */; };
 		AA436FBC1E1F787400985B4F /* NSArray+Log.m in Sources */ = {isa = PBXBuildFile; fileRef = AA436F3A1E1F787400985B4F /* NSArray+Log.m */; };
 		AA436FBD1E1F787400985B4F /* NSData+SDDataCache.m in Sources */ = {isa = PBXBuildFile; fileRef = AA436F3C1E1F787400985B4F /* NSData+SDDataCache.m */; };
-		AA436FC01E1F787400985B4F /* UIImage+BundleImage.m in Sources */ = {isa = PBXBuildFile; fileRef = AA436F411E1F787400985B4F /* UIImage+BundleImage.m */; };
 		AA436FC11E1F787400985B4F /* CustomViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA436F441E1F787400985B4F /* CustomViewController.swift */; };
 		AA436FC21E1F787400985B4F /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA436F461E1F787400985B4F /* MapViewController.swift */; };
 		AA436FC31E1F787400985B4F /* MapViewController1.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA436F471E1F787400985B4F /* MapViewController1.swift */; };
@@ -194,8 +193,6 @@
 		AA436F3A1E1F787400985B4F /* NSArray+Log.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSArray+Log.m"; sourceTree = "<group>"; };
 		AA436F3B1E1F787400985B4F /* NSData+SDDataCache.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSData+SDDataCache.h"; sourceTree = "<group>"; };
 		AA436F3C1E1F787400985B4F /* NSData+SDDataCache.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSData+SDDataCache.m"; sourceTree = "<group>"; };
-		AA436F401E1F787400985B4F /* UIImage+BundleImage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+BundleImage.h"; sourceTree = "<group>"; };
-		AA436F411E1F787400985B4F /* UIImage+BundleImage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+BundleImage.m"; sourceTree = "<group>"; };
 		AA436F441E1F787400985B4F /* CustomViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomViewController.swift; sourceTree = "<group>"; };
 		AA436F461E1F787400985B4F /* MapViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
 		AA436F471E1F787400985B4F /* MapViewController1.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapViewController1.swift; sourceTree = "<group>"; };
@@ -435,8 +432,6 @@
 				AA436F3A1E1F787400985B4F /* NSArray+Log.m */,
 				AA436F3B1E1F787400985B4F /* NSData+SDDataCache.h */,
 				AA436F3C1E1F787400985B4F /* NSData+SDDataCache.m */,
-				AA436F401E1F787400985B4F /* UIImage+BundleImage.h */,
-				AA436F411E1F787400985B4F /* UIImage+BundleImage.m */,
 			);
 			name = Utility;
 			path = Body/Utility;
@@ -764,7 +759,6 @@
 				AA436FC81E1F787400985B4F /* TabBarController.swift in Sources */,
 				AA436F5B1E1F787400985B4F /* Extension_NSDictionary.swift in Sources */,
 				AA436F5D1E1F787400985B4F /* Extension_NSNotificationCenter.swift in Sources */,
-				AA436FC01E1F787400985B4F /* UIImage+BundleImage.m in Sources */,
 				AA436F5F1E1F787400985B4F /* Extension_NSObject.swift in Sources */,
 				AA436FA61E1F787400985B4F /* MJNIndexView.m in Sources */,
 				AA436F771E1F787400985B4F /* MainView.swift in Sources */,

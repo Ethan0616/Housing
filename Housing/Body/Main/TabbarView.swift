@@ -97,8 +97,8 @@ private class TabBarItem: UIButton {
         self.init(frame: CGRect.zero)
         backgroundColor = UIColor.clear
         
-        setImage(UIImage.init(asName: image, directory: "Tabbar"), for: UIControlState())
-        setImage(UIImage.init(asName: selImage, directory: "Tabbar"), for: .selected)
+        setImage(UIImage.imageWithASName(image,SubPath: "Tabbar"), for: UIControlState())
+        setImage(UIImage.imageWithASName(selImage,SubPath: "Tabbar") , for: .selected)
         
 //        self.contentMode = .ScaleAspectFit
         self.imageView?.contentMode = .scaleAspectFit

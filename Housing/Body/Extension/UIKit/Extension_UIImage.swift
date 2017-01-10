@@ -12,6 +12,31 @@ import Accelerate
 
 // UIImage的扩展
 extension UIImage {
+    
+    open class func imageWithASName(_ nameStr : String , SubPath subPath : String = "resource", ImageType imageType : String = "png", BundleName bundleName : String = "Resources") -> UIImage?{
+
+        
+        
+        guard let bundlePath = Bundle.main.path(forResource: bundleName, ofType: "bundle") else {
+            print("bundle 不存在！！！")
+            return nil
+        }
+    
+        let imagePath = "\(bundlePath)/\(subPath)/\(nameStr).\(imageType)"
+        
+        return UIImage.init(named: imagePath)
+    }
+    
+    open class func imageWithASName(_ nameStr : String , SubPath subPath : String = "resource", ImageType imageType : String = "png") -> UIImage?{
+        return UIImage.imageWithASName(nameStr, SubPath: subPath, ImageType: "png", BundleName: "Resources")
+    }
+    
+    
+    open class func imageWithASName(_ nameStr : String ) -> UIImage?{
+        return UIImage.imageWithASName(nameStr, SubPath: "resource", ImageType: "png", BundleName: "Resources")
+    }
+    
+    
     /// 按尺寸裁剪图片大小
     class func imageClipToNewImage(_ image: UIImage, newSize: CGSize) -> UIImage {
         UIGraphicsBeginImageContext(newSize)
@@ -188,6 +213,7 @@ extension UIImage {
         return returnImage
     }
     
+
 /*
      
      + (nullable UIImage *)imageWithASName:(nullable NSString *)nameStr directory:(nullable NSString *)dirStr

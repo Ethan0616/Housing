@@ -584,7 +584,7 @@ NSString const *DownloadStageInfoKey2      = @"DownloadStageInfoKey";
 {
     if (_download == nil)
     {
-        _download = [UIImage imageWithASName:@"download" directory:@"resource"];
+        _download = [UIImage imageWithASName:@"download"];
     }
     return _download;
 }
@@ -593,7 +593,7 @@ NSString const *DownloadStageInfoKey2      = @"DownloadStageInfoKey";
 {
     if (_pause == nil)
     {
-        _pause = [UIImage imageWithASName:@"pause" directory:@"resource"];
+        _pause = [UIImage imageWithASName:@"pause"];
     }
     return _pause;
 }
@@ -602,7 +602,7 @@ NSString const *DownloadStageInfoKey2      = @"DownloadStageInfoKey";
 {
     if (_delete == nil)
     {
-        _delete = [UIImage imageWithASName:@"delete" directory:@"resource"];
+        _delete = [UIImage imageWithASName:@"delete"];
     }
     return _delete;
 }

@@ -56,16 +56,16 @@ class MainViewController: BaseViewController, MAMapViewDelegate {
     
     func initToolBar() {
         
-        let rightButtonItem: UIBarButtonItem = UIBarButtonItem(image: UIImage.init(asName: "icon_list.png", directory: "resource") , style: .done, target: self, action: #selector(MainViewController.actionHistory))
+        let rightButtonItem: UIBarButtonItem = UIBarButtonItem(image: UIImage.imageWithASName("icon_list"), style: .done, target: self, action: #selector(MainViewController.actionHistory))
         
         navigationItem.rightBarButtonItem = rightButtonItem
         
-        let leftButtonItem: UIBarButtonItem = UIBarButtonItem(image: UIImage.init(asName: "icon_play.png", directory: "resource") , style: .done, target: self, action: #selector(MainViewController.actionRecordAndStop))
+        let leftButtonItem: UIBarButtonItem = UIBarButtonItem(image: UIImage.imageWithASName("icon_play") , style: .done, target: self, action: #selector(MainViewController.actionRecordAndStop))
 
         navigationItem.leftBarButtonItem = leftButtonItem
         
-        imageLocated = UIImage.init(asName: "location_yes.png", directory: "resource")
-        imageNotLocate = UIImage.init(asName: "location_no.png", directory: "resource")
+        imageLocated = UIImage.imageWithASName("location_yes")
+        imageNotLocate = UIImage.imageWithASName("location_no")
         
         locationButton = UIButton(frame: CGRect(x: 20, y: view.bounds.height - 80, width: 40, height: 40))
         locationButton!.autoresizingMask = [.flexibleRightMargin,.flexibleTopMargin]
@@ -122,7 +122,7 @@ class MainViewController: BaseViewController, MAMapViewDelegate {
         if isRecording {
             
             showTip("Start recording...")
-            navigationItem.leftBarButtonItem!.image = UIImage.init(asName: "icon_stop.png", directory: "resource")
+            navigationItem.leftBarButtonItem!.image = UIImage.imageWithASName("icon_stop")
             
             if currentRoute == nil {
                 currentRoute = Route()
@@ -131,7 +131,7 @@ class MainViewController: BaseViewController, MAMapViewDelegate {
             addLocation(mapView!.userLocation.location)
         }
         else {
-            navigationItem.leftBarButtonItem!.image = UIImage.init(asName: "icon_play.png", directory: "resource")
+            navigationItem.leftBarButtonItem!.image = UIImage.imageWithASName("icon_play")
 
             addLocation(mapView!.userLocation.location)
             hideTip()
