@@ -22,10 +22,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
-//        AMapServices.shared().apiKey = MapViewAPIKey
+        AMapServices.shared().apiKey = MapViewAPIKey
         codeForTachograph()
-        
-        ["key1":"value1","key2":"value2"].asDescription()
         
         // Override point for customization after application launch.
         return true
@@ -58,7 +56,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
 extension AppDelegate{
     fileprivate func codeForTachograph(){
-        AMapServices.shared().apiKey = tachographMapViewAPIKey
+//        AMapServices.shared().apiKey = tachographMapViewAPIKey
         
         isReachable()
         

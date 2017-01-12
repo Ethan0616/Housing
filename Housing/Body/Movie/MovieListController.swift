@@ -32,6 +32,16 @@ class MovieListController: UIViewController {
         
     }
 
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        self.navigationController?.isNavigationBarHidden = false
+    }
+    
+    deinit {
+        self.navigationController?.isNavigationBarHidden = true
+
+    }
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
@@ -69,7 +79,7 @@ extension MovieListController: UITableViewDelegate, UITableViewDataSource {
         let strArr = textLabelStr.components(separatedBy: "/")
         textLabelStr = strArr[strArr.count - 1] as NSString
         cell?.textLabel?.text = textLabelStr as String
-        cell?.detailTextLabel?.text = "文件的大小为：\(dataSource[indexPath.row].fileSize)"
+        cell?.detailTextLabel?.text = "文件的大小为：\(dataSource[indexPath.row].fileSize/1024)KB"
         
         
         return cell!
@@ -91,6 +101,10 @@ extension MovieListController: UITableViewDelegate, UITableViewDataSource {
         
     }
 
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
+        dataSource.remove(at: indexPath.row)
+        tableView.reloadData()
+    }
 
 }
 

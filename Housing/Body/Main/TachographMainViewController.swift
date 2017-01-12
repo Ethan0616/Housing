@@ -25,10 +25,13 @@ class TachographMainViewController: UIViewController {
         
     }
     
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        
         self.navigationController?.isNavigationBarHidden = true
     }
+    
+
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
@@ -53,40 +56,40 @@ extension TachographMainViewController : TachographMainViewDelegate{
     func MainViewOverlayTabbarClicked(_ index: Int, _ selected: Bool) {
         MSGLog(Message: "Tabbar -> MainViewController: 第index:\(index)个图标,是否为选中状态:selected :\(selected)")
         
-        // 录像
-        if index == 5  {
-            if selected {
-                CaptureManager.sharedInstance().starRecording()
-            }else{
-                CaptureManager.sharedInstance().stopRecording()
-
-            }
-        }else if index == 2{
-            let arr = FileManager.VideoModels()
+        switch index {
+            case 0:
+                fallthrough
+            case 1:
+                fallthrough
+            case 2:  // 视频集合
+                let arr = FileManager.VideoModels()
+                
+                if let datasource = arr{
+                    let vc  = MovieListController()
+                    vc.dataSource = datasource
+                    self.navigationController?.pushViewController(vc, animated: true)
+                }else{
+                    MSGLog(Message: "nothing");
+                }
+            case 3:  // 代码集合
+                let viewController = ViewController()
+                navigationController?.pushViewController(viewController, animated: true)
+            case 4:  // 摄像头切换
+                // 当录制的时候，切换摄像头，录制停止，自动保存。
+                CaptureManager.sharedInstance().swapFrontAndBackCameras()
             
-            if let datasource = arr{
-                let movieListController = MovieListController()
-                movieListController.dataSource = datasource
-                self.navigationController?.isNavigationBarHidden = false
-                self.navigationController?.pushViewController(movieListController, animated: true)
-            }else{
-                MSGLog(Message: "nothing");
+            case 5:  // 录制
+                if selected {
+                    CaptureManager.sharedInstance().starRecording()
+                }else{
+                    CaptureManager.sharedInstance().stopRecording()
+                    
             }
-        }else if index == 4 {
-            // 当录制的时候，切换摄像头，录制停止，自动保存。
-            CaptureManager.sharedInstance().swapFrontAndBackCameras()
-        }else if index == 0{
-            let vc = MusicListViewController()
-            navigationController?.pushViewController(vc, animated: true)
-            navigationController?.setNavigationBarHidden(false, animated: false)
+        default:
+            let viewController = ViewController()
+            navigationController?.pushViewController(viewController, animated: true)
 
-        }else{
-            let vc = ViewController()
-            navigationController?.pushViewController(vc, animated: true)
-            navigationController?.setNavigationBarHidden(false, animated: false)
         }
-        
-        
     }
     
 }
