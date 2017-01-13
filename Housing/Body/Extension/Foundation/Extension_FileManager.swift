@@ -180,7 +180,11 @@ extension FileManager {
     
     class func removeFile(_ outputFileUrl : URL){
         
-        
+        do {
+            try FileManager.default.removeItem(at: outputFileUrl)
+        }catch{
+            print(" 删除失败！！！ ")
+        }
     }
     
     class func copyFileToDocuments(_ fileUrl : URL){
