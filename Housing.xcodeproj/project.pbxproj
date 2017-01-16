@@ -49,9 +49,6 @@
 		AA436F7C1E1F787400985B4F /* DrugSearchModel.m in Sources */ = {isa = PBXBuildFile; fileRef = AA436EE61E1F787400985B4F /* DrugSearchModel.m */; };
 		AA436F7D1E1F787400985B4F /* MovieListController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA436EE81E1F787400985B4F /* MovieListController.swift */; };
 		AA436F7E1E1F787400985B4F /* MoviePlayerController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA436EE91E1F787400985B4F /* MoviePlayerController.swift */; };
-		AA436F7F1E1F787400985B4F /* MusicListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA436EEB1E1F787400985B4F /* MusicListViewController.swift */; };
-		AA436F801E1F787400985B4F /* MusicPlayViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA436EEC1E1F787400985B4F /* MusicPlayViewController.swift */; };
-		AA436F811E1F787400985B4F /* TaSong.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA436EED1E1F787400985B4F /* TaSong.swift */; };
 		AA436F9F1E1F787400985B4F /* MAHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = AA436F0F1E1F787400985B4F /* MAHeaderView.m */; };
 		AA436FA01E1F787400985B4F /* OfflineDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AA436F111E1F787400985B4F /* OfflineDetailViewController.m */; };
 		AA436FA11E1F787400985B4F /* FMDatabase.m in Sources */ = {isa = PBXBuildFile; fileRef = AA436F141E1F787400985B4F /* FMDatabase.m */; };
@@ -149,9 +146,6 @@
 		AA436EE61E1F787400985B4F /* DrugSearchModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DrugSearchModel.m; sourceTree = "<group>"; };
 		AA436EE81E1F787400985B4F /* MovieListController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MovieListController.swift; sourceTree = "<group>"; };
 		AA436EE91E1F787400985B4F /* MoviePlayerController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MoviePlayerController.swift; sourceTree = "<group>"; };
-		AA436EEB1E1F787400985B4F /* MusicListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MusicListViewController.swift; sourceTree = "<group>"; };
-		AA436EEC1E1F787400985B4F /* MusicPlayViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MusicPlayViewController.swift; sourceTree = "<group>"; };
-		AA436EED1E1F787400985B4F /* TaSong.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TaSong.swift; sourceTree = "<group>"; };
 		AA436F0E1E1F787400985B4F /* MAHeaderView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MAHeaderView.h; sourceTree = "<group>"; };
 		AA436F0F1E1F787400985B4F /* MAHeaderView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MAHeaderView.m; sourceTree = "<group>"; };
 		AA436F101E1F787400985B4F /* OfflineDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OfflineDetailViewController.h; sourceTree = "<group>"; };
@@ -333,17 +327,6 @@
 			);
 			name = Movie;
 			path = Body/Movie;
-			sourceTree = "<group>";
-		};
-		AA436EEA1E1F787400985B4F /* Music */ = {
-			isa = PBXGroup;
-			children = (
-				AA436EEB1E1F787400985B4F /* MusicListViewController.swift */,
-				AA436EEC1E1F787400985B4F /* MusicPlayViewController.swift */,
-				AA436EED1E1F787400985B4F /* TaSong.swift */,
-			);
-			name = Music;
-			path = Body/Music;
 			sourceTree = "<group>";
 		};
 		AA436F0C1E1F787400985B4F /* ThridPart */ = {
@@ -538,7 +521,6 @@
 				AA436ED61E1F787400985B4F /* Main */,
 				AA436EE21E1F787400985B4F /* Model */,
 				AA436EE71E1F787400985B4F /* Movie */,
-				AA436EEA1E1F787400985B4F /* Music */,
 				AA436F0C1E1F787400985B4F /* ThridPart */,
 				AA436F2F1E1F787400985B4F /* Utility */,
 				AA436F421E1F787400985B4F /* ViewControllers */,
@@ -714,7 +696,6 @@
 				AA436F621E1F787400985B4F /* Extension_String.swift in Sources */,
 				AA436FBD1E1F787400985B4F /* NSData+SDDataCache.m in Sources */,
 				AA436F611E1F787400985B4F /* Extension_NSTimer.swift in Sources */,
-				AA436F7F1E1F787400985B4F /* MusicListViewController.swift in Sources */,
 				AA436F741E1F787400985B4F /* CaptureSessionCoordinator.swift in Sources */,
 				AA436FAF1E1F787400985B4F /* MainViewController.swift in Sources */,
 				AA436FA11E1F787400985B4F /* FMDatabase.m in Sources */,
@@ -726,7 +707,6 @@
 				AA436FCB1E1F787400985B4F /* TableViewController2.swift in Sources */,
 				AA436F731E1F787400985B4F /* CaptureSessionAssetWriterCoordinator.swift in Sources */,
 				AA436F571E1F787400985B4F /* Extension_NSArray.swift in Sources */,
-				AA436F811E1F787400985B4F /* TaSong.swift in Sources */,
 				AA436FB81E1F787400985B4F /* AppLog.swift in Sources */,
 				AA436F6F1E1F787400985B4F /* Extension_UIView.swift in Sources */,
 				AA436F781E1F787400985B4F /* MapView.swift in Sources */,
@@ -737,7 +717,6 @@
 				AA436F6B1E1F787400985B4F /* Extension_UIImageView.swift in Sources */,
 				AA436F7C1E1F787400985B4F /* DrugSearchModel.m in Sources */,
 				AA436FC41E1F787400985B4F /* CollectionView1.swift in Sources */,
-				AA436F801E1F787400985B4F /* MusicPlayViewController.swift in Sources */,
 				AA436F591E1F787400985B4F /* Extension_NSData.swift in Sources */,
 				AA436F631E1F787400985B4F /* Extension_UIApplication.swift in Sources */,
 				AA436F681E1F787400985B4F /* Extension_UIDevice.swift in Sources */,

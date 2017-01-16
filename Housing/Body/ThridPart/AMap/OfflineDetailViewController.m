@@ -783,6 +783,7 @@ NSString const *DownloadStageInfoKey2      = @"DownloadStageInfoKey";
 {
     free(_expandedSections);
     _expandedSections = NULL;
+    [self.navigationController setNavigationBarHidden:YES];
 }
 
 - (void)viewDidLoad
@@ -806,6 +807,8 @@ NSString const *DownloadStageInfoKey2      = @"DownloadStageInfoKey";
     self.navigationController.toolbar.barStyle      = UIBarStyleBlack;
     self.navigationController.toolbar.translucent   = NO;
     [self.navigationController setToolbarHidden:NO animated:animated];
+    [self.navigationController setNavigationBarHidden:NO];
+
 }
 
 - (void)viewWillDisappear:(BOOL)animated

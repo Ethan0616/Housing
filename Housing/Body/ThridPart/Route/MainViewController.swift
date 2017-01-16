@@ -35,6 +35,16 @@ class MainViewController: BaseViewController, MAMapViewDelegate {
         
         tipView!.frame = CGRect(x: 0, y: view.bounds.height - 30, width: view.bounds.width, height: 30)
     }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        self.navigationController?.isNavigationBarHidden = false
+    }
+    
+    deinit {
+        self.navigationController?.isNavigationBarHidden = true
+        
+    }
 
     /// Initialization
     

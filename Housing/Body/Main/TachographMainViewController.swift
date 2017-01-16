@@ -58,9 +58,11 @@ extension TachographMainViewController : TachographMainViewDelegate{
         
         switch index {
             case 0:
-                fallthrough
+                let vc = MainViewController() // 地图打点
+                self.navigationController?.pushViewController(vc, animated: true)
             case 1:
-                fallthrough
+                let vc = OfflineDetailViewController() // 离线地图
+                self.navigationController?.pushViewController(vc, animated: true)
             case 2:  // 视频集合
                 let arr = FileManager.VideoModels()
                 
