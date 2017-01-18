@@ -15,7 +15,7 @@ class RecordViewController: UIViewController, UITableViewDataSource, UITableView
     
     override init(nibName nibNameOrNil: String!, bundle nibBundleOrNil: Bundle!) {
         
-        routes = FileHelper.routesArray()
+        routes = FileManager.routesArray()
         super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
     }
     
@@ -47,7 +47,7 @@ class RecordViewController: UIViewController, UITableViewDataSource, UITableView
         if !routes.isEmpty {
             
             let route: Route = routes[index]
-            FileHelper.deleteFile(route.title())
+            FileManager.deleteFile(route.title())
             
             routes.remove(at: index)
         }

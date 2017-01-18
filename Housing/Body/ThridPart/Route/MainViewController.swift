@@ -180,7 +180,7 @@ class MainViewController: BaseViewController, MAMapViewDelegate {
         
         let name = currentRoute!.title()
         
-        let path = FileHelper.recordPathWithName(name)
+        let path = FileManager.recordPathWithName(name)
         
 //        print("path: \(path)")
         

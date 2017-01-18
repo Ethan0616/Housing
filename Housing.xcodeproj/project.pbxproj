@@ -59,7 +59,6 @@
 		AA436FA61E1F787400985B4F /* MJNIndexView.m in Sources */ = {isa = PBXBuildFile; fileRef = AA436F201E1F787400985B4F /* MJNIndexView.m */; settings = {COMPILER_FLAGS = "-w"; }; };
 		AA436FA71E1F787400985B4F /* aeroplane@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = AA436F221E1F787400985B4F /* aeroplane@2x.png */; };
 		AA436FA81E1F787400985B4F /* DisplayViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA436F231E1F787400985B4F /* DisplayViewController.swift */; };
-		AA436FA91E1F787400985B4F /* FileHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA436F241E1F787400985B4F /* FileHelper.swift */; };
 		AA436FAA1E1F787400985B4F /* icon_list@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = AA436F251E1F787400985B4F /* icon_list@2x.png */; };
 		AA436FAB1E1F787400985B4F /* icon_play@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = AA436F261E1F787400985B4F /* icon_play@2x.png */; };
 		AA436FAC1E1F787400985B4F /* icon_stop@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = AA436F271E1F787400985B4F /* icon_stop@2x.png */; };
@@ -165,7 +164,6 @@
 		AA436F201E1F787400985B4F /* MJNIndexView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MJNIndexView.m; sourceTree = "<group>"; };
 		AA436F221E1F787400985B4F /* aeroplane@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "aeroplane@2x.png"; sourceTree = "<group>"; };
 		AA436F231E1F787400985B4F /* DisplayViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DisplayViewController.swift; sourceTree = "<group>"; };
-		AA436F241E1F787400985B4F /* FileHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FileHelper.swift; sourceTree = "<group>"; };
 		AA436F251E1F787400985B4F /* icon_list@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon_list@2x.png"; sourceTree = "<group>"; };
 		AA436F261E1F787400985B4F /* icon_play@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon_play@2x.png"; sourceTree = "<group>"; };
 		AA436F271E1F787400985B4F /* icon_stop@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon_stop@2x.png"; sourceTree = "<group>"; };
@@ -384,7 +382,6 @@
 			children = (
 				AA436F221E1F787400985B4F /* aeroplane@2x.png */,
 				AA436F231E1F787400985B4F /* DisplayViewController.swift */,
-				AA436F241E1F787400985B4F /* FileHelper.swift */,
 				AA436F251E1F787400985B4F /* icon_list@2x.png */,
 				AA436F261E1F787400985B4F /* icon_play@2x.png */,
 				AA436F271E1F787400985B4F /* icon_stop@2x.png */,
@@ -703,7 +700,6 @@
 				AA436F791E1F787400985B4F /* TabbarView.swift in Sources */,
 				AA436F7B1E1F787400985B4F /* DataBase.m in Sources */,
 				AA436FB31E1F787400985B4F /* TipView.swift in Sources */,
-				AA436FA91E1F787400985B4F /* FileHelper.swift in Sources */,
 				AA436FCB1E1F787400985B4F /* TableViewController2.swift in Sources */,
 				AA436F731E1F787400985B4F /* CaptureSessionAssetWriterCoordinator.swift in Sources */,
 				AA436F571E1F787400985B4F /* Extension_NSArray.swift in Sources */,
