@@ -26,11 +26,11 @@
 	<key>CFBundlePackageType</key>
 	<string>APPL</string>
 	<key>CFBundleShortVersionString</key>
-	<string>1.0</string>
+	<string>1.0.0</string>
 	<key>CFBundleSignature</key>
 	<string>????</string>
 	<key>CFBundleVersion</key>
-	<string>1</string>
+	<string>1.0.0</string>
 	<key>LSApplicationQueriesSchemes</key>
 	<array>
 		<string>iosamap</string>
@@ -48,11 +48,11 @@
 	<string>YES</string>
 	<key>NSLocationAlwaysUsageDescription</key>
 	<string>YES</string>
-	<key>NSMotionUsageDescription</key>
-	<string>YES</string>
 	<key>NSLocationWhenInUseUsageDeescription</key>
 	<string>YES</string>
 	<key>NSMicrophoneUsageDescription</key>
+	<string>YES</string>
+	<key>NSMotionUsageDescription</key>
 	<string>YES</string>
 	<key>NSPhotoLibraryUsageDescription</key>
 	<string>YES</string>
