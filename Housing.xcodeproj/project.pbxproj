@@ -228,6 +228,25 @@
 			name = Pods;
 			sourceTree = "<group>";
 		};
+		AA0B05411E32F59800E691E4 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				AA99E0311E163E5A00F61A79 /* Resources.bundle */,
+				AADD708C1D62B1C10081D986 /* Housing-Bridging-Header.h */,
+				AAD406EF1D5C6EFA009D18D5 /* AppDelegate.swift */,
+				AA436EB41E1F767A00985B4F /* BaseViewController.swift */,
+				AA436EB51E1F767A00985B4F /* ViewController.swift */,
+				AAD406F61D5C6EFA009D18D5 /* Assets.xcassets */,
+				AA436FCE1E1F78AB00985B4F /* T_DrugName.db */,
+				AAD406F81D5C6EFA009D18D5 /* LaunchScreen.storyboard */,
+				AAD406FB1D5C6EFA009D18D5 /* Info.plist */,
+				AA76DB571E1F8A07002D0A76 /* Icon.png */,
+				AA76DB581E1F8A07002D0A76 /* Icon@2x.png */,
+				AA76DB591E1F8A07002D0A76 /* Icon120.png */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
 		AA436EB91E1F787400985B4F /* Extension */ = {
 			isa = PBXGroup;
 			children = (
@@ -521,18 +540,7 @@
 				AA436F0C1E1F787400985B4F /* ThridPart */,
 				AA436F2F1E1F787400985B4F /* Utility */,
 				AA436F421E1F787400985B4F /* ViewControllers */,
-				AA99E0311E163E5A00F61A79 /* Resources.bundle */,
-				AADD708C1D62B1C10081D986 /* Housing-Bridging-Header.h */,
-				AAD406EF1D5C6EFA009D18D5 /* AppDelegate.swift */,
-				AA436EB41E1F767A00985B4F /* BaseViewController.swift */,
-				AA436EB51E1F767A00985B4F /* ViewController.swift */,
-				AAD406F61D5C6EFA009D18D5 /* Assets.xcassets */,
-				AA436FCE1E1F78AB00985B4F /* T_DrugName.db */,
-				AAD406F81D5C6EFA009D18D5 /* LaunchScreen.storyboard */,
-				AAD406FB1D5C6EFA009D18D5 /* Info.plist */,
-				AA76DB571E1F8A07002D0A76 /* Icon.png */,
-				AA76DB581E1F8A07002D0A76 /* Icon@2x.png */,
-				AA76DB591E1F8A07002D0A76 /* Icon120.png */,
+				AA0B05411E32F59800E691E4 /* Supporting Files */,
 			);
 			path = Housing;
 			sourceTree = "<group>";
