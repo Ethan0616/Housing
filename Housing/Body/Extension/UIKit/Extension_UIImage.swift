@@ -10,6 +10,14 @@ import Foundation
 import UIKit
 import Accelerate
 
+public  class ExtensionInterface: NSObject {
+    
+    public static func imageWithASName(_ nameStr : String , SubPath subPath : String = "resource", ImageType imageType : String = "png", BundleName bundleName : String = "Resources") -> UIImage?{
+        return UIImage.imageWithASName(nameStr, SubPath: subPath, ImageType: imageType, BundleName: bundleName)
+    }
+    
+}
+
 // UIImage的扩展
 extension UIImage {
     
@@ -17,10 +25,8 @@ extension UIImage {
         return UIImage(contentsOfFile: Bundle.pathForResource(name, Dir: dir))
     }
     
-    open class func imageWithASName(_ nameStr : String , SubPath subPath : String = "resource", ImageType imageType : String = "png", BundleName bundleName : String = "Resources") -> UIImage?{
+   static func imageWithASName(_ nameStr : String , SubPath subPath : String = "resource", ImageType imageType : String = "png", BundleName bundleName : String = "Resources") -> UIImage?{
 
-        
-        
         guard let bundlePath = Bundle.main.path(forResource: bundleName, ofType: "bundle") else {
             print("bundle 不存在！！！")
             return nil
@@ -42,7 +48,7 @@ extension UIImage {
     
     
     /// 按尺寸裁剪图片大小
-    class func imageClipToNewImage(_ image: UIImage, newSize: CGSize) -> UIImage {
+    open class func imageClipToNewImage(_ image: UIImage, newSize: CGSize) -> UIImage {
         UIGraphicsBeginImageContext(newSize)
         image.draw(in: CGRect(origin: CGPoint.zero, size: newSize))
         let newImage = UIGraphicsGetImageFromCurrentImageContext()
@@ -152,7 +158,7 @@ extension UIImage {
     
     /// 将传入的图片，生成对应的模糊效果
     func boxblurImageWithBlur(_ blur : Double) -> UIImage{
-        let imageData : Data = UIImageJPEGRepresentation(self, 1)!
+        let imageData : Data = self.jpegData(compressionQuality: 1)!
         let destImage : UIImage = UIImage(data:imageData)!
         var blur = blur
         if blur < 0 || blur > 1 {

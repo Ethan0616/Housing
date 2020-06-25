@@ -21,7 +21,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     fileprivate let tachographMapViewAPIKey = "5d8d6da33a87ef2a7af423ec8f6f76b0" // tachograph
 
 
-    func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
+    func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         AMapServices.shared().apiKey = MapViewAPIKey
         codeForTachograph()
         

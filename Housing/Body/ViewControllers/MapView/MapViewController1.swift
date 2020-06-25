@@ -207,8 +207,8 @@ extension MapViewController1 : UIGestureRecognizerDelegate{
         return true
     }
     
-    func handleLongPress(_ gesture: UILongPressGestureRecognizer) {
-        if gesture.state == UIGestureRecognizerState.began {
+    @objc func handleLongPress(_ gesture: UILongPressGestureRecognizer) {
+        if gesture.state == UIGestureRecognizer.State.began {
             let coordinate = mapView!.convert(gesture.location(in: self.view), toCoordinateFrom: mapView)
             
             searchReGeocodeWithCoordinate(coordinate)

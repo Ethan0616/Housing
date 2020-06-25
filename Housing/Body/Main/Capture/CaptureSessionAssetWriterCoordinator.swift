@@ -68,7 +68,7 @@ class CaptureSessionAssetWriterCoordinator: CaptureSessionCoordinator {
         
         objc_sync_exit(self)
         
-        recordingURL = FileManager.createFileUrl() as URL!
+        recordingURL = FileManager.createFileUrl() as URL?
         assetWriterCoordinator = AssetWriterCoordinator()
         assetWriterCoordinator.url = recordingURL
         if outputAudioFormatDescription != nil {
@@ -83,7 +83,7 @@ class CaptureSessionAssetWriterCoordinator: CaptureSessionCoordinator {
         
     }
     
-    override func stopRecording() {
+    @objc override func stopRecording() {
         objc_sync_enter(self)
         if recordingStatus != .recording {
             MSGLog(Message: "nothing to do!!")
@@ -240,21 +240,21 @@ private extension CaptureSessionAssetWriterCoordinator{
         videoDataOutput.alwaysDiscardsLateVideoFrames = false
         videoDataOutput.setSampleBufferDelegate(self, queue: videoDataOutputQueue)
         addOutput(videoDataOutput, captureSession: captureSession)
-        videoConnection = videoDataOutput.connection(withMediaType: AVMediaTypeVideo)
+        videoConnection = videoDataOutput.connection(with: AVMediaType.video)
         
         
         audioDataOutput = AVCaptureAudioDataOutput()
         audioDataOutput.setSampleBufferDelegate(self, queue: audioDataOutputQueue)
         addOutput(audioDataOutput, captureSession: captureSession)
-        audioConnection = audioDataOutput.connection(withMediaType: AVMediaTypeAudio)
+        audioConnection = audioDataOutput.connection(with: AVMediaType.audio)
         
         
-        let videoDict = videoDataOutput.recommendedVideoSettingsForAssetWriter(withOutputFileType: AVFileTypeQuickTimeMovie)
+        let videoDict = videoDataOutput.recommendedVideoSettingsForAssetWriter(writingTo: AVFileType.mov)
         let videoKey  = videoDict?.keys.first as! String
         videoCompressionSettings = [videoKey : videoDict![videoKey]! as AnyObject]
         
         
-        let audioDict = audioDataOutput.recommendedAudioSettingsForAssetWriter(withOutputFileType: AVFileTypeQuickTimeMovie)
+        let audioDict = audioDataOutput.recommendedAudioSettingsForAssetWriter(writingTo: AVFileType.mov)
         let audioKey  = audioDict?.keys.first as! String
         audioCompressionSettings = [audioKey : audioDict![audioKey]! as AnyObject]
     }

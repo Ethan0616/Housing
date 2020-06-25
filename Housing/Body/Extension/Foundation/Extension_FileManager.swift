@@ -27,7 +27,7 @@ struct VideoModel {
     
     static func Video(_ dict : NSDictionary) -> VideoModel?{
         
-        let model : VideoModel = VideoModel(creationDate: dict[FileAttributeKey.creationDate] as! Date,ModificationDate: dict[FileAttributeKey.modificationDate] as! Date,fileSize:dict[FileAttributeKey.size] as! Int ,type:.none,filePath: nil , videoImage: nil)
+        let model : VideoModel = VideoModel(creationDate: dict[FileAttributeKey.creationDate] as! Date,ModificationDate: dict[FileAttributeKey.modificationDate] as! Date,fileSize:dict[FileAttributeKey.size] as! Int ,type:Optional.none,filePath: nil , videoImage: nil)
         
         return model
     }
@@ -170,7 +170,8 @@ extension FileManager {
         var freespace : NSInteger = -1
         if statfs("/var",&buf) >= 0
         {
-            freespace = (NSInteger)(buf.f_bsize.toUIntMax() * buf.f_bfree.toUIntMax())
+            freespace = NSInteger((CUnsignedLongLong)(UInt64(buf.f_bsize) * buf.f_bavail))
+//            freespace = buf.f_bsize.toUIntMax() * buf.f_bfree.toUIntMax()
             freespace = freespace / 1000 / 1000
             return freespace
             //            print("剩余录制空间为\(freespace/1024)G") // G
@@ -245,7 +246,7 @@ extension FileManager {
         let document = baseDirForRecords()
         
         if let doc = document {
-            return "\(doc)/\(name)"
+            return "\(doc)/\(String(describing: name))"
         }
         
         return nil

@@ -46,7 +46,7 @@ class AssetWriterCoordinator: NSObject {
     override init() {
         super.init()
         writingQueue = DispatchQueue(label: "org.xmyy.assetwriter.writing", attributes: [])
-        videoTrackTransform = CGAffineTransform(rotationAngle: CGFloat(M_PI_2))
+        videoTrackTransform = CGAffineTransform(rotationAngle: .pi/2)
     }
     
     
@@ -106,11 +106,11 @@ extension AssetWriterCoordinator{
     }
     
     func appendVideoSampleBuffer(_ sampleBuffer : CMSampleBuffer){
-        appendSampleBuffer(sampleBuffer, mediaType: AVMediaTypeVideo as NSString)
+        appendSampleBuffer(sampleBuffer, mediaType: AVMediaType.video as NSString)
     }
     
     func appendAudioSampleBuffer(_ sampleBuffer : CMSampleBuffer){
-        appendSampleBuffer(sampleBuffer, mediaType: AVMediaTypeAudio as NSString)
+        appendSampleBuffer(sampleBuffer, mediaType: AVMediaType.audio as NSString)
 
     }
     
@@ -137,7 +137,7 @@ extension AssetWriterCoordinator{
             do{
                 try Foundation.FileManager.default.removeItem(at: self.url)
                 do{
-                    try self.assetWriter = AVAssetWriter.init(outputURL: self.url, fileType: AVFileTypeQuickTimeMovie)
+                    try self.assetWriter = AVAssetWriter.init(outputURL: self.url, fileType: AVFileType.mov)
                     
                     self.setupAssetWriterVideoInputWithSourceFormatDescription(self.videoTrackSourceFormatDescription, transform: self.videoTrackTransform, videoSettings: &self.videoTrackSettings, errorOut: &error!)
                     self.setupAssetWriterAudioInputWithSourceFormatDescription(self.audioTrackSourceFormatDescription, audioSettings: &self.audioTrackSettings , errorOut: &error!)
@@ -227,8 +227,8 @@ private extension AssetWriterCoordinator{
     func setupAssetWriterAudioInputWithSourceFormatDescription(_ audioFormatDescription : CMFormatDescription ,audioSettings : inout [String : AnyObject] , errorOut : inout NSError) -> Bool {
         audioSettings = [AVFormatIDKey : NSNumber.init(value: kAudioFormatMPEG4AAC as UInt32)]
         
-        if assetWriter.canApply( outputSettings: audioSettings , forMediaType:AVMediaTypeAudio) {
-            audioInput = AVAssetWriterInput(mediaType: AVMediaTypeAudio , outputSettings: audioSettings  ,sourceFormatHint: audioFormatDescription)
+        if assetWriter.canApply( outputSettings: audioSettings , forMediaType:AVMediaType.audio) {
+            audioInput = AVAssetWriterInput(mediaType: AVMediaType.audio , outputSettings: audioSettings  ,sourceFormatHint: audioFormatDescription)
             audioInput.expectsMediaDataInRealTime = true
             
             
@@ -248,8 +248,8 @@ private extension AssetWriterCoordinator{
     func setupAssetWriterVideoInputWithSourceFormatDescription(_ videoFormatDescription : CMFormatDescription , transform : CGAffineTransform ,videoSettings : inout [String : AnyObject],errorOut : inout NSError ) -> Bool {
         videoSettings = fallbackVideoSettingsForSourceFormatDescription(videoFormatDescription) as! [String : AnyObject]
         
-        if assetWriter.canApply(outputSettings: videoSettings, forMediaType: AVMediaTypeVideo) {
-            videoInput = AVAssetWriterInput(mediaType: AVMediaTypeVideo , outputSettings:videoSettings , sourceFormatHint:videoFormatDescription)
+        if assetWriter.canApply(outputSettings: videoSettings, forMediaType: AVMediaType.video) {
+            videoInput = AVAssetWriterInput(mediaType: AVMediaType.video , outputSettings:videoSettings , sourceFormatHint:videoFormatDescription)
             
             videoInput?.expectsMediaDataInRealTime = true
             videoInput?.transform = transform
@@ -315,13 +315,13 @@ private extension AssetWriterCoordinator{
             
             objc_sync_exit(self)
             
-            if !self.haveStartedSession && mediaType as String == AVMediaTypeVideo{
+            if !self.haveStartedSession && mediaType as String == AVMediaType.video.rawValue{
                 self.assetWriter.startSession(atSourceTime: CMSampleBufferGetPresentationTimeStamp(sampleBuffer))
                 self.haveStartedSession = true
             }
             
             let input : AVAssetWriterInput!
-            if mediaType as String == AVMediaTypeVideo{
+            if mediaType as String == AVMediaType.video.rawValue{
                 input = self.videoInput
             }else{
                 input = self.audioInput

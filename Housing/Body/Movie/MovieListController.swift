@@ -101,9 +101,9 @@ extension MovieListController: UITableViewDelegate, UITableViewDataSource {
         
     }
 
-    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         
-        let urlStr = URL.init(fileURLWithPath: dataSource[indexPath.row].filePath as! String)
+        let urlStr = URL.init(fileURLWithPath: dataSource[indexPath.row].filePath! as String)
             
         FileManager.removeFile(urlStr)
         

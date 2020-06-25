@@ -68,7 +68,7 @@ class RecordViewController: UIViewController, UITableViewDataSource, UITableView
         var cell = tableView.dequeueReusableCell(withIdentifier: cellIdentifier)         
         if cell == nil {
             
-            cell = UITableViewCell(style: UITableViewCellStyle.subtitle, reuseIdentifier: cellIdentifier)
+            cell = UITableViewCell(style: UITableViewCell.CellStyle.subtitle, reuseIdentifier: cellIdentifier)
         }
         
         if !routes.isEmpty {
@@ -87,15 +87,15 @@ class RecordViewController: UIViewController, UITableViewDataSource, UITableView
         return true
     }
     
-    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         
-        if editingStyle != UITableViewCellEditingStyle.delete {
+        if editingStyle != UITableViewCell.EditingStyle.delete {
             return
         }
         
         deleteRoute(indexPath.row)
         
-        tableView.deleteRows(at: [indexPath], with: UITableViewRowAnimation.fade)
+        tableView.deleteRows(at: [indexPath], with: UITableView.RowAnimation.fade)
         
     }
     

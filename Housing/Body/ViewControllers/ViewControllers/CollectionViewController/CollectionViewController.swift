@@ -11,22 +11,19 @@ import UIKit
 @objc (CollectionViewController)
 class CollectionViewController: BaseViewController {
    
-        override func viewDidLoad() {
-            super.viewDidLoad()
-            
-            initTitles()
-            initClassNames()
-            initTableView()
-        }
+    override func viewDidLoad() {
+        super.viewDidLoad()
         
-        override func didReceiveMemoryWarning() {
-            super.didReceiveMemoryWarning()
-            // Dispose of any resources that can be recreated.
-        }
+        initTitles()
+        initClassNames()
+        initTableView()
+    }
+    
+    override func didReceiveMemoryWarning() {
+        super.didReceiveMemoryWarning()
+        // Dispose of any resources that can be recreated.
+    }
         
-}
-
-extension CollectionViewController{
     override func initTitles() {
         let ViewControllers : NSArray = ["瀑布流"]
         
@@ -39,7 +36,3 @@ extension CollectionViewController{
         classNames = [ViewControllers]
     }
 }
-
-
-
-

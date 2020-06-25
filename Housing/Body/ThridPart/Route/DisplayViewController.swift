@@ -34,7 +34,7 @@ class DisplayViewController: UIViewController, MAMapViewDelegate {
         mapView = MAMapView(frame: self.view.bounds)
         mapView!.delegate = self
         self.view.addSubview(mapView!)
-        self.view.sendSubview(toBack: mapView!)
+        self.view.sendSubviewToBack(mapView!)
     }
     
     func initToolBar() {
@@ -78,7 +78,7 @@ class DisplayViewController: UIViewController, MAMapViewDelegate {
     
     /// Helpers
     
-    func actionPlayAndStop() {
+    @objc func actionPlayAndStop() {
         print("actionPlayAndStop")
         
         if (route == nil) {
@@ -124,7 +124,7 @@ class DisplayViewController: UIViewController, MAMapViewDelegate {
             return delta_lon_x < 0.0 ? 270.0 : 90.0
         }
         
-        var heading: Double = atan2(delta_lon_x, delta_lat_y) / M_PI * 180.0
+        var heading: Double = atan2(delta_lon_x, delta_lat_y) / .pi
         
         if heading < 0.0 {
             heading += 360.0
@@ -170,7 +170,7 @@ class DisplayViewController: UIViewController, MAMapViewDelegate {
         
         let view: MAAnnotationView? = mapView!.view(for: myLocation)
         if (view != nil) {
-            view!.transform = CGAffineTransform(rotationAngle: CGFloat(heading / 180.0 * M_PI));
+            view!.transform = CGAffineTransform(rotationAngle: CGFloat(heading / .pi));
         }
     }
     

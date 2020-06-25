@@ -22,7 +22,7 @@ class TipView: UIView {
         label.textColor = UIColor.white
         label.font = UIFont.systemFont(ofSize: 20)
         label.textAlignment = NSTextAlignment.center
-        label.autoresizingMask = UIViewAutoresizing.flexibleWidth
+        label.autoresizingMask = UIView.AutoresizingMask.flexibleWidth
         
         self.addSubview(label)
     }

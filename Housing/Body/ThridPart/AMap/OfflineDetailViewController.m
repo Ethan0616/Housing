@@ -578,13 +578,14 @@ NSString const *DownloadStageInfoKey2      = @"DownloadStageInfoKey";
         cell.backgroundColor = [UIColor lightGrayColor];
     }
 }
-
+#warning - 稍后修改
 #pragma mark - ImageResource
 - (UIImage *)downloadImage
 {
     if (_download == nil)
     {
-        _download = [UIImage imageWithASName:@"download"];
+//        _download = [UIImage imageWithASName:@"download"];
+        _download = [UIImage imageNamed:@"download"];
     }
     return _download;
 }
@@ -593,7 +594,8 @@ NSString const *DownloadStageInfoKey2      = @"DownloadStageInfoKey";
 {
     if (_pause == nil)
     {
-        _pause = [UIImage imageWithASName:@"pause"];
+        _pause = [UIImage imageNamed:@"pause"];
+//        _pause = [UIImage imageWithASName:@"pause"];
     }
     return _pause;
 }
@@ -602,7 +604,8 @@ NSString const *DownloadStageInfoKey2      = @"DownloadStageInfoKey";
 {
     if (_delete == nil)
     {
-        _delete = [UIImage imageWithASName:@"delete"];
+//        _delete = [UIImage imageWithASName:@"delete"];
+        _delete = [UIImage imageNamed:@"delete"];
     }
     return _delete;
 }

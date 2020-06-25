@@ -130,7 +130,7 @@ extension CaptureManager : UIAlertViewDelegate{
     // Microphone
     fileprivate func checkMicrophonePermission(_ block : @escaping (_ granted : Bool) -> ()){
         
-        AVCaptureDevice.requestAccess(forMediaType: AVMediaTypeAudio) { (granted) in
+        AVCaptureDevice.requestAccess(for: AVMediaType.audio) { (granted) in
             if !granted {
                 //Not granted access to mediaType
                 DispatchQueue.main.async(execute: { 
@@ -146,7 +146,7 @@ extension CaptureManager : UIAlertViewDelegate{
     // Camera
     fileprivate func checkCameraAuthorizationStatus(_ block : @escaping (_ granted : Bool) -> ()){
         
-        AVCaptureDevice.requestAccess(forMediaType: AVMediaTypeVideo) { (granted) in
+        AVCaptureDevice.requestAccess(for: AVMediaType.video) { (granted) in
             if !granted {
                 //Not granted access to mediaType
                 DispatchQueue.main.async(execute: {
@@ -162,7 +162,7 @@ extension CaptureManager : UIAlertViewDelegate{
     // MARK: UIAlertViewDelegate methods
     func alertView(_ alertView: UIAlertView, clickedButtonAt buttonIndex: Int) {
         if buttonIndex == 1 {
-            UIApplication.shared.openURL(URL(fileURLWithPath: UIApplicationOpenSettingsURLString))
+            UIApplication.shared.openURL(URL(fileURLWithPath: UIApplication.openSettingsURLString))
         }
     }
 }
@@ -205,7 +205,7 @@ extension CaptureManager{
         
         generator.appliesPreferredTrackTransform = true
         
-        let time : CMTime = CMTimeMakeWithSeconds(0, 600) //  参数( 截取的秒数， 视频每秒多少帧)
+        let time : CMTime = CMTimeMakeWithSeconds(0, preferredTimescale: 600) //  参数( 截取的秒数， 视频每秒多少帧)
         
         
         let actualTime : UnsafeMutablePointer<CMTime>?  = nil

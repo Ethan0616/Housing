@@ -11,7 +11,12 @@ import AVFoundation
 import AssetsLibrary
 
 
-class CaptureSessionMovieFileOutputCoordinator: CaptureSessionCoordinator {
+class CaptureSessionMovieFileOutputCoordinator: CaptureSessionCoordinator, AVCaptureFileOutputRecordingDelegate {
+    func fileOutput(_ output: AVCaptureFileOutput, didFinishRecordingTo outputFileURL: URL, from connections: [AVCaptureConnection], error: Error?) {
+        
+        
+    }
+    
     
     var movieFileOutput : AVCaptureMovieFileOutput!
     
@@ -36,7 +41,7 @@ class CaptureSessionMovieFileOutputCoordinator: CaptureSessionCoordinator {
         let path : URL? = FileManager.createFileUrl() as URL?
         if  let  pathStr = path{
             
-            self.movieFileOutput.startRecording(toOutputFileURL: pathStr, recordingDelegate: self)
+            self.movieFileOutput.startRecording(to: pathStr, recordingDelegate: self)
         }
     }
     
@@ -45,9 +50,8 @@ class CaptureSessionMovieFileOutputCoordinator: CaptureSessionCoordinator {
         movieFileOutput.stopRecording()
 
     }
-}
-
-extension CaptureSessionMovieFileOutputCoordinator : AVCaptureFileOutputRecordingDelegate{
+    
+    
     func capture(_ captureOutput: AVCaptureFileOutput!, didStartRecordingToOutputFileAt fileURL: URL!, fromConnections connections: [Any]!){
         
         self.delegate?.coordinatorDidBeginRecording(self)

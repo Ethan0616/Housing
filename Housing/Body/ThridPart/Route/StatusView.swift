@@ -42,8 +42,8 @@ class StatusView: UIView {
         control.frame = CGRect(x: 0, y: 0, width: frame.width, height: controlHeight)
         control.backgroundColor = UIColor.black.withAlphaComponent(0.6)
         control.titleLabel!.font = UIFont.systemFont(ofSize: 16)
-        control.setTitle("Opened", for: UIControlState())
-        control.addTarget(self, action: #selector(StatusView.actionSwitch), for: UIControlEvents.touchUpInside)
+        control.setTitle("Opened", for: UIControl.State())
+        control.addTarget(self, action: #selector(StatusView.actionSwitch), for: UIControl.Event.touchUpInside)
         
         addSubview(control)
     }
@@ -52,11 +52,11 @@ class StatusView: UIView {
         fatalError("init(coder:) has not been implemented")
     }
     
-    func actionSwitch() {
+    @objc func actionSwitch() {
         isOpen = !isOpen
         
         if isOpen {
-            control.setTitle("Opened", for: UIControlState())
+            control.setTitle("Opened", for: UIControl.State())
             
             UIView.animate(withDuration: 0.25, animations: {
                 self.frame = self.originalFrame
@@ -65,7 +65,7 @@ class StatusView: UIView {
                 })
         }
         else {
-            control.setTitle("Closed", for: UIControlState())
+            control.setTitle("Closed", for: UIControl.State())
             
             UIView.animate(withDuration: 0.25, animations: {
                 self.frame = CGRect(x: self.originalFrame.origin.x, y: self.originalFrame.origin.y, width: self.originalFrame.size.width, height: self.controlHeight)

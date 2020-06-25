@@ -8,12 +8,13 @@
 
 import UIKit
 import MediaPlayer
+import AVKit
 
 class MoviePlayerController: UIViewController {
     
     var fileUrl : NSString?
 
-    fileprivate var moviePlayerView : MPMoviePlayerViewController!
+    fileprivate var moviePlayerView : AVPlayerViewController!
     
     
     override func viewDidLoad() {
@@ -22,9 +23,11 @@ class MoviePlayerController: UIViewController {
         if let str = fileUrl {
             NotificationCenter.default.addObserver(self, selector: #selector(MoviePlayerController.playingDone), name: NSNotification.Name.MPMoviePlayerPlaybackDidFinish, object: nil)
             
-            moviePlayerView = MPMoviePlayerViewController(contentURL:URL(fileURLWithPath: str as String))
-            moviePlayerView.moviePlayer.controlStyle = .fullscreen
-            moviePlayerView.moviePlayer.scalingMode = .aspectFill
+            moviePlayerView =  AVPlayerViewController()
+            moviePlayerView.player = AVPlayer.init(playerItem: AVPlayerItem.init(url: URL(fileURLWithPath: str as String)))
+//            moviePlayerView = MPMoviePlayerViewController(contentURL:URL(fileURLWithPath: str as String))
+//            moviePlayerView.moviePlayer.controlStyle = .fullscreen
+//            moviePlayerView.moviePlayer.scalingMode = .aspectFill
             
             view.addSubview(moviePlayerView.view)
             

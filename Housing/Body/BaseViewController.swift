@@ -8,7 +8,7 @@
 
 import UIKit
 @objc (BaseViewController)
-class BaseViewController: UIViewController {
+class BaseViewController: UIViewController , UITableViewDelegate,UITableViewDataSource{
 
     var ViewControllerTitle = "ViewController"
     
@@ -53,127 +53,120 @@ class BaseViewController: UIViewController {
         // Pass the selected object to the new view controller.
     }
     */
-
-}
-
-
-extension BaseViewController{
-    func initTitles(){
-        
-        let ViewControllers : NSArray = ["UITableViewController",
-                                         "UICollectionViewController"]
-        let CustomViews : NSArray = ["MapViewController"]
-//        let APIViews : NSArray = ["ViewControllers1",
-//                                  "ViewControllers2",
-//                                  "ViewControllers3",
-//                                  "ViewControllers4",
-//                                  "ViewControllers5"]
-//        let CoreAnimations : NSArray = ["ViewControllers1",
-//                                        "ViewControllers2",
-//                                        "ViewControllers3",
-//                                        "ViewControllers4",
-//                                        "ViewControllers5"]
-//        let GCD : NSArray = ["ViewControllers1",
-//                             "ViewControllers2",
-//                             "ViewControllers3",
-//                             "ViewControllers4",
-//                             "ViewControllers5"]
-        
-        titles = [ViewControllers,CustomViews]
-        
-    }
     
-    func initClassNames(){
-        
-        let ViewControllers : NSArray = ["TableViewController",
-                                         "CollectionViewController"]
-        let CustomViews : NSArray = ["MapViewController"]
-//        let APIViews : NSArray = ["ViewControllers1",
-//                                  "ViewControllers2",
-//                                  "ViewControllers3",
-//                                  "ViewControllers4",
-//                                  "ViewControllers5"]
-//        let CoreAnimations : NSArray = ["ViewControllers1",
-//                                        "ViewControllers2",
-//                                        "ViewControllers3",
-//                                        "ViewControllers4",
-//                                        "ViewControllers5"]
-//        let GCD : NSArray = ["ViewControllers1",
-//                             "ViewControllers2",
-//                             "ViewControllers3",
-//                             "ViewControllers4",
-//                             "ViewControllers5"]
-        
-        classNames = [ViewControllers,CustomViews]
-    }
-    
-    
-    func initTableView(){
-        tableView = UITableView(frame: view.bounds,style: .grouped)
-        tableView.delegate = self
-        tableView.dataSource = self
-        tableView.backgroundColor = UIColor.lightGray
-        tableView.contentInset = UIEdgeInsetsMake(20, 0, 25, 0)
-        view.addSubview(tableView)
-    }
-}
-
-
-extension BaseViewController : UITableViewDelegate,UITableViewDataSource{
-    
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return (self.titles[section] as AnyObject).count ?? 1
-    }
-    
-    func numberOfSections(in tableView: UITableView) -> Int {
-        return titles.count
-    }
-    
-    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        return 15.0
-    }
-    
-    
-    
-    func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        
-        return sectionTitles.object(at: section) as? String
-
-    }
-    
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let ViewControllerIdentifier = "ViewControllerIdentifier"
-        
-        var cell : UITableViewCell? = tableView.dequeueReusableCell(withIdentifier: ViewControllerIdentifier)
-        guard let tableViewCell : UITableViewCell = cell  else{
-            cell = UITableViewCell(style: .subtitle,reuseIdentifier: ViewControllerIdentifier)
-            cell!.accessoryType = .disclosureIndicator
+        func initTitles(){
             
-            cell!.textLabel?.text = (titles.object(at: indexPath.section) as AnyObject).object(at: indexPath.row) as? String
-            cell!.detailTextLabel?.text = (classNames.object(at: indexPath.section) as AnyObject).object(at: indexPath.row) as? String
+            let ViewControllers : NSArray = ["UITableViewController",
+                                             "UICollectionViewController"]
+            let CustomViews : NSArray = ["MapViewController"]
+    //        let APIViews : NSArray = ["ViewControllers1",
+    //                                  "ViewControllers2",
+    //                                  "ViewControllers3",
+    //                                  "ViewControllers4",
+    //                                  "ViewControllers5"]
+    //        let CoreAnimations : NSArray = ["ViewControllers1",
+    //                                        "ViewControllers2",
+    //                                        "ViewControllers3",
+    //                                        "ViewControllers4",
+    //                                        "ViewControllers5"]
+    //        let GCD : NSArray = ["ViewControllers1",
+    //                             "ViewControllers2",
+    //                             "ViewControllers3",
+    //                             "ViewControllers4",
+    //                             "ViewControllers5"]
             
-            return cell!
+            titles = [ViewControllers,CustomViews]
+            
         }
-        tableViewCell.textLabel?.text = (titles.object(at: indexPath.section) as AnyObject).object(at: indexPath.row) as? String
-        tableViewCell.detailTextLabel?.text = (classNames.object(at: indexPath.section) as AnyObject).object(at: indexPath.row) as? String
         
-        return tableViewCell
-    }
-    
-    
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        tableView.deselectRow(at: indexPath, animated: true)
-        let className : String  = ((classNames.object(at: indexPath.section) as AnyObject).object(at: indexPath.row) as? String)!
-        let type   = NSClassFromString(className) as? BaseViewController.Type
+        func initClassNames(){
+            
+            let ViewControllers : NSArray = ["TableViewController",
+                                             "CollectionViewController"]
+            let CustomViews : NSArray = ["MapViewController"]
+    //        let APIViews : NSArray = ["ViewControllers1",
+    //                                  "ViewControllers2",
+    //                                  "ViewControllers3",
+    //                                  "ViewControllers4",
+    //                                  "ViewControllers5"]
+    //        let CoreAnimations : NSArray = ["ViewControllers1",
+    //                                        "ViewControllers2",
+    //                                        "ViewControllers3",
+    //                                        "ViewControllers4",
+    //                                        "ViewControllers5"]
+    //        let GCD : NSArray = ["ViewControllers1",
+    //                             "ViewControllers2",
+    //                             "ViewControllers3",
+    //                             "ViewControllers4",
+    //                             "ViewControllers5"]
+            
+            classNames = [ViewControllers,CustomViews]
+        }
         
-        if let subViewController =  type {
-            let controller = subViewController.init()
-            controller.title = (titles.object(at: indexPath.section) as AnyObject).object(at: indexPath.row) as? String
-            if let titleName = controller.title {
-                controller.ViewControllerTitle = titleName
+        
+        func initTableView(){
+            tableView = UITableView(frame: view.bounds,style: .grouped)
+            tableView.delegate = self
+            tableView.dataSource = self
+            tableView.backgroundColor = UIColor.lightGray
+            tableView.contentInset = UIEdgeInsets(top: 20, left: 0, bottom: 25, right: 0)
+            view.addSubview(tableView)
+        }
+        
+        func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+            return (self.titles[section] as AnyObject).count ?? 1
+        }
+        
+        func numberOfSections(in tableView: UITableView) -> Int {
+            return titles.count
+        }
+        
+        func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+            return 15.0
+        }
+        
+        
+        
+        func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+            
+            return sectionTitles.object(at: section) as? String
+
+        }
+        
+        func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+            let ViewControllerIdentifier = "ViewControllerIdentifier"
+            
+            var cell : UITableViewCell? = tableView.dequeueReusableCell(withIdentifier: ViewControllerIdentifier)
+            guard let tableViewCell : UITableViewCell = cell  else{
+                cell = UITableViewCell(style: .subtitle,reuseIdentifier: ViewControllerIdentifier)
+                cell!.accessoryType = .disclosureIndicator
+                
+                cell!.textLabel?.text = (titles.object(at: indexPath.section) as AnyObject).object(at: indexPath.row) as? String
+                cell!.detailTextLabel?.text = (classNames.object(at: indexPath.section) as AnyObject).object(at: indexPath.row) as? String
+                
+                return cell!
             }
-            self.navigationController?.pushViewController(controller, animated: true)
+            tableViewCell.textLabel?.text = (titles.object(at: indexPath.section) as AnyObject).object(at: indexPath.row) as? String
+            tableViewCell.detailTextLabel?.text = (classNames.object(at: indexPath.section) as AnyObject).object(at: indexPath.row) as? String
+            
+            return tableViewCell
         }
-    }
-    
+        
+        
+        func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+            tableView.deselectRow(at: indexPath, animated: true)
+            let className : String  = ((classNames.object(at: indexPath.section) as AnyObject).object(at: indexPath.row) as? String)!
+            let type   = NSClassFromString(className) as? BaseViewController.Type
+            
+            if let subViewController =  type {
+                let controller = subViewController.init()
+                controller.title = (titles.object(at: indexPath.section) as AnyObject).object(at: indexPath.row) as? String
+                if let titleName = controller.title {
+                    controller.ViewControllerTitle = titleName
+                }
+                self.navigationController?.pushViewController(controller, animated: true)
+            }
+        }
+
 }
+

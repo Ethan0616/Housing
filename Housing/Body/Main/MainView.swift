@@ -76,7 +76,7 @@ class MainView: UIView {
         changeMapCaptureFrameValueAction(rectButton)
         addSubview(tabbar)
         addSubview(rectButton)
-        NotificationCenter.default.addObserver(self, selector: #selector(MainView.deviceOrientationDidChangeNotificationAction(_:)), name: NSNotification.Name.UIApplicationDidChangeStatusBarOrientation, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(MainView.deviceOrientationDidChangeNotificationAction(_:)), name: UIApplication.didChangeStatusBarOrientationNotification, object: nil)
         // delegate tabbarButtonAction
         for obj in tabbar.buttonArr {
             if obj.isKind(of: UIButton.self) {
@@ -107,7 +107,7 @@ class MainView: UIView {
             tabbar.frame = CGRect(x: 0, y: bounds.size.height - tabbarH, width: bounds.size.width, height: tabbarH)
         }
         
-        bringSubview(toFront: rectButton)
+        bringSubviewToFront(rectButton)
     }
     
     deinit{
@@ -154,12 +154,12 @@ extension MainView{
                     self.captureView.frame = btn.frame
                     self.captureView.layer.cornerRadius = 15
                     self.captureView.layer.masksToBounds = true
-                    self.sendSubview(toBack: self.mapView)
+                    self.sendSubviewToBack(self.mapView)
                 }else{
                     self.mapView.frame = btn.frame
                     self.mapView.layer.cornerRadius = 15
                     self.mapView.layer.masksToBounds = true
-                    self.sendSubview(toBack: self.captureView)
+                    self.sendSubviewToBack(self.captureView)
                 }
                 
         }) 
@@ -169,7 +169,7 @@ extension MainView{
     
         let orientation : UIDeviceOrientation = UIDevice.current.orientation
         // 竖屏
-        if !UIDeviceOrientationIsLandscape(orientation) {
+        if !orientation.isLandscape {
 //            print("width:\(bounds.size.width)  height:\(bounds.size.height)")
             // bounds:568.0  height:320.0
             
@@ -180,7 +180,7 @@ extension MainView{
                 self.mapView.frame = CGRect(x: 0, y: 0, width: bounds.size.height, height: bounds.size.width)
                 self.mapView.layer.cornerRadius = 0
                 self.mapView.layer.masksToBounds = false
-                self.sendSubview(toBack: self.mapView)
+                self.sendSubviewToBack(self.mapView)
                 self.captureView.frame = rectButton.frame
                 self.captureView.layer.cornerRadius = 15
                 self.captureView.layer.masksToBounds = true
@@ -189,7 +189,7 @@ extension MainView{
                 self.captureView.frame = CGRect(x: 0, y: 0, width: bounds.size.height, height: bounds.size.width)
                 self.captureView.layer.cornerRadius = 0
                 self.captureView.layer.masksToBounds = false
-                self.sendSubview(toBack: self.captureView)
+                self.sendSubviewToBack(self.captureView)
                 self.mapView.frame = rectButton.frame
                 self.mapView.layer.cornerRadius = 15
                 self.mapView.layer.masksToBounds = true
@@ -216,7 +216,7 @@ extension MainView{
                 self.mapView.frame = CGRect(x: 0, y: 0, width: height, height: width)
                 self.mapView.layer.cornerRadius = 0
                 self.mapView.layer.masksToBounds = false
-                self.sendSubview(toBack: self.mapView)
+                self.sendSubviewToBack(self.mapView)
                 self.captureView.frame = rectButton.frame
                 self.captureView.layer.cornerRadius = 15
                 self.captureView.layer.masksToBounds = true
@@ -225,7 +225,7 @@ extension MainView{
                 self.captureView.frame = CGRect(x: 0, y: 0, width: height, height: width)
                 self.captureView.layer.cornerRadius = 0
                 self.captureView.layer.masksToBounds = false
-                self.sendSubview(toBack: self.captureView)
+                self.sendSubviewToBack(self.captureView)
                 self.mapView.frame = rectButton.frame
                 self.mapView.layer.cornerRadius = 15
                 self.mapView.layer.masksToBounds = true

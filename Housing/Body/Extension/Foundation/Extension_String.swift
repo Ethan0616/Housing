@@ -92,10 +92,11 @@ extension String  {
         for i in 0..<digestLen {
             hash.appendFormat("%02x", result[i])
         }
+        // deallocate(capacity:) is  unavailable:Swift currently only supports freeing entire heap blocks,use deallocate() instead
+        result.deallocate()
+//        result.deallocate(capacity: digestLen)
         
-        result.deallocate(capacity: digestLen)
-        
-        return hash.copy() as! String
+        return hash.copy() as? String
     }
 }
 

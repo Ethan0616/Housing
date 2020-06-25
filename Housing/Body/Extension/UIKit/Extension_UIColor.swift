@@ -49,7 +49,7 @@ extension UIColor{
         
         for i in 0...2 {
             
-            let range = colorString!.characters.index(colorString!.startIndex, offsetBy: i*2) ..< colorString!.characters.index(colorString!.startIndex, offsetBy: i*2+2)
+            let range = colorString!.index(colorString!.startIndex, offsetBy: i*2) ..< colorString!.index(colorString!.startIndex, offsetBy: i*2+2)
             
             let colorSegment = colorString!.substring(with: range)
             

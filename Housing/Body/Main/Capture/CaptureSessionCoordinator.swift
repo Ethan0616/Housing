@@ -45,18 +45,19 @@ class CaptureSessionCoordinator: NSObject {
 
         do{
             let cameraDeviceInput = try
-            AVCaptureDeviceInput.init(device: AVCaptureDevice.defaultDevice(withMediaType: AVMediaTypeVideo))
-            addInput(cameraDeviceInput, captureSession: captureSession)
+                AVCaptureDeviceInput.init(device: AVCaptureDevice.default(for: AVMediaType.video)!)
+                    
+                addInput(cameraDeviceInput, captureSession: captureSession)
             
         }catch let error as NSError {
-            MSGLog(Message: "\(error)")
+            MSGLog(Message: "\(String(describing: error))")
         }
         
 
         do{
 
             let micDeviceInput = try
-            AVCaptureDeviceInput.init(device: AVCaptureDevice.defaultDevice(withMediaType: AVMediaTypeAudio))
+            AVCaptureDeviceInput.init(device:  AVCaptureDevice.default(for: AVMediaType.audio)!)
             addInput(micDeviceInput, captureSession: captureSession)
             
         }catch let error as NSError{
@@ -71,10 +72,6 @@ class CaptureSessionCoordinator: NSObject {
         fatalError("init(coder:) has not been implemented")
     }
     
-}
-
-// public
-extension CaptureSessionCoordinator{
     func setDelegate< T : CaptureSessionCoordinatorDelegate>(_ delegate : T, callBackQueue : DispatchQueue) {
         
         objc_sync_enter(self)
@@ -131,13 +128,11 @@ extension CaptureSessionCoordinator{
     }
     
     // Switching between front and back cameras
-    fileprivate func cameraWithPosition(_ position : AVCaptureDevicePosition) -> AVCaptureDevice? {
-        let devices : Array = AVCaptureDevice.devices(withMediaType: AVMediaTypeVideo)
+    fileprivate func cameraWithPosition(_ position : AVCaptureDevice.Position) -> AVCaptureDevice? {
+        let devices : Array = AVCaptureDevice.devices(for: AVMediaType.video)
         for  device in devices{
-            if let obj = device as? AVCaptureDevice {
-                if obj.position == position {
-                    return obj
-                }
+            if device.position == position {
+                return device
             }
         }
         return nil
@@ -151,8 +146,8 @@ extension CaptureSessionCoordinator{
             
             for input in inputs {
                 let device : AVCaptureDevice = (input as AnyObject).device
-                if device.hasMediaType(AVMediaTypeVideo) {
-                    let position : AVCaptureDevicePosition = device.position
+                if device.hasMediaType(AVMediaType.video) {
+                    let position : AVCaptureDevice.Position = device.position
                     var newCamera : AVCaptureDevice?
                     if position == .front {
                         newCamera = cameraWithPosition(.back)
@@ -211,8 +206,8 @@ extension CaptureSessionCoordinator{
      }
 
      */
-
 }
+
 
 
 

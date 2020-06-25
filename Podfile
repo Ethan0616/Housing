@@ -1,8 +1,10 @@
-source 'https://github.com/CocoaPods/Specs.git'
+#source 'https://github.com/CocoaPods/Specs.git'
+# 更换清华源
+source 'https://mirrors.tuna.tsinghua.edu.cn/git/CocoaPods/Specs.git'
 platform :ios, '9.0'
 use_frameworks!
 target 'Housing' do
-    pod 'Alamofire', '~> 4.0'
+    pod 'Alamofire'
     pod 'SDWebImage', '~>3.7'
     pod 'SVProgressHUD','~>2.0.3'
     pod 'Reachability', '~> 3.2'

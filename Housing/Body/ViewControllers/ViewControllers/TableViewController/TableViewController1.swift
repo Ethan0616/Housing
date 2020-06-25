@@ -96,7 +96,7 @@ class TwitterScroll: UIView {
     }()
     var headerButton    : UIButton = {
         var btn = UIButton()
-        btn.setTitleColor(UIColor.lightGray, for: UIControlState())
+        btn.setTitleColor(UIColor.lightGray, for: UIControl.State())
         btn.titleLabel?.font = UIFont(name: "HelveticaNeue-Medium",size: 12)
         btn.layer.borderColor = UIColor.lightGray.cgColor
         btn.layer.borderWidth = 1
@@ -166,7 +166,7 @@ class TwitterScroll: UIView {
         self.avatarImage.image = avatarImage
         titleLabel.text = titleString
         subtitleLabel.text = subtitleString
-        headerButton.setTitle(buttonTitle as String, for: UIControlState())
+        headerButton.setTitle(buttonTitle as String, for: UIControl.State())
         headerButton.addTarget(self, action: #selector(touchUpHeaderButton), for: .touchUpInside)
 
         
@@ -303,7 +303,7 @@ class TwitterScroll: UIView {
         }
     }
     
-    func touchUpHeaderButton(_ sender : UIButton){
+    @objc func touchUpHeaderButton(_ sender : UIButton){
         if let funcRecieved = self.delegate?.recievedMBTwitterScrollEvent() {
                 funcRecieved
         }

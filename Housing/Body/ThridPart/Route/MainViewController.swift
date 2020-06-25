@@ -53,7 +53,7 @@ class MainViewController: BaseViewController, MAMapViewDelegate {
         mapView = MAMapView(frame: self.view.bounds)
         mapView!.delegate = self
         self.view.addSubview(mapView!)
-        self.view.sendSubview(toBack: mapView!)
+        self.view.sendSubviewToBack(mapView!)
         
         mapView!.showsUserLocation = true
         mapView!.userTrackingMode = MAUserTrackingMode.follow
@@ -85,9 +85,9 @@ class MainViewController: BaseViewController, MAMapViewDelegate {
         locationButton!.layer.shadowOffset = CGSize(width: 5, height: 5)
         locationButton!.layer.shadowRadius = 5
         
-        locationButton!.addTarget(self, action: #selector(MainViewController.actionLocation(_:)), for: UIControlEvents.touchUpInside)
+        locationButton!.addTarget(self, action: #selector(MainViewController.actionLocation(_:)), for: UIControl.Event.touchUpInside)
         
-        locationButton!.setImage(imageNotLocate, for: UIControlState())
+        locationButton!.setImage(imageNotLocate, for: UIControl.State())
         
         view.addSubview(locationButton!)
     }
@@ -115,7 +115,7 @@ class MainViewController: BaseViewController, MAMapViewDelegate {
         }
     }
     
-    func actionHistory() {
+    @objc func actionHistory() {
         print("actionHistory")
         
         let historyController = RecordViewController(nibName: nil, bundle: nil)
@@ -124,7 +124,7 @@ class MainViewController: BaseViewController, MAMapViewDelegate {
         navigationController!.pushViewController(historyController, animated: true)
     }
     
-    func actionRecordAndStop() {
+    @objc func actionRecordAndStop() {
         print("actionRecord")
         
         isRecording = !isRecording
@@ -150,7 +150,7 @@ class MainViewController: BaseViewController, MAMapViewDelegate {
 
     }
     
-    func actionLocation(_ sender: UIButton) {
+    @objc func actionLocation(_ sender: UIButton) {
         print("actionLocation")
         
         if mapView!.userTrackingMode == MAUserTrackingMode.follow {
@@ -224,10 +224,10 @@ class MainViewController: BaseViewController, MAMapViewDelegate {
     */
     func mapView(_ mapView: MAMapView, didChange mode: MAUserTrackingMode, animated: Bool) {
         if mode == MAUserTrackingMode.none {
-            locationButton?.setImage(imageNotLocate, for: UIControlState())
+            locationButton?.setImage(imageNotLocate, for: UIControl.State())
         }
         else {
-            locationButton?.setImage(imageLocated, for: UIControlState())
+            locationButton?.setImage(imageLocated, for: UIControl.State())
         }
     }
 

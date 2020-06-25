@@ -26,7 +26,7 @@ class CaptureView: UIView {
         }
         
         // 屏幕变化通知
-        NotificationCenter.default.addObserver(self, selector: #selector(CaptureView.deviceOrientationDidChange) , name: NSNotification.Name.UIDeviceOrientationDidChange, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(CaptureView.deviceOrientationDidChange) , name: UIDevice.orientationDidChangeNotification, object: nil)
 
     }
     
@@ -63,7 +63,7 @@ extension CaptureView{
         let orientation : UIDeviceOrientation = UIDevice.current.orientation
 
         // 方向旋转  对应的显示屏幕旋转 非录制输入屏幕方向
-        if UIDeviceOrientationIsPortrait(orientation) || UIDeviceOrientationIsLandscape(orientation)
+        if orientation.isPortrait || orientation.isLandscape
         {
             var videoOrientation : AVCaptureVideoOrientation = .portrait
             
@@ -88,9 +88,11 @@ extension CaptureView{
                 videoOrientation = .portrait
             case .unknown:
                 videoOrientation = .portrait
+            @unknown default:
+                fatalError()
             }
             
-            preL?.connection.videoOrientation = videoOrientation
+            preL?.connection?.videoOrientation = videoOrientation
             orientationTemp = videoOrientation
         }
         
