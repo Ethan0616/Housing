@@ -8,9 +8,12 @@
 
 import UIKit
 
+fileprivate var removeCurrentObserver : Bool = false
+
 @objc (TableViewController1)
 class TableViewController1: BaseViewController ,TwitterScrollDelegate {
 
+    
     lazy var tableV : UITableView = {
         let  tableV = UITableView()
         tableV.backgroundColor = UIColor.clear
@@ -32,10 +35,10 @@ class TableViewController1: BaseViewController ,TwitterScrollDelegate {
         self.navigationController?.isNavigationBarHidden = true
         tableV.frame = view.bounds
         
-        twitterScrollView = TwitterScroll(backgroundImage: UIImage.imageWithASName("dataBase1", ImageType: "jpg")!, avatarImage: UIImage.imageWithASName("dataBase0", ImageType: "jpg")!, titleString: "Hello,Kitty", subtitleString: "Back dropdown", buttonTitle: "下拉返回", scrollView: tableV)
+        twitterScrollView = TwitterScroll(backgroundImage: UIImage.imageWithASName("dataBase1", ImageType: "jpg")!, avatarImage: UIImage.imageWithASName("dataBase0", ImageType: "jpg")!, titleString: "Hello,Kitty", subtitleString: "Back dropdown", buttonTitle: "点击返回", scrollView: tableV)
 //        scrollV.frame = view.bounds
-//        scrollV.contentSize = CGSizeMake(scrollV.width, scrollV.height * 4)
-//        twitterScrollView = TwitterScroll(backgroundImage: UIImage(named: "dataBase1.jpg")!, avatarImage: UIImage(named: "dataBase0.jpg")!, titleString: "Hello,Kitty", subtitleString: "subtitleStri", buttonTitle: "buttonTitle", scrollView: scrollV)
+//        scrollV.contentSize = CGSize(width: scrollV.width, height:  scrollV.height * 4)
+//        twitterScrollView = TwitterScroll(backgroundImage:UIImage.imageWithASName("dataBase1", ImageType: "jpg")!, avatarImage: UIImage.imageWithASName("dataBase0", ImageType: "jpg")!, titleString: "Hello,Kitty", subtitleString: "subtitleStri", buttonTitle: "buttonTitle", scrollView: scrollV)
         view.addSubview(twitterScrollView)
         twitterScrollView.delegate = self
     }
@@ -170,6 +173,12 @@ class TwitterScroll: UIView {
         headerButton.addTarget(self, action: #selector(touchUpHeaderButton), for: .touchUpInside)
 
         
+        
+        self.prepareForBlurImages()
+    }
+    
+    override func layoutSubviews() {
+        super.layoutSubviews()
         header.frame = CGRect(x: self.x, y: self.y, width: self.width, height: 107)
         headerLabel.frame       = CGRect(x: self.x, y: self.header.height - 5, width: self.width, height: 25)
         self.avatarImage.frame  = CGRect(x: 10, y: 79, width: 69, height: 69)
@@ -177,11 +186,6 @@ class TwitterScroll: UIView {
         subtitleLabel.frame     = CGRect(x: 10, y: 177, width: 250, height: 25)
         headerButton.frame      = CGRect(x: self.width - 100, y: 120, width: 80, height: 35)
         headerImageView.frame   = header.frame
-        
-        
-        DispatchQueue.global().async {
-            self.prepareForBlurImages()
-        }
     }
     
     
@@ -192,7 +196,9 @@ class TwitterScroll: UIView {
         }else if scrollViewType == .scroll{
             offset = self.scrollView.contentOffset.y
         }
+        objc_sync_enter(self)
         animationForScroll(offset)
+        objc_sync_exit(self)
     }
     
     // MARK: Methods
@@ -200,13 +206,26 @@ class TwitterScroll: UIView {
         var factor = 0.1
         self.blurImages.add(self.headerImageView.image!)
         var height  = Int(self.headerImageView.frame.size.height)
-        if height == 0 {
-            height = 120 // 最多生成13张图片
-        }
-        
-        for _ in 0..<(height / 10) {
-            self.blurImages.add(self.headerImageView.image!.boxblurImageWithBlur(factor))
-            factor += 0.04
+        let tempImage = self.headerImageView.image!
+        DispatchQueue.global().async {
+            if height == 0 {
+                height = 120 // 最多生成13张图片
+            } else if height > 120 {
+                height = 120
+            }
+            var imageArr : [UIImage] = []
+            for _ in 0..<(height / 10) {
+                imageArr.append(tempImage.boxblurImageWithBlur(factor))
+                factor += 0.04
+            }
+            
+            DispatchQueue.main.async {
+                
+                imageArr.forEach { img in
+                    self.blurImages.add(img)
+                }
+                
+            }
         }
     }
     
@@ -227,21 +246,26 @@ class TwitterScroll: UIView {
             self.header.layer.transform = headerTransform
             
             if offset < -self.frame.size.height/3.5 {
-                objc_sync_enter(self)
                 
                 self.delegate?.recievedMBTwitterScrollEvent()
                 if self.delegate != nil {
                     self.delegate = nil
                 }
+                if removeCurrentObserver {
+                    return
+                }
                 if scrollViewType == .table {
+                    removeCurrentObserver = true
+                    self.header.removeFromSuperview()
+                    self.headerButton.removeFromSuperview()
+                    self.headerImageView.removeFromSuperview()
+                    self.avatarImage.removeFromSuperview()
                     self.tableview.removeFromSuperview()
                     self.tableview.removeObserver(self, forKeyPath: "contentOffset")
                 }else{
                     self.scrollView.removeFromSuperview()
                     self.scrollView.removeObserver(self, forKeyPath: "contentOffset")
                 }
-                
-                objc_sync_exit(self)
                 return
             }
             

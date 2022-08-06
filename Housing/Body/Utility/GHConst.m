@@ -138,6 +138,7 @@ const CGFloat GHNavigationBarH=64.0;
 {
     return [[NSFileManager defaultManager] fileExistsAtPath:filepath];
 }
+
 /*
  ＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊
  ＊删除指定文件

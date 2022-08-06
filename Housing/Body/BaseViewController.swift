@@ -12,7 +12,7 @@ class BaseViewController: UIViewController , UITableViewDelegate,UITableViewData
 
     var ViewControllerTitle = "ViewController"
     
-    var sectionTitles : NSArray = ["ViewControllers","MapView"]
+    var sectionTitles : NSArray = ["ViewControllers","MapView","other"]
     
     var titles : NSArray!
     var classNames : NSArray!
@@ -23,18 +23,20 @@ class BaseViewController: UIViewController , UITableViewDelegate,UITableViewData
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
-        self.edgesForExtendedLayout = UIRectEdge()
-        self.automaticallyAdjustsScrollViewInsets = false
-        self.view.backgroundColor = UIColor.yellow
-        title = ViewControllerTitle
+        edgesForExtendedLayout = UIRectEdge()
+        automaticallyAdjustsScrollViewInsets = false
+        view.backgroundColor = UIColor.white
+//        title = ViewControllerTitle
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
-        self.navigationController?.navigationBar.barStyle = .black
+        self.navigationController?.navigationBar.barStyle = .default
         self.navigationController?.navigationBar.isTranslucent = false
         self.navigationController?.setToolbarHidden(true, animated: animated)
+        self.navigationController?.navigationBar.topItem?.backBarButtonItem = UIBarButtonItem(title: "Back", style: .plain, target: nil, action: nil);
+
     }
     
 
@@ -108,7 +110,7 @@ class BaseViewController: UIViewController , UITableViewDelegate,UITableViewData
             tableView = UITableView(frame: view.bounds,style: .grouped)
             tableView.delegate = self
             tableView.dataSource = self
-            tableView.backgroundColor = UIColor.lightGray
+            tableView.backgroundColor = UIColor.white
             tableView.contentInset = UIEdgeInsets(top: 20, left: 0, bottom: 25, right: 0)
             view.addSubview(tableView)
         }

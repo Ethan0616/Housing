@@ -19,8 +19,8 @@ UserInterfaceState.xcuserstate
 xcuserdata/
 *.xcworkspace
 *.xcuserdatad
+xcschemes/
 .DS_Store
-
 ## Other
 *.moved-aside
 *.xcuserstate
@@ -28,8 +28,6 @@ project.xcworkspace/
 UserInterface.xcuserstate
 *.xcworkspace
 .DS_Store
-
-
 ## Obj-C/Swift specific
 *.hmap
 *.ipa

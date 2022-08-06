@@ -97,21 +97,22 @@ extension AppDelegate{
     
     //MARK: - 引导页设置
     fileprivate func showLeadpage() -> UIViewController {
-        let versionStr = "CFBundleShortVersionString"
-        let cureentVersion = Bundle.main.infoDictionary![versionStr] as! String
-        let oldVersion = (UserDefaults.standard.object(forKey: versionStr) as? String) ?? ""
+//        let versionStr = "CFBundleShortVersionString"
+//        let cureentVersion = Bundle.main.infoDictionary![versionStr] as! String
+//        let oldVersion = (UserDefaults.standard.object(forKey: versionStr) as? String) ?? ""
+//
+//        if cureentVersion.compare(oldVersion) == ComparisonResult.orderedDescending {
+//            UserDefaults.standard.set(cureentVersion, forKey: versionStr)
+//            UserDefaults.standard.synchronize()
+//            let AppNav  = UINavigationController.init(rootViewController: ViewController())
+//            AppNav.setNavigationBarHidden(true, animated: false)
+//
+//
+//            return AppNav
+//        }
         
-        if cureentVersion.compare(oldVersion) == ComparisonResult.orderedDescending {
-            UserDefaults.standard.set(cureentVersion, forKey: versionStr)
-            UserDefaults.standard.synchronize()
-            let AppNav  = UINavigationController.init(rootViewController: ViewController())
-            AppNav.setNavigationBarHidden(true, animated: false)
-            
-            
-            return AppNav
-        }
-        let AppNav  = UINavigationController.init(rootViewController: TachographMainViewController())
-        AppNav.setNavigationBarHidden(true, animated: false)
+        let AppNav  = NavigationController.init(rootViewController: CustomViewController())
+        AppNav.setNavigationBarHidden(false, animated: false)
         return AppNav
     }
 }

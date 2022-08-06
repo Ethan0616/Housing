@@ -42,7 +42,7 @@ class MainViewController: BaseViewController, MAMapViewDelegate {
     }
     
     deinit {
-        self.navigationController?.isNavigationBarHidden = true
+        self.navigationController?.isNavigationBarHidden = false
         
     }
 
