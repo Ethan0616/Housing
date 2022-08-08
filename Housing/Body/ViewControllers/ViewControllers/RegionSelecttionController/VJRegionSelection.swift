@@ -14,7 +14,7 @@ protocol VJRegionSelectionProtocol : NSObjectProtocol {
 //    func didSelectedRegion(Item item : [[VJRegionItem]],DictArr dictArr:[NSDictionary], Text text : NSString)
     func didSelectedRegionWith(_ item : VJRegionModel)
 }
-
+fileprivate var localDataArr : [VJRegionItem]! = []
 fileprivate let orignInitials : [String] = ["A","B","C","D","E","F","G","H","I","J","K","L","M","N","O","P","Q","R","S","T","U","V","W","X","Y","Z"]
 fileprivate var hideSwitchBtn : Bool = true // 包含港澳台
 fileprivate let viewSpace : CGFloat = 45  // cell高度
@@ -26,7 +26,109 @@ fileprivate let subTitleNormalWord : String = "请选择"
 @objc
 class VJRegionSelection: UIView {
     
-    weak var delegate : VJRegionSelectionProtocol?
+    /// 预加载数据
+    @objc
+    public static func loadData() {
+        VJRegionItem.loadLocalPlist()
+    }
+    
+    @objc
+    public static func showRegionView(_ item : VJRegionModel? = nil, _ delegate : VJRegionSelectionProtocol? = nil) {
+        
+        let window = VJRegionSelection.keyWindow
+        loadData()
+        let regionView = VJRegionSelection(frame: UIScreen.main.bounds)
+        regionView.delegate = delegate
+        DispatchQueue.main.async {
+            window?.addSubview(regionView)
+        }
+        guard let model : VJRegionModel = item else { return }
+
+        regionView.triggerCurrentSelection(model)
+    }
+    
+    
+    /// 在cell中显示当前选择，更新subTitle 信息等操作
+    /// - Parameter model: 具体选中行
+    private func triggerCurrentSelection(_ model : VJRegionModel) {
+        
+        var tempCurrentIndex : [(Int,Int)] = []
+        let currentTempArr : [[VJRegionItem]] = dataArr
+        var tempArr : [[VJRegionItem]] = currentTempArr
+        let countNum = VJRegionModel.getCurrentIndex(model)
+        
+        func createCurrentIndex(_ ID : NSString, _ currentIndex : inout [(Int,Int)] , _ tempArr :inout [[VJRegionItem]]) {
+            for i in 0..<(tempArr.count ) {
+                for j in 0..<(tempArr[i].count) {
+                    
+                    let item = tempArr[i][j]
+                    if let IDStr : NSString = item.ID as NSString? ,IDStr.isEqual(to: ID as String) {
+                        currentIndex.append((i,j))
+                        if item.hasChild {
+                            tempArr = item.dataArr
+                            return
+                        }
+                    }
+                }
+            }
+        }
+        
+        [Int](0...countNum).forEach { index in
+            var titleName : NSString = ""
+            var currentID : NSString = ""
+            switch index {
+                case 0 :
+                titleName = model.province
+                currentID = model.provinceID
+                curIndex = 0
+                    break
+                case 1 :
+                titleName = model.city
+                currentID = model.cityID
+                curIndex = 1
+                    break
+                case 2 :
+                titleName = model.region
+                currentID = model.regionID
+                curIndex = 2
+                break
+                case 3 :
+                titleName = model.town
+                currentID = model.townID
+                curIndex = 3
+                break
+            default :
+                break
+            }
+            // 更新Subtitle名称
+            createBtnWithTitleName(titleName as String)
+            // 更新数据源具体编号
+            createCurrentIndex(currentID, &tempCurrentIndex, &tempArr)
+            
+        }
+        
+        // 刷新页面
+        if tempCurrentIndex.count > 0 {
+            currentIndex = tempCurrentIndex
+            var tempArr : [[VJRegionItem]] = dataArr
+            var item : VJRegionItem! = VJRegionItem()
+            for (section,row) in currentIndex[0..<curIndex] {
+                item = tempArr[section][row]
+                if item.hasChild {
+                    tempArr = item.dataArr
+                    tempDataArr = item.dataArr
+                    initials = item.initials
+                }
+            }
+            
+            selectedTableView.reloadData()
+            displayView.indexView.refreshIndexItems()
+        }
+    }
+    
+    
+    @objc weak var delegate : VJRegionSelectionProtocol?
+    
     fileprivate var curIndex : Int = 0
     fileprivate var btnIndex : Int = -1 // 生成的按钮总个数 4321 + tag
     private     var nextBtnWidth : CGFloat = 0 // 下一个按钮的 originX
@@ -43,6 +145,7 @@ class VJRegionSelection: UIView {
     // 对外的比例
     private(set) var screenHeight : CGFloat = 0.8
     
+    // 黑色背景
     private lazy var bgView : UIView = {
         let aview = UIView(frame: UIScreen.main.bounds)
         aview.backgroundColor = UIColor.black
@@ -50,6 +153,14 @@ class VJRegionSelection: UIView {
         return aview
     }()
     
+    // 遮盖底边圆角
+    private lazy var bottomView : UIView = {
+        let aview = UIView(frame: CGRect(x: 0, y: UIScreen.main.bounds.height - 64, width: UIScreen.main.bounds.width, height: 64))
+        aview.backgroundColor = UIColor.white
+        return aview
+    }()
+    
+    // 白色显示区域
     private lazy var displayView : VJDisplayView = {
         let aview = VJDisplayView(frame: CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height * screenHeight))
         aview.backgroundColor = UIColor.white
@@ -100,7 +211,6 @@ class VJRegionSelection: UIView {
         return btn
     }
     
-    
     /// 刷新当前页面的按钮显示
     private func refreshSubTitleBtns() {
         removeAllSubTitleBtns()
@@ -120,6 +230,20 @@ class VJRegionSelection: UIView {
                 }
             }
             index += 1
+        }
+    }
+    
+    /// 更新最后一个按钮的显示
+    private func refreshLastBtnTitleNmae(_ name : String ) {
+        let btns : [UIButton] = scrollView.subviews.compactMap{$0 as? UIButton}
+        .sorted{$0.tag < $1.tag}
+        
+        if let btn = btns.last {
+            
+            btn.setTitle(name, for: .normal)
+            btn.setTitle(name, for: .highlighted)
+            btn.setTitleColor(UIColor.red, for: .normal)
+            btn.setTitleColor(UIColor.red, for: .highlighted)
         }
     }
     
@@ -210,6 +334,7 @@ class VJRegionSelection: UIView {
     override init(frame: CGRect) {
         super.init(frame: frame)
         addSubview(bgView)
+        addSubview(bottomView)
         addSubview(displayView)
         displayView.frame = CGRect(x: 0, y: bounds.height * (1.0 - screenHeight), width: bounds.width, height: bounds.height * screenHeight)
         displayView.exitBtn.addTarget(self, action: #selector(closeBtnAction(_:)), for: .touchUpInside)
@@ -217,6 +342,12 @@ class VJRegionSelection: UIView {
         displayView.indexView.dataSource = self
         addTableView()
         createDataSource(VJRegionItem.loadLocalPlist())
+        addTapGesture()
+    }
+    
+    fileprivate func addTapGesture() {
+        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(closeBtnAction(_:)))
+        bgView.addGestureRecognizer(tapGesture)
     }
     
     fileprivate func createDataSource(_ tempData : [VJRegionItem]) {
@@ -241,6 +372,7 @@ class VJRegionSelection: UIView {
     override func layoutSubviews() {
         super.layoutSubviews()
         bgView.frame = bounds
+        bottomView.frame = CGRect(x: 0, y: UIScreen.main.bounds.height - 64, width: UIScreen.main.bounds.width, height: 64)
         displayView.frame = CGRect(x: 0, y: bounds.height * (1.0 - screenHeight), width: bounds.width, height: bounds.height * screenHeight)
     }
     
@@ -344,30 +476,39 @@ extension VJRegionSelection : UITableViewDelegate ,UITableViewDataSource , MJNIn
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let tempArr = getCurrentItems()
-        let item = tempArr[indexPath.section][indexPath.row]
-        createBtnWithTitleName(item.ext_name as String)
-        currentIndex.append((indexPath.section,indexPath.row))
-        curIndex += 1
-        refreshSubTitleBtns()
-        // 有子视图
-        if item.hasChild {
-//            print("section:\(indexPath.section) ; row: \(indexPath.row)")
-            tempDataArr = item.dataArr
-            initials = item.initials
-            tableView.reloadData()
-            displayView.indexView.refreshIndexItems()
-            createBtnWithTitleName(subTitleNormalWord)
-            selectedTableView.scrollToRow(at: IndexPath(item: 0, section: 0), at: .top, animated: true)
-        } else {
-            resetButtonNormalColor()
-//            print("没有下一级，需要回调")
-//            delegate?.didSelectedRegion(Item: dataArr,
-//                                        DictArr: tupleToDictionary(),
-//                                        Text: getFullAddress())
-            let model = createModel()
-            self.delegate?.didSelectedRegionWith(model)
-            removeAllViews()
+        if tableView == selectedTableView {
+            
+            let tempArr = getCurrentItems()
+            let item = tempArr[indexPath.section][indexPath.row]
+            if item.hasChild {
+                createBtnWithTitleName(item.ext_name as String)
+            } else {
+                refreshLastBtnTitleNmae(item.ext_name as String)
+            }
+            currentIndex.append((indexPath.section,indexPath.row))
+            curIndex += 1
+            // 有子视图
+            if item.hasChild {
+                refreshSubTitleBtns()
+                
+                //            print("section:\(indexPath.section) ; row: \(indexPath.row)")
+                tempDataArr = item.dataArr
+                initials = item.initials
+                selectedTableView.reloadData()
+                displayView.indexView.refreshIndexItems()
+                createBtnWithTitleName(subTitleNormalWord)
+                selectedTableView.scrollToRow(at: IndexPath(item: 0, section: 0), at: .top, animated: true)
+            } else {
+                
+                resetButtonNormalColor()
+                //            print("没有下一级，需要回调")
+                //            delegate?.didSelectedRegion(Item: dataArr,
+                //                                        DictArr: tupleToDictionary(),
+                //                                        Text: getFullAddress())
+                let model = createModel()
+                self.delegate?.didSelectedRegionWith(model)
+                removeAllViews()
+            }
         }
     }
     
@@ -572,7 +713,8 @@ fileprivate class VJDisplayView : UIView {
     fileprivate lazy var exitBtn : UIButton = {
         let btn = UIButton(type: .custom)
         btn.translatesAutoresizingMaskIntoConstraints = false
-        btn.backgroundColor = UIColor.red
+//        btn.backgroundColor = UIColor.red
+        btn.setImage(UIImage(named:"icon_close"), for: .normal)
 //        btn.frame = CGRect(x: 0, y: 0, width: 40, height: 40)
         return btn
     }()
@@ -738,8 +880,8 @@ fileprivate class VJDisplayView : UIView {
         indexView.itemsAligment = .center
         indexView.maxItemDeflection = 100.0
         indexView.rangeOfDeflection = 2
-        indexView.fontColor = UIColor.internalRGBA(r:0.3, g: 0.3, b: 0.3, a: 1.0)
-        indexView.selectedItemFontColor = UIColor.internalRGBA(r:0.0, g: 0.0, b: 0.0, a: 1.0)
+        indexView.fontColor = UIColor.VJRGBA(r:0.3, g: 0.3, b: 0.3, a: 1.0)
+        indexView.selectedItemFontColor = UIColor.VJRGBA(r:0.0, g: 0.0, b: 0.0, a: 1.0)
         indexView.darkening = false
         indexView.fading = true
         indexView.backgroundColor = UIColor.clear
@@ -756,15 +898,46 @@ fileprivate class VJDisplayView : UIView {
 }
 
 @objc class VJRegionModel : NSObject {
-    var ID          : NSString!
-    var province    : NSString! // 省
-    var city        : NSString! // 市
-    var region      : NSString! // 区
-    var town        : NSString! // 县城
-    var provinceID     : NSString! // 省
-    var cityID         : NSString! // 市
-    var regionID       : NSString! // 区
-    var townID         : NSString! // 县城
+    @objc var ID          : NSString!
+    @objc var province    : NSString! // 省
+    @objc var city        : NSString! // 市
+    @objc var region      : NSString! // 区
+    @objc var town        : NSString! // 县城
+    @objc var provinceID     : NSString! // 省
+    @objc var cityID         : NSString! // 市
+    @objc var regionID       : NSString! // 区
+    @objc var townID         : NSString! // 县城
+    
+    
+    /// 当前层级
+    /// - Parameter model: 当前对象
+    /// - Returns: 层级
+    @objc
+    static func getCurrentIndex(_ model : VJRegionModel) -> Int {
+        var index = -1
+
+        if model.ID.isEqual(to: model.townID as String) {
+            index = 3
+            return index
+        }
+        
+        if model.ID.isEqual(to: model.regionID as String) {
+            index = 2
+            return index
+        }
+        
+        if model.ID.isEqual(to: model.cityID as String) {
+            index = 1
+            return index
+        }
+        
+        if model.ID.isEqual(to: model.provinceID as String) {
+            index = 0
+            return index
+        }
+        
+        return index
+    }
 }
 
 
@@ -784,7 +957,11 @@ fileprivate class VJDisplayView : UIView {
     var dataArr     : [[VJRegionItem]]! = []
     var initials    : [String]! = []
     
+    @discardableResult
     static func loadLocalPlist()->[VJRegionItem] {
+        if localDataArr.count > 0 {
+            return localDataArr
+        }
 //        guard let path = Bundle.main.path(forResource: "area_format_user", ofType: "plist") else { return []}
         guard let path = Bundle.main.path(forResource: "area_format_user", ofType: "json") else { return []}
 
@@ -795,9 +972,9 @@ fileprivate class VJDisplayView : UIView {
         }catch {
             print(error)
         }
+        localDataArr = createItems(arr)
         
-        
-        return createItems(arr)
+        return localDataArr
     }
     
     static func createItems(_ dataArr : NSArray) -> [VJRegionItem] {
@@ -870,8 +1047,8 @@ fileprivate class VJDisplayView : UIView {
 }
 
 
-extension UIColor {
-    class func internalRGBA(r:CGFloat, g:CGFloat, b:CGFloat, a:CGFloat) -> UIColor {
+fileprivate extension UIColor {
+    class func VJRGBA(r:CGFloat, g:CGFloat, b:CGFloat, a:CGFloat) -> UIColor {
         return UIColor(red: r/255.0, green: g/255.0, blue: b/255.0, alpha: a)
     }
 }
@@ -921,4 +1098,39 @@ class VJRegionSelectionTableViewCell : UITableViewCell {
         }
     }
     
+}
+
+
+extension VJRegionSelection {
+    static var keyWindow: UIWindow? {
+        if #available(iOS 13, *) {
+            let keyWindow : UIWindow  = UIApplication.shared.connectedScenes
+                .map{$0 as? UIWindowScene}
+                .compactMap{$0}
+                .first?.windows.first ?? UIWindow(frame: UIScreen.main.bounds)
+//            return UIApplication.shared.windows.first { $0.isKeyWindow }
+            return keyWindow
+        } else {
+            return UIApplication.shared.keyWindow
+        }
+    }
+    
+    static func isBangsScreen() ->Bool {
+        let keyWindow = VJRegionSelection.keyWindow
+        if #available(iOS 11.0, *) {
+            return keyWindow!.safeAreaInsets.bottom > 0
+        } else {
+            // Fallback on earlier versions
+        }
+        return false
+    }
+    
+    static var safeBottom : CGFloat {
+        if #available(iOS 11.0, *) {
+            return keyWindow?.safeAreaInsets.bottom ?? 0
+        } else {
+            // Fallback on earlier versions
+        }
+        return 0
+    }
 }
