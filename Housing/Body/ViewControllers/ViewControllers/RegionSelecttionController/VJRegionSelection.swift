@@ -22,7 +22,9 @@ fileprivate let exitBtnWH : CGFloat = 44.0  // 退出按钮大小
 fileprivate let leftMargin : CGFloat = 22.0 // 左侧边距
 fileprivate let wordMargin : CGFloat = 0    // 多子标题的文字间距
 fileprivate let subTitleNormalWord : String = "请选择"
-
+fileprivate let mainScreen : CGRect =  {
+    return  VJRegionSelection.keyWindow.bounds
+}()
 @objc
 class VJRegionSelection: UIView {
     
@@ -37,10 +39,10 @@ class VJRegionSelection: UIView {
         
         let window = VJRegionSelection.keyWindow
         loadData()
-        let regionView = VJRegionSelection(frame: UIScreen.main.bounds)
+        let regionView = VJRegionSelection(frame: mainScreen)
         regionView.delegate = delegate
         DispatchQueue.main.async {
-            window?.addSubview(regionView)
+            window.addSubview(regionView)
         }
         guard let model : VJRegionModel = item else { return }
 
@@ -147,7 +149,7 @@ class VJRegionSelection: UIView {
     
     // 黑色背景
     private lazy var bgView : UIView = {
-        let aview = UIView(frame: UIScreen.main.bounds)
+        let aview = UIView(frame: mainScreen)
         aview.backgroundColor = UIColor.black
         aview.alpha = 0.4
         return aview
@@ -155,19 +157,19 @@ class VJRegionSelection: UIView {
     
     // 遮盖底边圆角
     private lazy var bottomView : UIView = {
-        let aview = UIView(frame: CGRect(x: 0, y: UIScreen.main.bounds.height - 64, width: UIScreen.main.bounds.width, height: 64))
+        let aview = UIView(frame: CGRect(x: 0, y: mainScreen.height - 64, width: mainScreen.width, height: 64))
         aview.backgroundColor = UIColor.white
         return aview
     }()
     
     // 白色显示区域
     private lazy var displayView : VJDisplayView = {
-        let aview = VJDisplayView(frame: CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height * screenHeight))
+        let aview = VJDisplayView(frame: CGRect(x: 0, y: 0, width: mainScreen.width, height: mainScreen.height * screenHeight))
         aview.backgroundColor = UIColor.white
-        aview.scrollView.contentSize = CGSize(width: UIScreen.main.bounds.width, height: aview.bounds.height - viewSpace * 3 - (hideSwitchBtn ? 0 : viewSpace))
-//        aview.scrollView.contentSize = CGSize(width: UIScreen.main.bounds.width * 3, height: aview.bounds.height - viewSpace * 3 - (hideSwitchBtn ? viewSpace : 0))
+        aview.scrollView.contentSize = CGSize(width: mainScreen.width, height: aview.bounds.height - viewSpace * 3 - (hideSwitchBtn ? 0 : viewSpace))
+//        aview.scrollView.contentSize = CGSize(width: mainScreen.width * 3, height: aview.bounds.height - viewSpace * 3 - (hideSwitchBtn ? viewSpace : 0))
         let tempScrollView = UIScrollView(frame: CGRect(x: 0, y: 0,
-                                                        width: UIScreen.main.bounds.width - leftMargin * 2,
+                                                        width: mainScreen.width - leftMargin * 2,
                                                         height: viewSpace))
 
         aview.subTitleView.addSubview(tempScrollView)
@@ -372,7 +374,7 @@ class VJRegionSelection: UIView {
     override func layoutSubviews() {
         super.layoutSubviews()
         bgView.frame = bounds
-        bottomView.frame = CGRect(x: 0, y: UIScreen.main.bounds.height - 64, width: UIScreen.main.bounds.width, height: 64)
+        bottomView.frame = CGRect(x: 0, y: mainScreen.height - 64, width: mainScreen.width, height: 64)
         displayView.frame = CGRect(x: 0, y: bounds.height * (1.0 - screenHeight), width: bounds.width, height: bounds.height * screenHeight)
     }
     
@@ -381,9 +383,11 @@ class VJRegionSelection: UIView {
     }
     
     private func removeAllViews() {
+        bottomView.isHidden = true
         UIView.animate(withDuration: 0.3) {
             self.displayView.frame = CGRect(x: 0, y: self.bounds.height, width: self.bounds.width, height: self.bounds.height * self.screenHeight)
         } completion: { complete in
+            self.bottomView.removeFromSuperview()
             self.displayView.removeFromSuperview()
             self.bgView.removeFromSuperview()
             self.removeFromSuperview()
@@ -393,7 +397,7 @@ class VJRegionSelection: UIView {
     private func addTableView() {
         [Int](0...2).forEach { i in
 
-            let rect = CGRect(x: CGFloat(i) * UIScreen.main.bounds.width, y: 0, width: UIScreen.main.bounds.width, height: displayView.scrollView.contentSize.height)
+            let rect = CGRect(x: CGFloat(i) * mainScreen.width, y: 0, width: mainScreen.width, height: displayView.scrollView.contentSize.height)
             let tableView = UITableView(frame: rect, style: .grouped)
             tableView.tag = 12222 + i
             displayView.scrollView.addSubview(tableView)
@@ -630,7 +634,7 @@ extension VJRegionSelection : UITableViewDelegate ,UITableViewDataSource , MJNIn
     
     func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
         if selectedTableView === tableView {
-            let aView = UIView(frame: CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width, height: 0))
+            let aView = UIView(frame: CGRect(x: 0, y: 0, width: mainScreen.width, height: 0))
             aView.backgroundColor = UIColor.clear
             return aView
         }
@@ -641,13 +645,13 @@ extension VJRegionSelection : UITableViewDelegate ,UITableViewDataSource , MJNIn
     
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         if selectedTableView === tableView {
-            let aView = UIView(frame: CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width, height: 20))
+            let aView = UIView(frame: CGRect(x: 0, y: 0, width: mainScreen.width, height: 20))
             aView.backgroundColor = UIColor.clear
             let label = UILabel(frame: CGRect(x: 20, y: 0, width: 120, height: 20))
             label.text = initials[section]
             label.textColor = UIColor.black
             aView.addSubview(label)
-            let lineView = UIView(frame: CGRect(x: 0, y: 19, width: UIScreen.main.bounds.width , height: 1))
+            let lineView = UIView(frame: CGRect(x: 0, y: 19, width: mainScreen.width , height: 1))
             lineView.backgroundColor = UIColor(red: 243.0/255.0, green: 243.0/255.0, blue: 243.0/255.0, alpha: 1)
             aView.addSubview(lineView)
             return aView
@@ -806,12 +810,12 @@ fileprivate class VJDisplayView : UIView {
 
         NSLayoutConstraint.activate([
             topGuide.leadingAnchor.constraint(equalTo: leadingAnchor),
-            topGuide.trailingAnchor.constraint(equalTo: trailingAnchor,constant:UIScreen.main.bounds.width - leftMargin),
+            topGuide.trailingAnchor.constraint(equalTo: trailingAnchor,constant:mainScreen.width - leftMargin),
             topGuide.topAnchor.constraint(equalTo: topAnchor),
             topGuide.heightAnchor.constraint(equalToConstant: 0),
 
             bottomGuide.leadingAnchor.constraint(equalTo: leadingAnchor),
-            bottomGuide.trailingAnchor.constraint(equalTo: trailingAnchor,constant:UIScreen.main.bounds.width - leftMargin),
+            bottomGuide.trailingAnchor.constraint(equalTo: trailingAnchor,constant:mainScreen.width - leftMargin),
             bottomGuide.topAnchor.constraint(equalTo: topAnchor,constant: self.bounds.height),
             bottomGuide.heightAnchor.constraint(equalToConstant: 0),
             
@@ -820,10 +824,10 @@ fileprivate class VJDisplayView : UIView {
             leadingGuide.bottomAnchor.constraint(equalTo: bottomAnchor),
             leadingGuide.trailingAnchor.constraint(equalTo: trailingAnchor),
             
-            trailingGuide.leadingAnchor.constraint(equalTo: leadingAnchor,constant:UIScreen.main.bounds.width - leftMargin * 2),
+            trailingGuide.leadingAnchor.constraint(equalTo: leadingAnchor,constant:mainScreen.width - leftMargin * 2),
             trailingGuide.topAnchor.constraint(equalTo: topAnchor),
             trailingGuide.bottomAnchor.constraint(equalTo: bottomAnchor),
-            trailingGuide.trailingAnchor.constraint(equalTo: trailingAnchor,constant:UIScreen.main.bounds.width - leftMargin * 2),
+            trailingGuide.trailingAnchor.constraint(equalTo: trailingAnchor,constant:mainScreen.width - leftMargin * 2),
             
             
             exitBtn.topAnchor.constraint(equalTo: topAnchor, constant: (viewSpace - exitBtnWH) * 0.5),
@@ -1102,23 +1106,24 @@ class VJRegionSelectionTableViewCell : UITableViewCell {
 
 
 extension VJRegionSelection {
-    static var keyWindow: UIWindow? {
+    
+    static var keyWindow: UIWindow {
         if #available(iOS 13, *) {
             let keyWindow : UIWindow  = UIApplication.shared.connectedScenes
                 .map{$0 as? UIWindowScene}
                 .compactMap{$0}
-                .first?.windows.first ?? UIWindow(frame: UIScreen.main.bounds)
+                .first?.windows.first ?? UIWindow()
 //            return UIApplication.shared.windows.first { $0.isKeyWindow }
             return keyWindow
         } else {
-            return UIApplication.shared.keyWindow
+            return UIApplication.shared.keyWindow ?? UIWindow()
         }
     }
     
     static func isBangsScreen() ->Bool {
         let keyWindow = VJRegionSelection.keyWindow
         if #available(iOS 11.0, *) {
-            return keyWindow!.safeAreaInsets.bottom > 0
+            return keyWindow.safeAreaInsets.bottom > 0
         } else {
             // Fallback on earlier versions
         }
@@ -1127,7 +1132,7 @@ extension VJRegionSelection {
     
     static var safeBottom : CGFloat {
         if #available(iOS 11.0, *) {
-            return keyWindow?.safeAreaInsets.bottom ?? 0
+            return keyWindow.safeAreaInsets.bottom
         } else {
             // Fallback on earlier versions
         }
