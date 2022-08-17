@@ -677,10 +677,18 @@ extension VJRegionSelection : UITableViewDelegate ,UITableViewDataSource , MJNIn
     }
     
     func section(forSectionMJNIndexTitle title: String!, at index: Int) {
-        if 0 == selectFlag {
-            selectedTableView.scrollToRow(at: IndexPath(item: 0, section: index), at: .top, animated: false)
-        } else if 1 == selectFlag {
-            selectedTableView1.scrollToRow(at: IndexPath(item: 0, section: index), at: .top, animated: false)
+
+        DispatchQueue.global().async {
+            DispatchQueue.main.async {
+                if 0 == self.selectFlag {
+                    let tempIndex = index >= self.tempDataArr.count ? self.tempDataArr.count - 1 : index
+                    self.selectedTableView.scrollToRow(at: IndexPath(item: 0, section: tempIndex), at: .top, animated: false)
+                } else if 1 == self.selectFlag {
+                    let tempIndex = index >= self.tempDataArr1.count ? self.tempDataArr1.count - 1 : index
+                    self.selectedTableView1.scrollToRow(at: IndexPath(item: 0, section: tempIndex), at: .top, animated: false)
+                }
+                
+            }
         }
     }
     
@@ -1055,11 +1063,19 @@ extension VJRegionSelection : UIScrollViewDelegate {
             let pageNum : CGFloat =  (scrollView.contentOffset.x + 0.5 * scrollView.bounds.width) / scrollView.bounds.width
             // page
             if pageNum < 1.0 { // 大陆省份
-                selectFlag = 0
-                print("0")
+                
+                 selectFlag = 0
+                 initials = provinceInitials
+                 displayView.indexView.refreshIndexItems()
+                 reloadDataWithTag(curIndex)
+                 selectedTableView.reloadData()
+                 
             }else if pageNum > 1.0 && pageNum < 2.0 { // 港澳台
                 selectFlag = 1
-                print("1")
+                initials1 = provinceInitials1
+                displayView.indexView.refreshIndexItems()
+                reloadDataWithTag1(curIndex1)
+                selectedTableView1.reloadData()
             }else{
                 print("不处理")
             }
@@ -1285,7 +1301,6 @@ fileprivate class VJDisplayView : UIView {
         indexView.backgroundColor = UIColor.clear
         indexView.minimumGapBetweenItems = 6
         
-        print(indexView.bounds.size.height)
         addSubview(indexView)
     }
     

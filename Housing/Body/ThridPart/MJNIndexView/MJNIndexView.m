@@ -740,7 +740,12 @@
     
     if (self.indexItems && [self.indexItems count] > 0) {
         // sending selected items to dataSource
-        [self.dataSource sectionForSectionMJNIndexTitle:self.indexItems[[self.section integerValue]] atIndex:[self.section integerValue]];
+
+        if (self.section && self.indexItems.count > [self.section integerValue]) {
+//            NSLog(@"indexItem section: %d",[self.section integerValue]);
+//            NSLog(@"item : %@",self.indexItems[[self.section integerValue]]);
+            [self.dataSource sectionForSectionMJNIndexTitle:self.indexItems[[self.section integerValue]] atIndex:[self.section integerValue]];
+        }
         
         
         // some easter eggs ;)
