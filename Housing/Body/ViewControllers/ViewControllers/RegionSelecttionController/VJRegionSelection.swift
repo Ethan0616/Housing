@@ -784,6 +784,9 @@ extension VJRegionSelection : UITableViewDelegate ,UITableViewDataSource , MJNIn
                 displayView.indexView.refreshIndexItems()
                 createBtnWithTitleName(subTitleNormalWord)
                 selectedTableView.scrollToRow(at: IndexPath(item: 0, section: 0), at: .top, animated: true)
+                if tempDataArr.count == 1 {
+                    self.tableView(tableView, didSelectRowAt: IndexPath.init(row: 0, section: 0))
+                }
             } else {
                 
                 resetButtonNormalColor()
@@ -817,6 +820,9 @@ extension VJRegionSelection : UITableViewDelegate ,UITableViewDataSource , MJNIn
                 displayView.indexView.refreshIndexItems()
                 createBtnWithTitleName1(subTitleNormalWord)
                 selectedTableView1.scrollToRow(at: IndexPath(item: 0, section: 0), at: .top, animated: true)
+                if tempDataArr1.count == 1 {
+                    self.tableView(tableView, didSelectRowAt: IndexPath.init(row: 0, section: 0))
+                }
             } else {
                 
                 resetButtonNormalColor1()
