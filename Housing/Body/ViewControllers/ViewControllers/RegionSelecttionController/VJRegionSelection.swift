@@ -267,6 +267,15 @@ class VJRegionSelection: UIView {
     @discardableResult
     private func createBtnWithTitleName(_ name : String) -> UIButton {
         removeNormalButton()
+        // title 去重
+        let btns : [UIButton] = scrollView.subviews.compactMap{$0 as? UIButton}
+            .sorted{$0.tag < $1.tag}
+        if let lastBtn : UIButton = btns.last {
+            if let labelText = lastBtn.titleLabel?.text!, labelText == name {
+                btnIndex += 1
+                return lastBtn
+            }
+        }
         let btn = UIButton(type: .custom)
         btn.setTitle(name, for: .normal)
         btn.setTitle(name, for: .highlighted)
@@ -293,6 +302,16 @@ class VJRegionSelection: UIView {
     @discardableResult
     private func createBtnWithTitleName1(_ name : String) -> UIButton {
         removeNormalButton(1)
+        // title 去重
+        let btns : [UIButton] = scrollView1.subviews.compactMap{$0 as? UIButton}
+            .sorted{$0.tag < $1.tag}
+        if let lastBtn : UIButton = btns.last {
+            if let labelText = lastBtn.titleLabel?.text!, labelText == name {
+                btnIndex1 += 1
+                return lastBtn
+            }
+        }
+    
         let btn = UIButton(type: .custom)
         btn.setTitle(name, for: .normal)
         btn.setTitle(name, for: .highlighted)
@@ -852,11 +871,11 @@ extension VJRegionSelection : UITableViewDelegate ,UITableViewDataSource , MJNIn
             model.ID = item.ID
             switch index {
             case 0:
-                model.province = item.name
+                model.province = item.ext_name
                 model.provinceID = item.ID
                 break
             case 1:
-                model.city = item.name
+                model.city = item.ext_name
                 model.cityID = item.ID
                 break;
             case 2:
